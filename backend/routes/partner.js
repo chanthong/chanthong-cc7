@@ -1,8 +1,6 @@
 
-const { login, register, getUserById } = require("../controllers/partner");
+const {register} = require("../controllers/partner");
 const router = require("express").Router();
-
-
 
 router.post("/register", register);
 
