@@ -1,7 +1,8 @@
 const db = require("../models");
 
 const register = async (req, res) => {
-    const { username, password, name, profileUrl } = req.body;
+    const { username, password, restaurant_name, phone_no, email, 
+        price_range, location, partner_picture } = req.body;
     console.log(req.body);
     const targetPartner = await db.User.findOne({ where: { username } });
   
@@ -12,7 +13,12 @@ const register = async (req, res) => {
         username,
         name,
         password: hashedPW,
-        profile_url: profileUrl
+        restaurant_name, 
+        phone_no,
+        email,
+        price_range,
+        location, 
+        partner_picture
       });
   
       res.status(201).send({ message: "Partner created." });
