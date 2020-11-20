@@ -3,9 +3,17 @@ import { Menu } from 'antd';
 
 function Menubar() {
     return (
-       <div>
-           hello this is my feature
-       </div>
+        <Menu mode="horizontal" style={{textAlign:"right", backgroundColor:"#f0f2f5"}} >
+            <Menu.Item>
+                พื้นที่
+            </Menu.Item>
+            <Menu.Item>
+                เข้าสู่ระบบ
+            </Menu.Item>
+            <Menu.Item>
+                ลงทะเบียน
+            </Menu.Item>
+        </Menu>
     )
 }
 
