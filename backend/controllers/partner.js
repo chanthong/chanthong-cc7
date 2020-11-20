@@ -1,27 +1,30 @@
 const db = require("../models");
 
 const register = async (req, res) => {
-    const { username, password, restaurant_name, phone_no, email, 
-        price_range, location, partner_picture } = req.body;
-    console.log(req.body);
-    const targetPartner = await db.User.findOne({ where: { username } });
-  
-    if (targetPartner) {
-      res.status(400).send({ message: "Username already taken." });
-    } else {
-      await db.User.create({
-        username,
-        name,
-        password: hashedPW,
-        restaurant_name, 
-        phone_no,
-        email,
-        price_range,
-        location, 
-        partner_picture
-      });
-  
-      res.status(201).send({ message: "Partner created." });
+    try {
+
+        const { username, password, restaurant_name, phone_number, email_address, 
+            price_range, location, partners_picture } = req.body;
+        console.log(req.body);
+        const targetPartner = await db.Partner.findOne({ where: { username } });
+      
+        if (targetPartner) {
+          res.status(400).send({ message: "Username already taken." });
+        } else {
+          await db.Partner.create({
+            username,
+            password,
+            restaurant_name, 
+            phone_number,
+            email_address,
+            price_range,
+            location, 
+            partners_picture
+          });
+          res.status(201).send({ message: "Partner created." });
+        }
+    } catch (err) {
+        res.status(500).send({message: err.message});
     }
   };
 
