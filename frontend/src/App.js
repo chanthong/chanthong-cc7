@@ -4,7 +4,6 @@ import Menubar from './components/Navbar/Menubar';
 import Hero from './components/Hero/Hero';
 import Restdisplay from './components/Restdisplay/Restdisplay';
 
-
 const { Header, Footer, Content } = Layout;
 function App() {
   return (
