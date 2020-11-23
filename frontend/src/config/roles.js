@@ -16,7 +16,11 @@ const roles = {
   GUEST: [
     components.login,
     components.register
-  ]
+  ],
+  USER: [
+    components.login,
+    components.register
+  ],
   
 }
 
