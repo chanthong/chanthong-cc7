@@ -1,6 +1,8 @@
 import Register from "../containers/pages/Register/Register";
 import Login from "../containers/pages/Login/Login";
 import Reserve from "../containers/pages/Reserve/Reserve";
+import Home from "../containers/pages/Home/Home";
+
 
 const components = {  
   login: {
@@ -14,18 +16,24 @@ const components = {
   reserve: {
     path: "/reserve",
     page: Reserve
-  }  
+  },
+  home: {
+    path: "/home",
+    page: Home
+  }
 };
 
 const roles = {
   GUEST: [
     components.login,
-    components.register
+    components.register,
+    components.home
   ],
   USER: [
     components.login,
     components.register,
-    components.reserve
+    components.reserve,
+    components.home
   ],
   
 }
