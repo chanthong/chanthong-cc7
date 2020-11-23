@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     reserve_code: {
       type: DataTypes.STRING,
+      unique: true,
       allowNull: false,
     },
     note_comment: {
