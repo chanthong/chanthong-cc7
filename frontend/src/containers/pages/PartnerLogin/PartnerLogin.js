@@ -1,9 +1,59 @@
-import React from 'react'
+import { notification } from 'antd';
+import React, { useState } from 'react';
+import axios from '../../../config/axios';
+import LocalStorageService from '../../../services/localStorage'
 
-function PartnerLogin() {
+function PartnerLogin(props) {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const usernameHandler = (e) => {
+        setUsername(e.target.value);
+    };
+
+    const passwordHandler = (e) => {
+        setPassword(e.target.value)
+    };
+
+    const onFinish = () => {
+        axios.post("/partners/login", {
+            username,
+            password
+        })
+            .then(res => {
+                notification.success({
+                    description: "Login success."
+                });
+                LocalStorageService.setToken(res.data.token);
+                props.setRole("PARTNER");
+                props.history("")
+            })
+            .catch(err => {
+                console.log(err);
+                notification.error({
+                    description: "Login failed."
+                });
+            });
+    };
+
     return (
-        <div>
-            PartnerLogin
+        <div className="wrapper">
+            <div className="title">
+                Partner Login
+            </div>
+            <div className="form">
+                <div className="inputfield">
+                    <label>User Name</label>
+                    <input type="text" className="input" value={username} onChange={usernameHandler}></input>
+                </div>
+                <div className="inputfield">
+                    <label>Password</label>
+                    <input type="password" className="input" value={password} onChange={passwordHandler}></input>
+                </div>
+                <div className="inputfield">
+                    <input htmlType="submit" value="Register" className="btn" onClick={onFinish}></input>
+                </div>
+            </div>
         </div>
     )
 }

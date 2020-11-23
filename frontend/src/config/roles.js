@@ -25,7 +25,9 @@ const components = {
 const roles = {
   GUEST: [
     components.login,
-    components.register
+    components.register,
+    components.partner_register,
+    components.partner_login,
   ],
 
   USER: [
@@ -35,7 +37,7 @@ const roles = {
 
   PARTNER: [
     components.partner_login,
-    components.partner_register
+    components.partner_register,
   ],
 }
 
