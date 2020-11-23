@@ -1,26 +1,16 @@
 import './App.css';
-import { Layout, Row } from 'antd';
-import Menubar from './components/Navbar/Menubar';
-import Hero from './components/Hero/Hero';
-import Restdisplay from './components/Restdisplay/Restdisplay';
+import { useState } from 'react';
+import PrivateRoutes from './containers/PrivateRoutes/PrivateRoutes';
+import LocalStorageService from "./services/localStorage";
 
-const { Header, Footer, Content } = Layout;
+
 function App() {
-  return (
-    <>
-      <Header style={{ padding: "0" }}><Menubar /></Header>
-      <Layout style={{ width: "80%", margin: "0 auto" }}>
-          <Hero />
-          <Restdisplay
-            headerTilte={"ตำแหน่ง"}
-          />
-          <Restdisplay
-            headerTilte={"แบรนด์"}
-          />
+  const [role, setRole] = useState(LocalStorageService.getRole());
 
-        <Footer>Footer</Footer>
-      </Layout>
-    </>
+  return (
+    <div className="App">
+      <PrivateRoutes role={role} setRole={setRole} />
+    </div>
   );
 }
 
