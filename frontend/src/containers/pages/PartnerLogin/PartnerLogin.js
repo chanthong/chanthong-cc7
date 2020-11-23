@@ -26,6 +26,7 @@ function PartnerLogin(props) {
                     description: "Login success."
                 });
                 LocalStorageService.setToken(res.data.token);
+                LocalStorageService.setARole(res.data.role);
                 props.setRole("PARTNER");
                 console.log(props.history)
                 props.history.push("/")

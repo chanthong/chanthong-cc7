@@ -1,16 +1,17 @@
-import jwt_decode from 'jwt-decode';
-
-var token = "eyJ0eXAiO.../// jwt token";
-var decoded = jwt_decode(token);
-
-console.log(decoded);
-
 const getToken = () => {
   return localStorage.getItem("ACCESS_TOKEN");
 };
 
+const getARole = () => {
+  return localStorage.getItem("ACCESS_ROLE");
+}
+
 const setToken = (token) => {
   localStorage.setItem("ACCESS_TOKEN", token);
+};
+
+const setARole = (role) => {
+  localStorage.setItem("ACCESS_ROLE", role);
 };
 
 const clearToken = () => {
@@ -18,15 +19,20 @@ const clearToken = () => {
 };
 
 const getRole = () => {
-  if (getToken()) {
-    return "USER";
-  }
+  const token = getToken()
+  if (token) {
+    const role = getARole()
+    return role || "USER";
+  };
   return "GUEST";
 };
 
-export default {
+const allLocal = {
   getToken,
   setToken,
   clearToken,
   getRole,
-};
+  setARole
+}
+
+export default allLocal;
