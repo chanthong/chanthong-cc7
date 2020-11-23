@@ -6,6 +6,8 @@ import NotFound from "../pages/NotFound/NotFound";
 
 function PrivateRoutes(props) {
   const role = props.role || "GUEST";
+  console.log(RolesList);
+  console.log(props.role);
   return (
     <>
       <BrowserRouter>
