@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Gigaman1010",
-    "database": "ChanThong",
+    "database": "chanthong",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

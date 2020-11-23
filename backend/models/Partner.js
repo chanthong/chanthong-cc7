@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         phone_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: false
         },
         email_address: {
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         partners_picture: {
             type: DataTypes.STRING
-        }
+        },
     }, {
         tableName: "partners"
     });
