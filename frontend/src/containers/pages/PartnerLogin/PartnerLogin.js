@@ -1,5 +1,6 @@
 import { notification } from 'antd';
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 import axios from '../../../config/axios';
 import LocalStorageService from '../../../services/localStorage'
 
@@ -26,7 +27,8 @@ function PartnerLogin(props) {
                 });
                 LocalStorageService.setToken(res.data.token);
                 props.setRole("PARTNER");
-                props.history("")
+                console.log(props.history)
+                props.history.push("/")
             })
             .catch(err => {
                 console.log(err);
@@ -51,11 +53,11 @@ function PartnerLogin(props) {
                     <input type="password" className="input" value={password} onChange={passwordHandler}></input>
                 </div>
                 <div className="inputfield">
-                    <input htmlType="submit" value="Register" className="btn" onClick={onFinish}></input>
+                    <input htmlType="submit" value="Login" className="btn" onClick={onFinish}></input>
                 </div>
             </div>
         </div>
     )
 }
 
-export default PartnerLogin;
+export default withRouter(PartnerLogin);
