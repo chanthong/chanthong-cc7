@@ -29,7 +29,7 @@ function PartnerLogin(props) {
                 LocalStorageService.setARole(res.data.role);
                 props.setRole("PARTNER");
                 console.log(props.history)
-                props.history.push("/")
+                props.history.push("/partner_profile")
             })
             .catch(err => {
                 console.log(err);

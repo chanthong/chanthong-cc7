@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
+    "password": "0865283940",
+=======
     "password": "Gigaman1010",
+>>>>>>> 825070a19b0d5ad18ef93d2283035a072f7f481c
     "database": "chanthong",
     "host": "127.0.0.1",
     "dialect": "mysql"
