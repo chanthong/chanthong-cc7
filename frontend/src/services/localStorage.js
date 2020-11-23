@@ -6,7 +6,7 @@ const getToken = () => {
    localStorage.setItem("ACCESS_TOKEN", token);
  };
  
- const clearToken = () => {
+const clearToken = () => {
    localStorage.clear();
  };
  
