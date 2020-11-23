@@ -27,9 +27,16 @@ const roles = {
     components.login,
     components.register
   ],
+
   USER: [
+    components.login,
     components.register
-  ]
+  ],
+
+  PARTNER: [
+    components.partner_login,
+    components.partner_register
+  ],
 }
 
 export default roles;
