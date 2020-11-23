@@ -1,0 +1,38 @@
+.outerFrame {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    object-fit: cover;
+    overflow: hidden;
+    background-color: aqua;
+}
+
+.outerPlate { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    right: -80px;
+    top: -370px;
+    border-radius: 50%;
+    background-color: #DFCA95;
+    box-shadow: 25px 25px 15px  rgba(54, 53, 45, 0.2);
+}
+
+.innerPlate { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* position: absolute; */
+    width: 426px;
+    height: 426px;
+    /* left: 828px;
+    top: -243px; */
+    border-radius: 50%;
+    background-color:#DFCA95;
+    box-shadow: inset -30px -30px 15px rgba(255, 247, 171, 0.2),
+                inset 30px 30px 15px rgba(82, 77, 37, 0.2);
+    z-index: 2;
+}

@@ -2,7 +2,7 @@ import Register from "../containers/pages/Register/Register";
 import Login from "../containers/pages/Login/Login";
 import Reserve from "../containers/pages/Reserve/Reserve";
 import Home from "../containers/pages/Home/Home";
-
+import Profile from "../containers/pages/Profile/Profile";
 
 const components = {  
   login: {
@@ -20,6 +20,10 @@ const components = {
   home: {
     path: "/home",
     page: Home
+  },
+  profile: {
+    path: "/profile",
+    page: Profile
   }
 };
 
@@ -33,7 +37,8 @@ const roles = {
     components.login,
     components.register,
     components.reserve,
-    components.home
+    components.home,
+    components.profile
   ],
   
 }
