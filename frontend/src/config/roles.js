@@ -2,6 +2,7 @@ import Register from "../containers/pages/Register/Register";
 import Login from "../containers/pages/Login/Login";
 import PartnerRegister from "../containers/pages/PartnerRegister/PartnerRegister";
 import PartnerLogin from "../containers/pages/PartnerLogin/PartnerLogin";
+import PartnerProfile from "../containers/pages/PartnerProfile/PartnerProfile";
 
 const components = {
   login: {
@@ -19,6 +20,10 @@ const components = {
   partner_login: {
     path: "/partner_login",
     page: PartnerLogin
+  },
+  partner_profile: {
+    path: "/partner_profile",
+    page: PartnerProfile
   }
 };
 
@@ -38,6 +43,7 @@ const roles = {
   PARTNER: [
     components.partner_login,
     components.partner_register,
+    components.partner_profile,
   ],
 }
 
