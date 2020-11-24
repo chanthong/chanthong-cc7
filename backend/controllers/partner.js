@@ -40,7 +40,20 @@ const login = async (req, res) => {
     const targetPartner = await db.Partner.findOne({ where: { username } });
     if (targetPartner) {
       if (bcrypt.compareSync(password, targetPartner.password)) {
-        const token = jwt.sign({ id: targetPartner.id }, process.env.SECRET, { expiresIn: 3600 });
+        const token = jwt.sign({
+          id: targetPartner.id,
+          username: targetPartner.username,
+          password: targetPartner.password,
+          restaurant_name: targetPartner.restaurant_name,
+          phone_number: targetPartner.phone_number,
+          location: targetPartner.location,
+          email_address: targetPartner.email_address,
+          price_range: targetPartner.price_range,
+          partners_picture: targetPartner.partners_picture
+        },
+          process.env.SECRET,
+          { expiresIn: 3600 }
+        );
         res.status(200).send({ token, role: "PARTNER" });
       } else {
         res.status(400).send({ message: "Username or password incorrect." });
@@ -54,10 +67,18 @@ const login = async (req, res) => {
 };
 
 const getPartnerById = async (req, res) => {
-
+  try {
+    const { id } = req.params;
+    const targetPartner = await db.Partner.findOne({ where: { id } });
+    console.log(targetPartner.dataValues);
+    res.status(200).send({ targetPartner });
+  } catch (err) {
+    res.status(500).send({ messages: err.message });
+  }
 }
 
 module.exports = {
   register,
-  login
+  login,
+  getPartnerById
 };
