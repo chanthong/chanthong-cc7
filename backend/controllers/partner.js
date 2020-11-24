@@ -75,10 +75,20 @@ const getPartnerById = async (req, res) => {
   } catch (err) {
     res.status(500).send({ messages: err.message });
   }
+};
+
+const getPartners = async (req, res) => {
+  try {
+    const partners = await db.Partner.findAll({});
+    res.status(200).send({ partners });
+  } catch (err) {
+    res.status(500).send({ messages: err.message })
+  }
 }
 
 module.exports = {
   register,
   login,
-  getPartnerById
+  getPartnerById,
+  getPartners
 };
