@@ -16,11 +16,18 @@ function Home({ role, setRole }) {
       fetchPartners();
    }, []);
 
+<<<<<<< HEAD
    return (
       <div style={{ display: 'flex' }}>
          <Navbar role={role} setRole={setRole} />
          {/* <ResturantCard /> */}
          {card.map((item) => <ResturantCard2 card={item} />)}
+=======
+function Home({ role, setRole }) {
+   return (
+      <div>
+         <Navbar role={role} setRole={setRole} />
+>>>>>>> dev
       </div>
    )
 }

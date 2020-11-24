@@ -2,7 +2,8 @@ import { notification } from 'antd';
 import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from '../../../config/axios';
-import LocalStorageService from '../../../services/localStorage'
+import LocalStorageService from '../../../services/localStorage';
+import jwtDecode from 'jwt-decode';
 
 function PartnerLogin(props) {
     const [username, setUsername] = useState("");
@@ -27,9 +28,11 @@ function PartnerLogin(props) {
                 });
                 LocalStorageService.setToken(res.data.token);
                 LocalStorageService.setARole(res.data.role);
+                console.log(res.data);
+                console.log(jwtDecode(res.data.token));
                 props.setRole("PARTNER");
-                console.log(props.history)
-                props.history.push("/partner_profile")
+                props.setPartner(jwtDecode(res.data.token));
+                props.history.push("/partner_profile");
             })
             .catch(err => {
                 console.log(err);
