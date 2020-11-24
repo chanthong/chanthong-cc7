@@ -3,16 +3,6 @@ import React from 'react';
 
 function PartnerProfile({ partner: { username, email_address, phone_number, restaurant_name, price_range } }) {
 
-    // const fetchPartner = async () => {
-    //     const res = await axios.get("http://localhost:5555/partners/:id");
-    //     setPartner(res.data.targetPartner);
-    //     console.log(res)
-    // }
-
-    // useEffect(() => {
-    //     fetchPartner();
-    // }, []);
-
     return (
         <div className="wrapper">
             <div className="title">
