@@ -1,12 +1,17 @@
 import React from 'react';
-import Navbar from '../../../components/Navbar/Navbar';
+import BottomHeader from '../../../components/BottomHeader/BottomHeader';
+import TopHeader from '../../../components/TopHeader/TopHeader';
 
-function Home({role,setRole}) {
+
+
+function Home({ role, setRole }) {
+   console.log(role);
    return (
-      <div>
-         <Navbar role={role} setRole={setRole}/>
-      </div>
+      <>
+         {role === "GUEST" && <TopHeader />}
+         {role === "USER" && <BottomHeader role={role} setRole={setRole}/>}
+      </>
    )
 }
 
-export default Home
+export default Home;
