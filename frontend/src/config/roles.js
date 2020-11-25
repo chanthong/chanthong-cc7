@@ -5,6 +5,7 @@ import PartnerRegister from "../containers/pages/PartnerRegister/PartnerRegister
 import PartnerLogin from "../containers/pages/PartnerLogin/PartnerLogin";
 import PartnerProfile from "../containers/pages/PartnerProfile/PartnerProfile";
 import Reserve from "../containers/pages/Reserve/Reserve";
+import Profile from "../containers/pages/Profile/Profile";
 
 
 const components = {

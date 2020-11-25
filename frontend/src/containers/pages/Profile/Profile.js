@@ -3,7 +3,7 @@ import './Profile.css'
 import PlateImg from '../../uploadfile/dishelement.png'
 import DiningImg from '../../uploadfile/diningset.png'
 
-function Profile() {
+function Profile({user: {username, name, lname, email, phone_number, current_point}}) {
     return (
         <div className="outerFrame">
             <div className="outerCircle"></div>
@@ -14,7 +14,7 @@ function Profile() {
             {/* Left-Side */}
 
             <div className="welcome font-mitr">Welcome</div>
-            <div className="user font-mitr">User</div>
+            <div className="user font-mitr">{username}</div>
             <div className="to font-mitr">to</div>
             <div className="chanthong font-lobster">Chanthong</div>
 
@@ -59,7 +59,7 @@ function Profile() {
 
             {/* Right-Side  */}
 
-            <div className="numberCircle"></div>
+            <div className="numberCircle">{current_point}</div>
             <div className="profileCircle"></div>
 
             <div className="leftTab1 font-mitr">Reserve History</div>
@@ -69,17 +69,17 @@ function Profile() {
                 <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "747px", top: "400px" }}></img>
             </div>
             <div className="nameLeftDownTab1 font-mitr">Name:</div>
-            <div className="leftDownTab1 font-mitr">User's name</div>
+    <div className="leftDownTab1 font-mitr">{name}</div>
             <div>
                 <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "696px", top: "465px" }}></img>
             </div>
             <div className="nameLeftDownTab2 font-mitr">Email Address:</div>
-            <div className="leftDownTab2 font-mitr">User's email</div>
+            <div className="leftDownTab2 font-mitr">{email}</div>
             <div>
                 <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "598px", top: "530px" }}></img>
             </div>
             <div className="nameLeftDownTab3 font-mitr">Phone Number:</div>
-            <div className="leftDownTab3 font-mitr">User's contact</div>
+            <div className="leftDownTab3 font-mitr">{phone_number}</div>
         </div>
     )
 }
