@@ -3,8 +3,8 @@ const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-   
-   const {username, password, name, lname, email, profile_url, birth_day, phone_number, gender} = req.body;
+
+   const { username, password, name, lname, email, profile_url, birth_day, phone_number, gender, current_point } = req.body;
    const targetUser = await db.User.findOne({ where: { username } });
    const phoneNumber = String(phone_number);
 
@@ -21,9 +21,10 @@ const register = async (req, res) => {
          email,
          gender,
          profile_url,
-         phone_number:phoneNumber,
+         phone_number: phoneNumber,
          birth_day,
-         password:hashedPwd
+         current_point,
+         password: hashedPwd
       });
       res.status(201).send({ message: "User created." });
    }
@@ -31,21 +32,26 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
    const { username, password } = req.body;
-   const targetUser = await db.User.findOne({where: { username }});
+   const targetUser = await db.User.findOne({ where: { username } });
 
    if (!targetUser) {
-      res.status(400).send({message: "username or password incorrect" });
+      res.status(400).send({ message: "username or password incorrect" });
    } else {
       const isCorrect = bcryptjs.compareSync(password, targetUser.password);
       if (isCorrect) {
          const payLoad = {
-            id:targetUser.id,
-            name:targetUser.name
+            id: targetUser.id,
+            username: targetUser.username,
+            name: targetUser.name,
+            lname: targetUser.lname,
+            email: targetUser.email,
+            phone_number: targetUser.phoneNumber,
+            current_point: targetUser.current_point
          };
-         const token = jwt.sign(payLoad, process.env.SECRET, {expiresIn: 3600});
+         const token = jwt.sign(payLoad, process.env.SECRET, { expiresIn: 3600 });
          res.status(200).send({ token });
       } else {
-         res.status(400).send({message: "username or password incorrect" });
+         res.status(400).send({ message: "username or password incorrect" });
       }
    }
 };

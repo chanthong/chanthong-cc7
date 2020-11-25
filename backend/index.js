@@ -6,6 +6,7 @@ const db = require('./models');
 const partnerRoutes = require("./routes/partner");
 const userRoutes = require("./routes/user");
 const reserveRoutes = require("./routes/reserve");
+const categoryRoutes = require("./routes/category")
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/partners", partnerRoutes);
 app.use("/users", userRoutes);
 app.use("/reserves", reserveRoutes);
+app.use("/category", categoryRoutes);
 
 app.listen(process.env.PORT, () => {
    console.log(`Server is running at PORT ${process.env.PORT} `);

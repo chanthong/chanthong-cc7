@@ -36,6 +36,10 @@ const components = {
     path: "/reserve",
     page: Reserve
   },
+  profile: {
+    path: "/profile",
+    page: Profile
+  }
 };
 
 const roles = {
@@ -51,6 +55,7 @@ const roles = {
     components.login,
     components.register,
     components.reserve,
+    components.profile
   ],
   PARTNER: [
     components.home,
