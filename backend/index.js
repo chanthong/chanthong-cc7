@@ -3,6 +3,8 @@ const express = require("express");
 const cors = require("cors");
 const db = require('./models');
 
+require('./config/passport');
+
 const partnerRoutes = require("./routes/partner");
 const userRoutes = require("./routes/user");
 const reserveRoutes = require("./routes/reserve");
@@ -17,7 +19,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/partners", partnerRoutes);
 app.use("/users", userRoutes);
 app.use("/reserves", reserveRoutes);
-app.use("/category", categoryRoutes);
+app.use("/categories", categoryRoutes);
 
 app.listen(process.env.PORT, () => {
    console.log(`Server is running at PORT ${process.env.PORT} `);

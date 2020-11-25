@@ -1,7 +1,14 @@
 import React from 'react';
 import "./ResturantCard.css";
 
-function ResturantCard({ card }) {
+function ResturantCard2({ card }) {
+   console.log(card.Categories.map((p) => {
+      if (p[0]) {
+         return `${p.type_food},`
+      }
+      return `, ${p.type_food}`
+   }));
+
    return (
       <div className="item">
          <h3>{card.restaurant_name}</h3>
@@ -11,6 +18,16 @@ function ResturantCard({ card }) {
          <div className="info">
             <p>Location: {card.location}</p>
             <p>email: {card.email_address}</p>
+            <p>{card.Categories.map(
+               (p, i) => {
+                  if (i === 0) {
+                     return `${p.type_food}`;
+                  };
+
+                  return `, ${p.type_food}`;
+               })
+            }
+            </p>
          </div>
          <div className="info">
             <p>จองแล้ว {card.id} ครี้ง</p>
@@ -22,4 +39,4 @@ function ResturantCard({ card }) {
    )
 }
 
-export default ResturantCard
+export default ResturantCard2;

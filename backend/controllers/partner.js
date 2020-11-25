@@ -2,7 +2,7 @@ const db = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-
+// Register
 const register = async (req, res) => {
   try {
 
@@ -34,6 +34,7 @@ const register = async (req, res) => {
   }
 };
 
+// Login
 const login = async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -66,10 +67,11 @@ const login = async (req, res) => {
   }
 };
 
+// 
 const getPartnerById = async (req, res) => {
   try {
     const { id } = req.params;
-    const targetPartner = await db.Partner.findOne({ where: { id } });
+    const targetPartner = await db.Partner.findOne({ where: { id }, include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
     console.log(targetPartner.dataValues);
     res.status(200).send({ targetPartner });
   } catch (err) {
@@ -77,18 +79,31 @@ const getPartnerById = async (req, res) => {
   }
 };
 
+// เอาไป show หน้าเว็ป ใส่ การ์ด
 const getPartners = async (req, res) => {
   try {
-    const partners = await db.Partner.findAll({ where: { attributes: ["id", "type_food"] } });
+    const partners = await db.Partner.findAll({ include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
     res.status(200).send({ partners });
   } catch (err) {
     res.status(500).send({ messages: err.message });
   }
-}
+};
+
+// ลบ Partner
+const deletePartner = async (req, res) => {
+  try {
+    const partnerId = req.params.id;
+    const targetPartner = await db.Partner.destroy({ where: { id: partnerId } })
+    res.status(204).send({ messages: `${targetPartner} has been delete` })
+  } catch (err) {
+    res.status(500).send({ messages: err.message });
+  }
+};
 
 module.exports = {
   register,
   login,
   getPartnerById,
-  getPartners
+  getPartners,
+  deletePartner
 };
