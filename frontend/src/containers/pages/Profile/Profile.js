@@ -3,7 +3,7 @@ import './Profile.css'
 import PlateImg from '../../uploadfile/dishelement.png'
 import DiningImg from '../../uploadfile/diningset.png'
 
-function Profile({user: {username, name, lname, email, phone_number, current_point}}) {
+function Profile({ user: { username, name, lname, email, phone_number, current_point } }) {
     return (
         <div className="outerFrame">
             <div className="outerCircle"></div>
@@ -69,7 +69,7 @@ function Profile({user: {username, name, lname, email, phone_number, current_poi
                 <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "747px", top: "400px" }}></img>
             </div>
             <div className="nameLeftDownTab1 font-mitr">Name:</div>
-    <div className="leftDownTab1 font-mitr">{name}</div>
+            <div className="leftDownTab1 font-mitr">{name}</div>
             <div>
                 <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "696px", top: "465px" }}></img>
             </div>
