@@ -2,8 +2,20 @@ const db = require("../models");
 
 const createReserve = async (req, res) => {
   try {
-    const { reserve, reserveId } = req.body;
-    const newReserve = await db.Reserve.create({ reserve, reserve_id: reserveId, user_id: req.user.id });
+    const { date, time, number_guest, reserve_code, note_comment, review_star, review, reserves_status } = req.body;
+    const { id } = req.params;
+    const newReserve = await db.Reserve.create({
+      date,
+      time,
+      number_guest,
+      reserve_code,
+      note_comment,
+      review_star,
+      review,
+      reserves_status,
+      user_id: req.user.id,
+      partner_id: id
+    });
     res.status(201).send(newReserve);
   } catch (err) {
     res.status(500).send({ messages: err.messages })

@@ -1,6 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
   const Reserve = sequelize.define("Reserve", {
-    reserve: DataTypes.STRING,
     date: {
       type: DataTypes.STRING,
       unique: true,
@@ -42,7 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 
     {
       tableName: "reserves",
-      timestamps: false,
+      timestamps: true,
     });
 
   Reserve.associate = models => {

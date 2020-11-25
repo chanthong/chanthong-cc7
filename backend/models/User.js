@@ -56,10 +56,6 @@ module.exports = (sequelize, DataTypes) => {
       birth_day: {
          type: DataTypes.DATE,
          //allowNull: false,
-      },
-      role: {
-         type: DataTypes.STRING,
-         allowNull: false
       }
 
    }, {
