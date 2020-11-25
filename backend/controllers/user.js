@@ -45,7 +45,7 @@ const login = async (req, res) => {
             name: targetUser.name,
             lname: targetUser.lname,
             email: targetUser.email,
-            phone_number: targetUser.phoneNumber,
+            phone_number: targetUser.phone_number,
             current_point: targetUser.current_point
          };
          const token = jwt.sign(payLoad, process.env.SECRET, { expiresIn: 3600 });
