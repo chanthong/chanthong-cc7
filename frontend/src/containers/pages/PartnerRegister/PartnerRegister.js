@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import '../PartnerRegister/PartnerRegister.css';
 import axios from "../../../config/axios";
-import { BASE_BACKEND_URL } from '../../../config/constants';
+// import { BASE_BACKEND_URL } from '../../../config/constants';
 import { withRouter } from "react-router-dom";
 import { notification } from 'antd';
-import PlateImg from '../../uploadfile/dishelement.png'
-import RegisterImg from '../../uploadfile/register.png'
+import PlateImg from '../../uploadfile/dishelement.png';
+import RegisterImg from '../../uploadfile/register.png';
+import jwtDecode from 'jwt-decode';
+import LocalStorageService from '../../../services/localStorage';
 
 function PartnerRegister(props) {
     const [username, setUsername] = useState("");
@@ -20,7 +22,7 @@ function PartnerRegister(props) {
     const [partners_picture, setPartners_picture] = useState("");
     const [category, setCategory] = useState("");
     const [theme, setTheme] = useState("");
-    const [description, setDescription] = useState("");
+    const [location, setLocation] = useState("") // state test ยังไม่ใช่ของจริง
 
     const usernameHandler = (e) => {
         setUsername(e.target.value);
@@ -58,18 +60,17 @@ function PartnerRegister(props) {
     const themeHandler = (e) => {
         setTheme(e.target.value);
     };
-    const descriptionHandler = (e) => {
-        setDescription(e.target.value);
+    const locationHandler = (e) => {
+        setLocation(e.target.value);
     };
 
-    const onFinish = () => {
+    const onFinish = async () => {
         console.log("Comein");
-        axios.post("/partners/register", { username, password, restaurant_name, email_address, phone_number, price_range, address, district, province, partners_picture, category, theme, description })
+        await axios.post("/partners/register", { username, password, restaurant_name, email_address, phone_number, price_range, address, district, province, partners_picture })
             .then(res => {
                 notification.success({
-                    description: "Signup successfully"
+                    description: "Signup successfully!!"
                 });
-                props.history.push("/partner_login");
             })
             .catch(err => {
                 console.log(err);
@@ -77,6 +78,52 @@ function PartnerRegister(props) {
                     description: "Something went wrong."
                 });
             });
+
+        await axios.post("/partners/login", {
+            username,
+            password
+        })
+            .then(res => {
+                notification.success({
+                    description: "Login success."
+                });
+                LocalStorageService.setToken(res.data.token);
+                LocalStorageService.setARole(res.data.role);
+                // console.log(res.data);
+                // console.log(jwtDecode(res.data.token));
+                props.setRole("PARTNER");
+                props.setPartner(jwtDecode(res.data.token));
+            })
+            .catch(err => {
+                console.log(err);
+                notification.error({
+                    description: "Login failed."
+                });
+            });
+
+        await axios.post(`/partner_category/${category}`)
+            .then(res => {
+                notification.success({
+                    description: "Category successfully!!"
+                });
+            })
+            .catch(err => {
+                notification.error({
+                    description: "Failed Partner_category."
+                });
+            })
+        await axios.post(`/partner_category/${theme}`)
+            .then(res => {
+                notification.success({
+                    description: "Category successfully!!"
+                });
+            })
+            .catch(err => {
+                notification.error({
+                    description: "Failed Partner_category."
+                });
+            })
+        props.history.push("/partner_profile");
     };
 
 
@@ -154,67 +201,67 @@ function PartnerRegister(props) {
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "200px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "0px", top: "180px" }}>Username:</div>
-            <div className="usernameTabPartner font-mitr" style={{ left: "60px", top: "200px" }}>{username}</div>
+            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "200px" }} value={username} onChange={usernameHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "270px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "0px", top: "250px" }}>Password:</div>
-            <div className="usernameTabPartner font-mitr" style={{ left: "60px", top: "270px" }}>{password}</div>
+            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "270px" }} value={password} onChange={passwordHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "340px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "32px", top: "320px" }}>Re-enter Password:</div>
-            <div className="usernameTabPartner font-mitr" style={{ left: "60px", top: "340px" }}>{password}</div>
+            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "340px" }} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "410px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "15px", top: "390px" }}>Email Address:</div>
-            <div className="usernameTabPartner font-mitr" style={{ left: "60px", top: "410px" }}>{email_address}</div>
+            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "410px" }} value={email_address} onChange={email_addressHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "480px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "36px", top: "460px" }}>Name of Restaurant:</div>
-            <div className="usernameTabPartner font-mitr" style={{ left: "60px", top: "480px" }}>{restaurant_name}</div>
+            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "480px" }} value={restaurant_name} onChange={restaurant_nameHandler} />
 
             {/* 2nd column */}
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "200px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "285px", top: "180px" }}>Phone Number:</div>
-            <div className="usernameTabPartner font-mitr" style={{ left: "330px", top: "200px" }}>{phone_number}</div>
+            <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "200px" }} value={phone_number} onChange={phone_numberHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "270px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "261px", top: "250px" }}>Address:</div>
-            <div className="usernameTabPartner font-mitr" style={{ left: "330px", top: "270px" }}>{address}</div>
+            <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "270px" }} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "340px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "258px", top: "320px" }}>District:</div>
-            <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "340px" }}>{district}</div>
+            <input className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "340px" }} value={location} onChange={locationHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "340px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "490px", top: "320px" }}>Province:</div>
-            <div className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "340px" }}>{province}</div>
+            <input className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "340px" }} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "410px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "265px", top: "390px" }}>Category:</div>
             <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "410px" }}>
-                <select onChange={categoryHandler} style={{background: "none", outline: "none", border: "none"}}>
+                <select onChange={categoryHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
-                    <option value="chinese">Chinese</option>
-                    <option value="japanese">Japanese</option>
-                    <option value="thai">Thai</option>
+                    <option value="4">Chinese</option>
+                    <option value="3">Japanese</option>
+                    <option value="2">Thai</option>
                 </select>
             </div>
 
@@ -223,11 +270,11 @@ function PartnerRegister(props) {
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "490px", top: "390px" }}>Theme:</div>
             <div className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "410px" }}>
-                <select onChange={themeHandler} style={{background: "none", outline: "none", border: "none"}}>
+                <select onChange={themeHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
-                    <option value="chinese">Fine Dining</option>
-                    <option value="japanese">Hot Cuisine</option>
-                    <option value="thai">At Twilight</option>
+                    <option value="6">Fine Dining</option>
+                    <option value="5">Hot Cuisine</option>
+                    <option value="1">At Twilight</option>
                 </select>
             </div>
 
@@ -235,7 +282,14 @@ function PartnerRegister(props) {
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "480px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "290px", top: "460px" }}>Price per Person:</div>
-            <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "480px" }}>{price_range}</div>
+            <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "480px" }}>
+                <select onChange={price_rangeHandler} style={{ background: "none", outline: "none", border: "none" }}>
+                    <option value="">Select</option>
+                    <option value="300 - 500">300 - 500</option>
+                    <option value="600 - 1500">600 - 1500</option>
+                    <option value="3000++">3000++</option>
+                </select>
+            </div>
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "480px" }}></img>
@@ -249,10 +303,10 @@ function PartnerRegister(props) {
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "790px", top: "270px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "735px", top: "250px" }}>Description:</div>
-    <div className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }}>{description}</div>
+            <input className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }} />
 
             <div>
-                <img className="registerImage" src={RegisterImg} alt="plate" style={{ left: "960px", top: "470px" }}></img>
+                <img className="registerImage" src={RegisterImg} alt="plate" style={{ left: "960px", top: "470px" }} onClick={onFinish}></img>
             </div>
         </div>
     )
