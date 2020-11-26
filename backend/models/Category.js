@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
     const Category = sequelize.define("Category", {
-        type_food: {
+        type_Restaurant: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        type_partner: {
+        type_Category: {
             type: DataTypes.STRING,
             allowNull: null
         }
