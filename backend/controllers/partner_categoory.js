@@ -12,6 +12,7 @@ const getAllPartnerCategory = async (req, res) => {
 const createPartner_Category = async (req, res) => {
     try {
         const categoryId = req.params.categoryId;
+        // const {} = req.query;
         const categoryRelation = await db.Partner_Category.create({
             partner_id: req.user.id,
             category_id: categoryId
