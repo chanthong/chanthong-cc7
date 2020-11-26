@@ -18,8 +18,8 @@ function PartnerRegister(props) {
     const [district, setDistrict] = useState("");
     const [province, setProvince] = useState("");
     const [partners_picture, setPartners_picture] = useState("");
-    const [category1, setCategory1] = useState("");
-    const [category2, setCategory2] = useState("");
+    const [category, setCategory] = useState("");
+    const [theme, setTheme] = useState("");
 
     const usernameHandler = (e) => {
         setUsername(e.target.value);
@@ -51,16 +51,16 @@ function PartnerRegister(props) {
     const partners_pictureHandler = (e) => {
         setPartners_picture(e.target.value);
     };
-    const category1Handler = (e) => {
-        setCategory1(e.target.value);
+    const categoryHandler = (e) => {
+        setCategory(e.target.value);
     };
-    const category2Handler = (e) => {
-        setCategory2(e.target.value);
+    const themeHandler = (e) => {
+        setTheme(e.target.value);
     };
 
     const onFinish = () => {
         console.log("Comein");
-        axios.post("/partners/register", { username, password, restaurant_name, email_address, phone_number, price_range, address, district, province, partners_picture, category1, category2 })
+        axios.post("/partners/register", { username, password, restaurant_name, email_address, phone_number, price_range, address, district, province, partners_picture, category, theme })
             .then(res => {
                 notification.success({
                     description: "Signup successfully"
@@ -206,7 +206,7 @@ function PartnerRegister(props) {
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "265px", top: "390px" }}>Category:</div>
             <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "410px" }}>
-                <select onChange={category1Handler} style={{background: "none", outline: "none", border: "none"}}>
+                <select onChange={categoryHandler} style={{background: "none", outline: "none", border: "none"}}>
                     <option value="">Select</option>
                     <option value="chinese">Chinese</option>
                     <option value="japanese">Japanese</option>
@@ -217,9 +217,9 @@ function PartnerRegister(props) {
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "410px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "490px", top: "390px" }}>Category:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "490px", top: "390px" }}>Theme:</div>
             <div className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "410px" }}>
-                <select onChange={category2Handler} style={{background: "none", outline: "none", border: "none"}}>
+                <select onChange={themeHandler} style={{background: "none", outline: "none", border: "none"}}>
                     <option value="">Select</option>
                     <option value="chinese">Fine Dining</option>
                     <option value="japanese">Hot Cuisine</option>
