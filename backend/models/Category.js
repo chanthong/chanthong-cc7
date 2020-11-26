@@ -3,15 +3,19 @@ module.exports = (sequelize, DataTypes) => {
         type_food: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        type_partner: {
+            type: DataTypes.STRING,
+            allowNull: null
         }
     }, {
         tableName: "category",
-        timestamps: false
+        timestamps: false,
     });
 
     Category.associate = models => {
-        Category.belongsTo(models.Partner, { foreignKey: "partner_id" });
+        Category.hasMany(models.Partner_Category, { foreignKey: "category_id" });
     };
 
     return Category;
-}
+};

@@ -5,7 +5,6 @@ const jwt = require("jsonwebtoken");
 // Register
 const register = async (req, res) => {
   try {
-
     const { username, password, restaurant_name, phone_number, email_address,
       price_range, location, partners_picture } = req.body;
     console.log(req.body);
@@ -100,10 +99,22 @@ const deletePartner = async (req, res) => {
   }
 };
 
+//เรียก partner ตาม location
+const getPartnersByLocation = async (req, res) => {
+  try {
+    const { location } = req.query;
+    const targetPartner = await db.Partner.findAll({ where: { location } });
+    res.status(200).send({ targetPartner });
+  } catch (err) {
+    res.status(500).send({ message: err.messages })
+  }
+};
+
 module.exports = {
   register,
   login,
   getPartnerById,
   getPartners,
-  deletePartner
+  deletePartner,
+  getPartnersByLocation
 };
