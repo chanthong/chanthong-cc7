@@ -20,6 +20,7 @@ function PartnerRegister(props) {
     const [partners_picture, setPartners_picture] = useState("");
     const [category, setCategory] = useState("");
     const [theme, setTheme] = useState("");
+    const [description, setDescription] = useState("");
 
     const usernameHandler = (e) => {
         setUsername(e.target.value);
@@ -57,10 +58,13 @@ function PartnerRegister(props) {
     const themeHandler = (e) => {
         setTheme(e.target.value);
     };
+    const descriptionHandler = (e) => {
+        setDescription(e.target.value);
+    };
 
     const onFinish = () => {
         console.log("Comein");
-        axios.post("/partners/register", { username, password, restaurant_name, email_address, phone_number, price_range, address, district, province, partners_picture, category, theme })
+        axios.post("/partners/register", { username, password, restaurant_name, email_address, phone_number, price_range, address, district, province, partners_picture, category, theme, description })
             .then(res => {
                 notification.success({
                     description: "Signup successfully"
@@ -245,7 +249,7 @@ function PartnerRegister(props) {
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "790px", top: "270px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "735px", top: "250px" }}>Description:</div>
-            <div className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }}>Description</div>
+    <div className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }}>{description}</div>
 
             <div>
                 <img className="registerImage" src={RegisterImg} alt="plate" style={{ left: "960px", top: "470px" }}></img>
