@@ -1,7 +1,25 @@
-/* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
-  */
-
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mitr:wght@200&display=swap');
+
+.welcome {
+    position: absolute;
+    left: 100px;
+    font-weight: bold;
+    color: #DFCA95;
+    text-shadow: 5px 5px 5px #ad0606;
+    z-index: 1100;
+}
+
+.chanthong {
+  position: absolute;
+  font-weight: bold;
+  color: #DFCA95;
+  text-shadow: 5px 5px 5px #ad0606;
+  z-index: 1100;
+}
+
+.font-lobster{
+  font-family: 'Lobster', cursive;
+}
 
 .outerFramePartner {
   width: 100vw;
@@ -72,6 +90,42 @@
   padding: 3px;
 }
 
+.usernameTabPartner2 {
+  position: absolute;
+  width: 260px;
+  height: 29px;
+  background-color: #FFF1CC;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+.usernameTabPartner3 {
+  position: absolute;
+  width: 170px;
+  height: 29px;
+  background-color: #FFF1CC;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+.usernameTabPartner4 {
+  position: absolute;
+  width: 100px;
+  height: 29px;
+  background-color: #F0D798;
+  border-radius: 12px;
+  padding: 3px;
+}
+
+.usernameTabPartner5 {
+  position: absolute;
+  width: 285px;
+  height: 170px;
+  background-color: #FFF1CC;
+  border-radius: 12px;
+  padding: 3px;
+}
+
 .plateLeftPartner {
   position: absolute;
   width: 32px;
@@ -80,6 +134,16 @@
 }
 
 .plateLeftPartner img {
+  width: 100%;
+}
+
+.registerImage {
+  position: absolute;
+  width: 90px;
+  height: 60px;
+}
+
+.registerImage img {
   width: 100%;
 }
 
