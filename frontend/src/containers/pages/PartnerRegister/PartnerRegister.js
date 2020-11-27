@@ -204,62 +204,62 @@ function PartnerRegister(props) {
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "200px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "0px", top: "180px" }}>Username:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "180px" }}>Username:</div>
             <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "200px" }} value={username} onChange={usernameHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "270px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "0px", top: "250px" }}>Password:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "250px" }}>Password:</div>
             <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "270px" }} value={password} onChange={passwordHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "340px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "32px", top: "320px" }}>Re-enter Password:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "320px" }}>Re-enter Password:</div>
             <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "340px" }} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "410px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "15px", top: "390px" }}>Email Address:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "390px" }}>Email Address:</div>
             <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "410px" }} value={email_address} onChange={email_addressHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "480px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "36px", top: "460px" }}>Name of Restaurant:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "460px" }}>Name of Restaurant:</div>
             <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "480px" }} value={restaurant_name} onChange={restaurant_nameHandler} />
 
             {/* 2nd column */}
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "200px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "285px", top: "180px" }}>Phone Number:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "180px" }}>Phone Number:</div>
             <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "200px" }} value={phone_number} onChange={phone_numberHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "270px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "261px", top: "250px" }}>Address:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "250px" }}>Address:</div>
             <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "270px" }} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "340px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "258px", top: "320px" }}>District:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "320px" }}>District:</div>
             <input className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "340px" }} value={location} onChange={locationHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "340px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "490px", top: "320px" }}>Province:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "570px", top: "320px" }}>Province:</div>
             <input className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "340px" }} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "410px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "265px", top: "390px" }}>Category:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "390px" }}>Category:</div>
             <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "410px" }}>
                 <select onChange={categoryHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
@@ -272,7 +272,7 @@ function PartnerRegister(props) {
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "410px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "490px", top: "390px" }}>Theme:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "570px", top: "390px" }}>Theme:</div>
             <div className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "410px" }}>
                 <select onChange={themeHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
@@ -285,7 +285,7 @@ function PartnerRegister(props) {
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "480px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "290px", top: "460px" }}>Price per Person:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "460px" }}>Price per Person:</div>
             <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "480px" }}>
                 <select onChange={price_rangeHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
@@ -298,7 +298,7 @@ function PartnerRegister(props) {
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "480px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "545px", top: "460px" }}>Upload your best photos:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "570px", top: "460px" }}>Upload your best photos:</div>
             <div className="usernameTabPartner2 font-mitr" style={{ left: "555px", top: "480px" }}>{partners_picture}</div>
             <div className="usernameTabPartner4 font-mitr" style={{ left: "780px", top: "480px", color: "#D85B55", fontWeight: "bold" }}>Browse</div>
 
@@ -306,7 +306,7 @@ function PartnerRegister(props) {
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "790px", top: "270px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "735px", top: "250px" }}>Description:</div>
+            <div className="usernamePartner font-mitr" style={{ left: "810px", top: "250px" }}>Description:</div>
             <input className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }} />
 
             <div>
