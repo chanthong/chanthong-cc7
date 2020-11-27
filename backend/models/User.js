@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
       birth_day: {
          type: DataTypes.DATE,
          //allowNull: false,
-      },
+      }
 
    }, {
       tableName: "users",

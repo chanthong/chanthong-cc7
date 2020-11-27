@@ -28,8 +28,8 @@ function PartnerLogin(props) {
                 });
                 LocalStorageService.setToken(res.data.token);
                 LocalStorageService.setARole(res.data.role);
-                console.log(res.data);
-                console.log(jwtDecode(res.data.token));
+                // console.log(res.data);
+                // console.log(jwtDecode(res.data.token));
                 props.setRole("PARTNER");
                 props.setPartner(jwtDecode(res.data.token));
                 props.history.push("/partner_profile");

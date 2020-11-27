@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from '../../../config/axios';
 import LocalStorageService from "../../../services/localStorage";
+import jwtDecode from 'jwt-decode';
 
 function Login(props) {
    const history = useHistory();
@@ -21,7 +22,8 @@ function Login(props) {
             });
             LocalStorageService.setToken(res.data.token);
             props.setRole("USER");
-            history.push('/');
+            props.setUser(jwtDecode(res.data.token));
+            history.push('/profile');
          })
          .catch(err => {
             console.log(err);

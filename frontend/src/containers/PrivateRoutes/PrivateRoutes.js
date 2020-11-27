@@ -12,11 +12,17 @@ function PrivateRoutes(props) {
 
   // เพื่อกำหนด ค่าตั้งต้น ของ partner profile
   let initialPartner = null;
+  let initialUser = null;
   if (token) {
     initialPartner = jwtDecode(token);
-  }
+    initialUser = jwtDecode(token);
+  } 
+
+  
 
   const [partner, setPartner] = useState(initialPartner);
+  const [user, setUser] = useState(initialUser);
+  
   console.log(RolesList);
   console.log(props.role);
   return (
@@ -24,7 +30,7 @@ function PrivateRoutes(props) {
       <BrowserRouter>
         <Switch>
           {RolesList[role].map(({ path, page: PageComponent }) => <Route exact path={path}>
-            <PageComponent setRole={props.setRole} role={role} partner={partner} setPartner={setPartner} />
+            <PageComponent setRole={props.setRole} role={role} partner={partner} setPartner={setPartner} setUser={setUser} user={user}/>
           </Route>)}
           <Route path="*" component={NotFound} />
         </Switch>
