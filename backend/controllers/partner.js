@@ -81,7 +81,8 @@ const getPartnerById = async (req, res) => {
 // เอาไป show หน้าเว็ป ใส่ การ์ด
 const getPartners = async (req, res) => {
   try {
-    const partners = await db.Partner.findAll({ include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
+    const partners = await db.Partner.findAll();
+    // const partners = await db.Partner.findAll({ include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
     res.status(200).send({ partners });
   } catch (err) {
     res.status(500).send({ messages: err.message });
