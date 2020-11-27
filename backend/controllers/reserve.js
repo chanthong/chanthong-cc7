@@ -1,8 +1,9 @@
+const e = require("express");
 const db = require("../models");
 
 const createReserve = async (req, res) => {
   try {
-    const { date, time, number_guest, reserve_code, note_comment, review_star, review, reserves_status } = req.body;
+    const { date, time, number_guest, reserve_code, note_comment, review_star, review, reserve_status } = req.body;
     const { id } = req.params;
     const newReserve = await db.Reserve.create({
       date,
@@ -12,13 +13,14 @@ const createReserve = async (req, res) => {
       note_comment,
       review_star,
       review,
-      reserves_status,
+      reserve_status,
       user_id: req.user.id,
       partner_id: id
     });
     res.status(201).send(newReserve);
   } catch (err) {
-    res.status(500).send({ messages: err.messages })
+    console.log(err);
+    res.status(500).send({ messages: err.message })
   }
 };
 

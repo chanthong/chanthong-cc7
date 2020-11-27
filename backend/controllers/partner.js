@@ -70,7 +70,7 @@ const login = async (req, res) => {
 const getPartnerById = async (req, res) => {
   try {
     const { id } = req.params;
-    const targetPartner = await db.Partner.findOne({ where: { id }, include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
+    const targetPartner = await db.Partner.findOne({ where: { id } });
     console.log(targetPartner.dataValues);
     res.status(200).send({ targetPartner });
   } catch (err) {
