@@ -8,7 +8,7 @@ function App() {
   const [role, setRole] = useState(LocalStorageService.getRole());
 
   return (
-    <div className="App">
+    <div>
       <PrivateRoutes role={role} setRole={setRole} />
     </div>
   );

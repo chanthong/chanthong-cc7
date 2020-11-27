@@ -1,31 +1,59 @@
-/* .home-body { 
-   background-color: #2d313c; 
-   width: 100%; 
-   height: 100%;
-   overflow: hidden;
-} */
- 
- /* .bg_img {
-   position: fixed;
-   right: 0;
-   top: 0;
-   height: 100%;
- }
- */
- /* .bg_img img {
-   width: 100%;
-   display: block;
-   position: relative;
- }  */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mitr:wght@200;300;400&display=swap');
 
- .bg_img {
-    background-color: aqua;
-    background-image: url('./Chanthong7_1-Recovered.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
- }
+.Lobster {
+   font-family: 'Lobster', cursive;
+   color:#DECA94;
+}
 
- 
+.Mitr {
+   font-family: 'Mitr', sans-serif;
+}
+
+
+.background-image {
+   background-image: url('bgchan.jpg');
+   height: 100vh;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.logochanthong {
+   font-size: 50px;
+   padding: 50px 0 50px 50px;
+   margin-bottom: 0px;
+}
+
+.textrs {
+  font-size: 20px;
+}
+
+.textuser {
+   font-size: 30px;
+   padding-left: 80px;
+}
+
+.textpw {
+   font-size: 30px;
+   padding-left: 80px;
+   margin-top: 35px;
+   margin-bottom: 0;
+}
+
+
+.textforget {
+   color: #24ccd5;
+   font-weight: 200;
+   padding-left: 80px;
+   margin-bottom: 0;
+}
+
+.btn-login:hover {
+   cursor: pointer;
+}
+
+
+
+
+
+

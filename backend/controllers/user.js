@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
    
-   const {username, password, name, lname, email, profile_url, birth_day, phone_number, gender} = req.body;
+   const {username, password, name, lname, email, profile_url, birth_date, phone_number, gender} = req.body;
    const targetUser = await db.User.findOne({ where: { username } });
    const phoneNumber = String(phone_number);
 
@@ -22,7 +22,7 @@ const register = async (req, res) => {
          gender,
          profile_url,
          phone_number:phoneNumber,
-         birth_day,
+         birth_date,
          password:hashedPwd
       });
       res.status(201).send({ message: "User created." });
