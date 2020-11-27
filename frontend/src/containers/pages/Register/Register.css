@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mitr:wght@200;300;400&display=swap');
+
+.Lobster {
+   font-family: 'Lobster', cursive;
+   color:#DECA94;
+}
+
+.Mitr {
+   font-family: 'Mitr', sans-serif;
+}
+
+
+.background-image {
+   background-image: url('bgchan.jpg');
+   height: 100vh;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+.logochanthong-re {
+   font-size: 50px;
+   padding: 20px 0 50px 50px;
+   margin-bottom: 0px;
+   padding-bottom: 0;
+}
+
+.textuser-re {
+   font-size: 25px;
+   padding-left: 80px;
+   margin: 20px;
+}
+
+.textpw {
+   font-size: 30px;
+   padding-left: 80px;
+   margin-top: 35px;
+   margin-bottom: 0;
+}
+
+.btn-register:hover {
+  cursor: pointer;
+}
