@@ -3,12 +3,11 @@ import { useState } from 'react';
 import PrivateRoutes from './containers/PrivateRoutes/PrivateRoutes';
 import LocalStorageService from "./services/localStorage";
 
-
 function App() {
   const [role, setRole] = useState(LocalStorageService.getRole());
 
   return (
-    <div className="App">
+    <div>
       <PrivateRoutes role={role} setRole={setRole} />
     </div>
   );
