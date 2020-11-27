@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from 'react';
 import BottomHeader from '../../../components/BottomHeader/BottomHeader';
 import ResturantCard from '../../../components/ResturantCard/ResturantCard';
@@ -22,20 +21,6 @@ function Home({ role, setRole }) {
          {role === "GUEST" && <TopHeader />}
          {role === "USER" && <BottomHeader role={role} setRole={setRole} />}         
          {user.map(u => <ResturantCard picUrl={`${BASE_BACKEND_URL}/${u.profile_url}`}/>)}
-=======
-import React from 'react';
-import BottomHeader from '../../../components/BottomHeader/BottomHeader';
-import TopHeader from '../../../components/TopHeader/TopHeader';
-
-
-
-function Home({ role, setRole }) {
-   console.log(role);
-   return (
-      <>
-         {role === "GUEST" && <TopHeader />}
-         {role === "USER" && <BottomHeader role={role} setRole={setRole}/>}
->>>>>>> header-ui
       </>
    )
 }

@@ -182,7 +182,6 @@ function Login(props) {
    const userNameHandler = (even) => {
      setUsername(even.target.value);
    }
-<<<<<<< HEAD
    
    
 
@@ -327,36 +326,25 @@ function Login(props) {
    border-radius: 0 5px 5px 0;
    transform: rotate(-5deg);
    `;
-=======
 
    const passwordHandler = (even) => {
       setPassword(even.target.value);
    }
 
->>>>>>> header-ui
 
 
    return (
       <div className="background-image">
          <h1 className="Lobster logochanthong ">Chanthong</h1>
          <p className="Lobster textuser">Username</p>
-<<<<<<< HEAD
-         <SpoonContainer>
-            <SpoonHandleInput maxLength="25"></SpoonHandleInput>
-=======
          <SpoonContainer >
             <SpoonHandleInput onChange={userNameHandler} maxLength="25"></SpoonHandleInput>
->>>>>>> header-ui
             <SpoonHead></SpoonHead>
          </SpoonContainer>
          <p className="Lobster textpw">Password</p>
          <div>
             <ForkContainer>
-<<<<<<< HEAD
-               <ForkHandleInput />
-=======
                <ForkHandleInput type="password" onChange={passwordHandler} />
->>>>>>> header-ui
                <ForkBody />
                <Fork1 />
                <Fork2 />
@@ -365,13 +353,7 @@ function Login(props) {
             </ForkContainer>
          </div>
          <p className="Mitr textforget">Forget password</p>
-<<<<<<< HEAD
-         <PlateOuter>
-            <InnerPlate className="Lobster textlogin">Login</InnerPlate>
-         </PlateOuter>
-=======
          <LoginElement className="btn-login" onClick={onFinish} src={logimg} />
->>>>>>> header-ui
       </div>
    )
 }
