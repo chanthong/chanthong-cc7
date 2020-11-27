@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mitr:wght@200;300;400&display=swap');
 
 .Lobster {
@@ -45,6 +44,7 @@
    margin-bottom: 0;
 }
 
+<<<<<<< HEAD
 .textlogin {
    font-size: 40px;
    font-weight: bolder;
@@ -52,6 +52,10 @@
    padding-top: 10px;
    -webkit-text-stroke: 2px #d95e57;
    /* text-webkit-text-stroke: #d95e57; */
+=======
+.btn-login:hover {
+   cursor: pointer;
+>>>>>>> header-ui
 }
 
 
