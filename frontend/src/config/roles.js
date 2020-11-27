@@ -50,6 +50,7 @@ const roles = {
     components.register,
     components.partner_register,
     components.partner_login,
+    components.reserve,
   ],
   USER: [
     components.home,
