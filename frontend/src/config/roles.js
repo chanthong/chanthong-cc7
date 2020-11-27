@@ -18,7 +18,7 @@ const components = {
     page: Register
   },
   home: {
-    path: "/",
+    path: "/home",
     page: Home
   },
   partner_register: {
