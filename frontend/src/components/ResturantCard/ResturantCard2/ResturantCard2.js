@@ -3,15 +3,6 @@ import "./ResturantCard.css";
 import { BASE_BACKEND_URL } from '../../../config/constants'
 
 function ResturantCard2({ card }) {
-   // console.log(card.Categories.map((p) => {
-   //    if (p[0]) {
-   //       return `${p.type_food},`
-   //    }
-   //    return `, ${p.type_food}`
-   // }));
-
-   // console.log(card.partner_picture)
-   console.log(card)
 
    return (
       <div className="item">
