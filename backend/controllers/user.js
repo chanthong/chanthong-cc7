@@ -14,18 +14,21 @@ const register = async (req, res) => {
          const salt = bcryptjs.genSaltSync(Number(process.env.SALT_ROUND));
          const hashedPwd = bcryptjs.hashSync(password, salt);
 
-      await db.User.create({
-         username,
-         name,
-         lname,
-         email,
-         gender,
-         profile_url,
-         phone_number:phoneNumber,
-         birth_date,
-         password:hashedPwd
-      });
-      res.status(201).send({ message: "User created." });
+         await db.User.create({
+            username,
+            name,
+            lname,
+            email,
+            gender,
+            profile_url,
+            phone_number: phoneNumber,
+            birth_date,
+            password: hashedPwd
+         });
+         res.status(201).send({ message: "User created." });
+      }
+   } catch (err) {
+      res.status(500).send({ message: err.message }); ''
    }
 };
 
@@ -62,7 +65,7 @@ const login = async (req, res) => {
 const getAllUsers = async (req, res) => {
    const allUsers = await db.User.findAll();
    res.status(200).send(allUsers);
- };
+};
 
 module.exports = {
    register,

@@ -16,10 +16,10 @@ const SpoonContainer = styled.div`
    align-items: center;
    position: relative;
    margin-left:80px;
-   
+
    `;
 
-   const SpoonHead = styled.div`
+const SpoonHead = styled.div`
    width: 150px;
    height: 96px;
    border-radius: 42% 58% 58% 42% / 50% 50% 50% 50%;
@@ -31,7 +31,7 @@ const SpoonContainer = styled.div`
    right: 0px;
    `;
 
-   const SpoonHandleInput = styled.input`
+const SpoonHandleInput = styled.input`
    width: 250px;
    height: 24px;
    background-color: rgba(200, 200,200, 1);
@@ -50,7 +50,7 @@ const SpoonContainer = styled.div`
    `;
 
 
-   const ForkContainer = styled.div`
+const ForkContainer = styled.div`
    width: 400px;
    height: 100px;
    display: flex;
@@ -59,7 +59,7 @@ const SpoonContainer = styled.div`
    margin-left:80px;
    `;
 
-   const ForkHandleInput = styled.input`
+const ForkHandleInput = styled.input`
    width: 250px;
    height: 24px;
    background-color: rgba(200, 200,200, 1);
@@ -77,7 +77,7 @@ const SpoonContainer = styled.div`
    font-weight: 700;
    `;
 
-   const ForkBody = styled.div`
+const ForkBody = styled.div`
    width: 60px;
    height: 86px;
    border-radius: 30% 0 0 30%;
@@ -90,7 +90,7 @@ const SpoonContainer = styled.div`
                5px 5px 5px rgba(30, 30, 30, 0.4);
    `;
 
-   const Fork1 = styled.div`
+const Fork1 = styled.div`
    width: 93px;
    height: 12px;
    display: flex;
@@ -103,7 +103,7 @@ const SpoonContainer = styled.div`
    transform: rotate(5deg);
    `;
 
-   const Fork2 = styled.div`
+const Fork2 = styled.div`
    width: 93px;
    height: 12px;
    display: flex;
@@ -115,7 +115,7 @@ const SpoonContainer = styled.div`
    border-radius: 0 5px 5px 0;
    `;
 
-   const Fork3 = styled.div`
+const Fork3 = styled.div`
    width: 93px;
    height: 12px;
    display: flex;
@@ -128,7 +128,7 @@ const SpoonContainer = styled.div`
    `;
 
 
-   const Fork4 = styled.div`
+const Fork4 = styled.div`
    width: 93px;
    height: 12px;
    display: flex;
@@ -141,7 +141,7 @@ const SpoonContainer = styled.div`
    transform: rotate(-5deg);
    `;
 
-   const LoginElement = styled.img`
+const LoginElement = styled.img`
    width: auto;
    height: 120px;
    object-fit: cover;
@@ -180,10 +180,10 @@ function Login(props) {
 
 
    const userNameHandler = (even) => {
-     setUsername(even.target.value);
+      setUsername(even.target.value);
    }
-   
-   
+
+
 
    const SpoonHead = styled.div`
    width: 150px;
