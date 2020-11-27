@@ -156,7 +156,7 @@
 
 body{
   padding: 0 10px;
-}
+} */
 .wrapper{
   max-width: 500px;
   width: 100%;
@@ -292,7 +292,7 @@ body{
  
 .wrapper .form .inputfield .btn{
   width: 100%;
-   padding: 8px 10px;
+  padding: 8px 10px;
   font-size: 15px; 
   border: 0px;
   background:  #fec107;
@@ -300,6 +300,7 @@ body{
   cursor: pointer;
   border-radius: 3px;
   outline: none;
+  text-align: center;
 }
  
 .wrapper .form .inputfield .btn:hover{

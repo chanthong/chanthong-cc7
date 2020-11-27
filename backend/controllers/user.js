@@ -63,7 +63,13 @@ const login = async (req, res) => {
    }
 };
 
+const getAllUsers = async (req, res) => {
+   const allUsers = await db.User.findAll();
+   res.status(200).send(allUsers);
+ };
+
 module.exports = {
    register,
-   login
+   login,
+   getAllUsers
 };
