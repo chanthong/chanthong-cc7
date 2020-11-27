@@ -1,7 +1,5 @@
-const { DATE } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
-    const model = sequelize.define("Partner", {
+    const Partner = sequelize.define("Partner", {
         username: {
             type: DataTypes.STRING,
             unique: true,
@@ -36,9 +34,10 @@ module.exports = (sequelize, DataTypes) => {
         tableName: "partners"
     });
 
-    model.associate = (models) => {
-
+    Partner.associate = (models) => {
+        Partner.hasMany(models.Reserve, { foreignKey: "partner_id" });
+        Partner.hasMany(models.Partner_Category, { foreignKey: "partner_id" });
     };
 
-    return model;
+    return Partner;
 }

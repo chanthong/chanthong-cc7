@@ -1,4 +1,3 @@
-import { notification } from "antd";
 import axios from "axios";
 import { notification } from "antd";
 import LocalStorageService from "../services/localStorage";

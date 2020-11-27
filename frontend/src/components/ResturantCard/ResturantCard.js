@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-function ResturantCard() {
+function ResturantCard({picUrl}) {
+    console.log(picUrl);
     return (
         <div>
-            
+            <img src={picUrl} alt="pictureprofile"></img>
         </div>
     )
 }

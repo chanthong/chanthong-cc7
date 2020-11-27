@@ -8,20 +8,20 @@ module.exports = (sequelize, DataTypes) => {
             max: 16,
             min: 8
          }
-       },
-       password: {
+      },
+      password: {
          type: DataTypes.STRING,
          allowNull: false,
          validate: {
             max: 16,
             min: 8
          }
-       },
-       name: {
+      },
+      name: {
          type: DataTypes.STRING,
          allowNull: false
-       },
-       lname: {
+      },
+      lname: {
          type: DataTypes.STRING,
          allowNull: false,
          validate: {
@@ -56,11 +56,16 @@ module.exports = (sequelize, DataTypes) => {
       birth_day: {
          type: DataTypes.DATE,
          //allowNull: false,
-      },
-       
+      }
+
    }, {
       tableName: "users",
    });
+
+   User.associate = models => {
+      User.hasMany(models.Reserve, { foreignKey: "user_id" })
+   }
+
    return User;
 };
 
