@@ -22,7 +22,6 @@ function PartnerRegister(props) {
     const [province, setProvince] = useState("");
     const [category, setCategory] = useState("");
     const [theme, setTheme] = useState("");
-    // const [location, setLocation] = useState(""); // state test ยังไม่ใช่ของจริง
     const [description, setDescription] = useState("");
     const [partners_picture, setFileName] = useState("")
 
@@ -216,9 +215,9 @@ function PartnerRegister(props) {
             <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "410px" }}>
                 <select onChange={categoryHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
-                    <option value="4">Chinese</option>
+                    <option value="1">thai</option>
+                    <option value="2">Chinese</option>
                     <option value="3">Japanese</option>
-                    <option value="2">Thai</option>
                 </select>
             </div>
 
@@ -229,9 +228,9 @@ function PartnerRegister(props) {
             <div className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "410px" }}>
                 <select onChange={themeHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
-                    <option value="6">Fine Dining</option>
+                    <option value="4">Fine Dining</option>
                     <option value="5">Hot Cuisine</option>
-                    <option value="1">At Twilight</option>
+                    <option value="6">At Twilight</option>
                 </select>
             </div>
 
