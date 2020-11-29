@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
   try {
     const { username, password, restaurant_name, phone_number, email_address,
-      price_range, location, partners_picture } = req.body;
+      price_range, partners_picture, address, district, province } = req.body;
     console.log(req.body);
     const targetPartner = await db.Partner.findOne({ where: { username } });
 
@@ -23,7 +23,9 @@ const register = async (req, res) => {
         phone_number,
         email_address,
         price_range,
-        location,
+        address,
+        district,
+        province,
         partners_picture
       });
       res.status(201).send({ message: "Partner created." });

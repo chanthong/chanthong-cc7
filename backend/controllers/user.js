@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
    try {
-      const { username, password, name, lname, email, profile_url, birth_day, phone_number, gender, current_point } = req.body;
+      const { username, password, name, lname, email, profile_url, birth_date, phone_number, gender, current_point } = req.body;
       const targetUser = await db.User.findOne({ where: { username } });
       const phoneNumber = String(phone_number);
 
