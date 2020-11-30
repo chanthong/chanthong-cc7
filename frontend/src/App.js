@@ -11,11 +11,12 @@ function App() {
   const [role, setRole] = useState(LocalStorageService.getRole());
   const [card, setCard] = useState([]);
   const [reservePartner, setReservePartner] = useState([]);
+  const [change, setChange] = useState(false);
 
   return (
     <>
       <BrowserRouter>
-        <UserContext.Provider value={{ role, setRole, card, setCard, reservePartner, setReservePartner }}>
+        <UserContext.Provider value={{ role, setRole, card, setCard, reservePartner, setReservePartner, change, setChange }}>
           {/* {role === "GUEST" && <TopHeader />} */}
           {role === "USER" && <BottomHeader role={role} setRole={setRole} />}
           <PrivateRoutes />

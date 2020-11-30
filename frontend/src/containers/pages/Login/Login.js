@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Login.css';
 import styled from 'styled-components';
 import logimg from "./loginimg.png";
@@ -9,6 +9,7 @@ import { useHistory } from 'react-router-dom';
 import axios from '../../../config/axios';
 import LocalStorageService from "../../../services/localStorage";
 import jwtDecode from 'jwt-decode';
+import UserContext from '../../../context/UserContext';
 
 const SpoonContainer = styled.div`
    width: 400px;
@@ -151,6 +152,8 @@ const LoginElement = styled.img`
 
 function Login(props) {
 
+   const{setChange} = useContext(UserContext)
+
    const history = useHistory();
 
    const [username, setUsername] = useState("");
@@ -168,6 +171,7 @@ function Login(props) {
             LocalStorageService.setToken(res.data.token);
             props.setRole("USER");
             props.setUser(jwtDecode(res.data.token));
+            setChange(true);
             history.push('/profile');
          })
          .catch(err => {

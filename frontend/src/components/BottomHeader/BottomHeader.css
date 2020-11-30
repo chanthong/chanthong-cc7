@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Mitr:wght@200&display=swap');
+
+.searchTab {
+    position: absolute;
+    width: 250px;
+    height: 29px;
+    background-color: #FFF1CC;
+    border-radius: 12px;
+    padding-left: 30px ;
+  }
+
+  .font-lobster{
+    font-family: 'Lobster', cursive;
+  }
+
+  .about {
+    left: 350px;
+    top: 40px;
+    color: #DFCA95;
+    position: absolute;
+    z-index: 1200;
+    font-size: large;
+  }
+
+  .special {
+    left: 450px;
+    top: 40px;
+    color: #DFCA95;
+    position: absolute;
+    z-index: 1200;
+    font-size: large;
+  }
+
+  .logout {
+    left: 580px;
+    top: 40px;
+    color: #DFCA95;
+    position: absolute;
+    z-index: 1200;
+    font-size: large;
+    font-family: 'Lobster', cursive;
+  }
+
+  .login {
+    left: 580px;
+    top: 40px;
+    color: #DFCA95;
+    position: absolute;
+    z-index: 1200;
+    font-size: large;
+    font-family: 'Lobster', cursive;
+  }
+
+  .myprofile {
+    position: absolute;
+    width: 75px;
+    height: 50px;
+    z-index: 1200;
+    left: 680px; 
+    top: 30px
+  }
