@@ -50,7 +50,7 @@ function ResturantCard2({ item }) {
             </p> */}
          </div>
          <div className="info">
-            <p>จองแล้ว {item.id} ครี้ง</p>
+            <p>จองแล้ว {item.id} ครี้งครับ</p>
          </div>
          <div onClick={onReservePartner} className="btn">
             <p>View More</p>
