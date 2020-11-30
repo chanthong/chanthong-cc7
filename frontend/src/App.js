@@ -5,6 +5,7 @@ import LocalStorageService from "./services/localStorage";
 import { BrowserRouter } from 'react-router-dom';
 import UserContext from './context/UserContext';
 import BottomHeader from './components/BottomHeader/BottomHeader';
+import Footer from './containers/pages/Footer/Footer';
 
 function App() {
   const [role, setRole] = useState(LocalStorageService.getRole());
@@ -18,6 +19,7 @@ function App() {
           {/* {role === "GUEST" && <TopHeader />} */}
           {role === "USER" && <BottomHeader role={role} setRole={setRole} />}
           <PrivateRoutes />
+          <Footer />
         </UserContext.Provider>
       </BrowserRouter>
     </>

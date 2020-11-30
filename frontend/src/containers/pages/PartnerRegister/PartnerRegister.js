@@ -9,6 +9,7 @@ import jwtDecode from 'jwt-decode';
 import LocalStorageService from '../../../services/localStorage';
 import { BASE_BACKEND_URL } from '../../../config/constants';
 import { UploadOutlined } from '@ant-design/icons';
+import Footer from '../Footer/Footer';
 
 function PartnerRegister(props) {
     const [username, setUsername] = useState("");
@@ -268,6 +269,7 @@ function PartnerRegister(props) {
             <div>
                 <img className="registerImage" src={RegisterImg} alt="plate" style={{ left: "960px", top: "470px" }} onClick={onFinish}></img>
             </div>
+
         </div>
     )
 }
