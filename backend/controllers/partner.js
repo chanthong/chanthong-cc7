@@ -68,7 +68,7 @@ const login = async (req, res) => {
   }
 };
 
-// 
+// เอาไปใส่หน้า reserve 
 const getPartnerById = async (req, res) => {
   try {
     const { id } = req.params;

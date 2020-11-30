@@ -18,7 +18,7 @@ const components = {
     page: Register
   },
   home: {
-    path: "/home",
+    path: "/",
     page: Home
   },
   partner_register: {
@@ -34,7 +34,7 @@ const components = {
     page: PartnerProfile
   },
   reserve: {
-    path: "/reserve",
+    path: "/reserve/:id",
     page: Reserve
   },
   profile: {

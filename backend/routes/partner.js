@@ -5,7 +5,7 @@ const router = require("express").Router();
 
 const auth = passport.authenticate("jwt-auth", { session: false });
 
-router.get("/:id", auth, getPartnerById);
+router.get("/:id", getPartnerById);
 router.get("/", getPartners);
 router.post("/register", register);
 router.post("/login", login);

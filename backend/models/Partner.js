@@ -36,6 +36,9 @@ module.exports = (sequelize, DataTypes) => {
         partners_picture: {
             type: DataTypes.STRING
         },
+        max_reserve: {
+            type: DataTypes.STRING,
+        }
     }, {
         tableName: "partners"
     });

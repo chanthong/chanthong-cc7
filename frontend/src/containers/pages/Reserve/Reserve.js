@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import '../Reserve/Reserve.css';
 import axios from "../../../config/axios";
-import { BASE_BACKEND_URL } from '../../../config/constants';
-import { withRouter } from "react-router-dom";
+import { useParams, withRouter } from "react-router-dom";
 import { notification } from 'antd';
 import PlateImg from '../../uploadfile/dishelement.png';
+import UserContext from '../../../context/UserContext';
 
 function Reserve({ user: { username, name, lname, email, phone_number, current_point }, history }) {
-	console.log(username, name);
+	const { reservePartner } = useContext(UserContext);
+	const { id } = useParams();
+	console.log(reservePartner.id);
 	const [date, setDate] = useState("");
 	const [time, setTime] = useState("");
 	const [number_guest, setNumberGuest] = useState("");
@@ -22,26 +24,11 @@ function Reserve({ user: { username, name, lname, email, phone_number, current_p
 		setNumberGuest(e.target.value);
 	};
 
-	// const fetchPartners = async () => {
-	//     const res = await axios.get("http://localhost:5555/partners/");
-	//     setCard(res.data.partners);
-	// }
-
-	// useEffect(() => {
-	//     fetchPartners();
-	// }, []);
-
-
-	const onFinish = ({ date, time, number_guest, reserve_code, note_comment, review_star, review, review_status }) => {
-		axios.post(`/reserves/2`, {
+	const onFinish = () => {
+		axios.post(`/reserves/${id}`, {
 			date,
 			time,
 			number_guest,
-			// reserve_code, 
-			// note_comment, 
-			// review_star, 
-			// review, 
-			// review_status 
 		})
 			.then(res => {
 				notification.success({
@@ -70,19 +57,19 @@ function Reserve({ user: { username, name, lname, email, phone_number, current_p
 				<img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "30px", zIndex: "1200", width: "50px", height: "50px" }}></img>
 			</div>
 			<label>date:</label>
-			<input className="registerTab font-mitr" style={{ left: "60px", top: "40px", zIndex: "1100" }} value={date} onChange={dateHandler} />
+			<input placeholder="date" className="registerTab font-mitr" style={{ left: "60px", top: "40px", zIndex: "1100" }} value={date} onChange={dateHandler} />
 
 			<div>
 				<img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "357px", top: "30px", zIndex: "1200", width: "50px", height: "50px" }}></img>
 			</div>
 			<label>time:</label>
-			<input className="registerTab font-mitr" style={{ left: "360px", top: "40px", zIndex: "1100" }} value={time} onChange={timeHandler} />
+			<input placeholder="time" className="registerTab font-mitr" style={{ left: "360px", top: "40px", zIndex: "1100" }} value={time} onChange={timeHandler} />
 
 			<div>
 				<img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "90px", zIndex: "1200", width: "50px", height: "50px" }}></img>
+				<label>number_guest:</label>
+				<input placeholder="number guest" className="registerTab font-mitr" style={{ left: "60px", top: "100px", zIndex: "1100" }} value={number_guest} onChange={numberGuestHandler} />
 			</div>
-			<label>number_guest:</label>
-			<input className="registerTab font-mitr" style={{ left: "60px", top: "100px", zIndex: "1100" }} value={number_guest} onChange={numberGuestHandler} />
 
 			<div>
 				<img className="plateLeftPartner" onClick={onFinish} src={PlateImg} alt="plate" style={{ left: "357px", top: "420px", zIndex: "1200", width: "50px", height: "50px" }}></img>
