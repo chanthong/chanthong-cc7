@@ -26,7 +26,6 @@ function PrivateRoutes() {
   const [partner, setPartner] = useState(initialPartner);
   const [user, setUser] = useState(initialUser);
 
-  console.log(RolesList);
   console.log(role);
   return (
     <>

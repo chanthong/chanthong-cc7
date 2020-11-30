@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import UserContext from './context/UserContext';
 import BottomHeader from './components/BottomHeader/BottomHeader';
 import Footer from './containers/pages/Footer/Footer';
+import TopHeader from './components/TopHeader/TopHeader';
 
 function App() {
   const [role, setRole] = useState(LocalStorageService.getRole());
@@ -17,8 +18,7 @@ function App() {
     <>
       <BrowserRouter>
         <UserContext.Provider value={{ role, setRole, card, setCard, reservePartner, setReservePartner, change, setChange }}>
-          {/* {role === "GUEST" && <TopHeader />} */}
-          {role === "USER" && <BottomHeader role={role} setRole={setRole} />}
+          <BottomHeader />
           <PrivateRoutes />
           <Footer />
         </UserContext.Provider>

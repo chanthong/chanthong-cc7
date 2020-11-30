@@ -10,8 +10,6 @@ function Home({ role, setRole }) {
 
    return (
       <>
-         {role === "GUEST" && <TopHeader />}
-         {/* {user.map(u => <ResturantCard picUrl={`${BASE_BACKEND_URL}/${u.profile_url}`}/>)} */}
          <ChanthongRole />
       </>
    )
