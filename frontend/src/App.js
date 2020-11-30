@@ -6,7 +6,6 @@ import { BrowserRouter } from 'react-router-dom';
 import UserContext from './context/UserContext';
 import BottomHeader from './components/BottomHeader/BottomHeader';
 import Footer from './containers/pages/Footer/Footer';
-import TopHeader from './components/TopHeader/TopHeader';
 
 function App() {
   const [role, setRole] = useState(LocalStorageService.getRole());

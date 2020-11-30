@@ -59,3 +59,12 @@
     left: 680px; 
     top: 30px
   }
+
+  .outerFrameHeader {
+    width: 100vw;
+    height: 21vh;
+    position: relative;
+    object-fit: cover;
+    overflow: hidden;
+    background-color: aqua;
+  }

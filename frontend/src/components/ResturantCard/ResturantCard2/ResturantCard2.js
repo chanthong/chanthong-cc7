@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import "./ResturantCard.css";
+import "./ResturantCard2.css";
 import { BASE_BACKEND_URL } from '../../../config/constants'
 import axios from '../../../config/axios';
 import { notification } from 'antd';
