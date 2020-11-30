@@ -1,9 +1,11 @@
 import { notification } from 'antd';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import UserContext from '../../context/UserContext';
 import localStorage from "../../services/localStorage";
 
-function BottomHeader({setRole}) {
+function BottomHeader() {
+   const { setRole } = useContext(UserContext);
    const removeToken = () => {
       localStorage.clearToken();
       setRole("GUEST");

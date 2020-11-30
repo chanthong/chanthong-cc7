@@ -2,8 +2,6 @@ module.exports = (sequelize, DataTypes) => {
   const Reserve = sequelize.define("Reserve", {
     date: {
       type: DataTypes.STRING,
-      // unique: true,
-      allowNull: false,
     },
     time: {
       type: DataTypes.STRING,
@@ -16,29 +14,20 @@ module.exports = (sequelize, DataTypes) => {
     },
     reserve_code: {
       type: DataTypes.STRING,
-      // unique: true,
-      // allowNull: false,
     },
     note_comment: {
       type: DataTypes.STRING,
-      // unique: true,
-      // allowNull: false,
     },
     review_star: {
       type: DataTypes.STRING,
-      // allowNull: false,
     },
     review: {
       type: DataTypes.STRING,
-      // unique: true,
-      // allowNull: false,
     },
     reserve_status: {
       type: DataTypes.STRING,
-      // allowNull: false,
     }
   },
-
     {
       tableName: "reserves",
       timestamps: true,
