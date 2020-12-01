@@ -24,6 +24,7 @@ function Footer() {
     return (
         <>
             <FContainer>
+
                 <Style>Chanthong Co.,Ltd. | Tel: 02-222-2222 | Email: Chanthong@gmail.com</Style>
             </FContainer>
         </>
