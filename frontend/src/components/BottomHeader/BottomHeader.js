@@ -28,7 +28,7 @@ function BottomHeader() {
 
 
    return (
-      <div>
+      <div style={{width: "1920px", position: "relative"}}>
          <div className="bigOuterPlate">
                <div className="bigInnerPlate"></div>
          </div>
