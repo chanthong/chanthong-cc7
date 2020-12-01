@@ -32,19 +32,20 @@ function BottomHeader() {
          {/* <ul>
             <li onClick={removeToken}><Link to="/">Logout</Link></li>
          </ul> */}
+         <div className="bigOuterPlate">
+               <div className="bigInnerPlate"></div>
+         </div>
 
          <div className="outerFrameHeader" style={{ backgroundColor: "white" }}>
             <div className="outerRedPartner"></div>
-            <div className="outerPlatePartner">
-               <div className="innerPlatePartner"></div>
-            </div>
-            <div className="chanthong font-lobster" style={{ fontSize: "220%", top: "30px", left: "950px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
+            
+            <div className="chanthong font-lobster" style={{ fontSize: "220%", top: "30px", left: "930px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
 
             <div>
-               <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "30px", zIndex: "1200", width: "50px", height: "50px" }}></img>
+               <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "40px", zIndex: "1200", width: "50px", height: "50px" }}></img>
             </div>
             <label>Search:</label>
-            <input placeholder="search" className="searchTab font-mitr" style={{ left: "60px", top: "40px", zIndex: "1100" }} value={search} onChange={searchHandler} />
+            <input placeholder="search" className="searchTab font-mitr" style={{ left: "60px", top: "50px", zIndex: "1100" }} value={search} onChange={searchHandler} />
             <div className="about"><Link to="/" style={{ color: "#DFCA95", fontFamily: 'Lobster' }}>About us</Link></div>
             <div className="special"><Link to="/" style={{ color: "#DFCA95", fontFamily: 'Lobster' }}>Special Deal</Link></div>
             {

@@ -7,6 +7,7 @@
     background-color: #FFF1CC;
     border-radius: 12px;
     padding-left: 30px ;
+    text-align: center;
   }
 
   .font-lobster{
@@ -15,7 +16,7 @@
 
   .about {
     left: 350px;
-    top: 40px;
+    top: 50px;
     color: #DFCA95;
     position: absolute;
     z-index: 1200;
@@ -24,7 +25,7 @@
 
   .special {
     left: 450px;
-    top: 40px;
+    top: 50px;
     color: #DFCA95;
     position: absolute;
     z-index: 1200;
@@ -33,7 +34,7 @@
 
   .logout {
     left: 580px;
-    top: 40px;
+    top: 50px;
     color: #DFCA95;
     position: absolute;
     z-index: 1200;
@@ -57,7 +58,7 @@
     height: 50px;
     z-index: 1200;
     left: 680px; 
-    top: 30px
+    top: 40px
   }
 
   .outerFrameHeader {
@@ -68,3 +69,35 @@
     overflow: hidden;
     background-color: aqua;
   }
+
+  
+.bigOuterPlate { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  right: -55px;
+  top: -200px;
+  border-radius: 50%;
+  background-color: #DFCA95;
+  box-shadow: 25px 25px 15px  rgba(54, 53, 45, 0.2);
+  z-index: 1100;
+}
+
+.bigInnerPlate { 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute; */
+  width: 266px;
+  height: 266px;
+  /* left: 828px;
+  top: -243px; */
+  border-radius: 50%;
+  background-color:#DFCA95;
+  box-shadow: inset -30px -30px 15px rgba(255, 247, 171, 0.2),
+              inset 30px 30px 15px rgba(82, 77, 37, 0.2);
+  z-index: 2;
+}
