@@ -148,6 +148,10 @@ const SpoonContainer = styled.div`
    margin-left:300px;
    `;
 
+   const yellowPlate = styled.notification`
+   z-Index: 1200;
+   `
+
 function Login(props) {
 
    const history = useHistory();
@@ -161,7 +165,7 @@ function Login(props) {
          password
       })
          .then(res => {
-            notification.success({
+            yellowPlate.success({
                description: "Login success."
             });
             LocalStorageService.setToken(res.data.token);
@@ -170,7 +174,7 @@ function Login(props) {
          })
          .catch(err => {
             console.log(err);
-            notification.error({
+            yellowPlate.error({
                description: "Login failed."
             });
          });

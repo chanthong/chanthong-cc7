@@ -83,7 +83,7 @@
   border-radius: 50%;
   background-color: #DFCA95;
   box-shadow: 25px 25px 15px  rgba(54, 53, 45, 0.2);
-  z-index: 1100;
+  z-index: 1;
 }
 
 .bigInnerPlate { 
@@ -109,7 +109,7 @@
   left: 0px;
   top: -1350px;
   background-color: #D85D55;
-  z-index: 1000;
+  z-index: 0;
 }
 
 .plateLeft {
@@ -117,4 +117,12 @@
   width: 32px;
   height: 30px;
   z-index: 10;
+}
+
+.chanthong1 {
+  position: absolute;
+  font-weight: bold;
+  color: #DFCA95;
+  text-shadow: 5px 5px 5px #ad0606;
+  z-index: 1;
 }

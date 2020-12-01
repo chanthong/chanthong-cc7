@@ -36,7 +36,7 @@ function BottomHeader() {
          <div className="outerFrameHeader" style={{ backgroundColor: "white" }}>
             <div className="outerRed"></div>
             
-            <div className="chanthong font-lobster" style={{ fontSize: "220%", top: "30px", left: "930px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
+            <div className="chanthong1 font-lobster" style={{ fontSize: "220%", top: "30px", left: "930px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
 
             <div>
                <img className="plateLeft" src={PlateImg} alt="plate" style={{ left: "57px", top: "40px", zIndex: "1200", width: "50px", height: "50px" }}></img>
