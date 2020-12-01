@@ -9,12 +9,10 @@
 }
 
 .item {
-   width: 220px;
-   height: auto;
+   width: 219px;
+   height: 308px;
    background-color: #fff;
    padding: 30px 20px 65px;
-   border-radius: 5px;
-   border: 1px solid #e6e6e6;
    color: #fff;
    position: relative;
 }
@@ -31,7 +29,7 @@
 .item img{
    display: block;
    width: 180px;
-   margin: 10px auto;
+   margin: 0px auto;
 }
 
 .item .info p{

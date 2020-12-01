@@ -27,13 +27,13 @@ function ChanthongRole() {
     }, []);
 
     return (
-        <div>
+        <>
             <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>Recommend by Chanthong</h1>
             <div style={{ display: "flex" }}>
                 {card.map((item) => <ResturantCard2 item={item} />)}
-                {card.map((item) => <ResturantCard item={item} />)}
+                {/* {card.map((item) => <ResturantCard item={item} />)} */}
             </div>
-        </div>
+        </>
     )
 }
 
