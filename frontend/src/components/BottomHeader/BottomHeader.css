@@ -101,3 +101,20 @@
               inset 30px 30px 15px rgba(82, 77, 37, 0.2);
   z-index: 2;
 }
+
+.outerRed {
+  position: absolute;
+  width: 100%;
+  height: 1510px;
+  left: 0px;
+  top: -1350px;
+  background-color: #D85D55;
+  z-index: 1000;
+}
+
+.plateLeft {
+  position: absolute;
+  width: 32px;
+  height: 30px;
+  z-index: 10;
+}
