@@ -113,7 +113,8 @@ const getPartnersByDistrict = async (req, res) => {
     const targetPartner = await db.Partner.findAll({ where: { district: findDis } });
     res.status(200).send({ targetPartner });
   } catch (err) {
-    res.status(500).send({ message: err.messages })
+    console.log(err)
+    res.status(500).send({ message: err.message })
   }
 };
 
