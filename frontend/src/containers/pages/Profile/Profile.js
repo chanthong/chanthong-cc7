@@ -7,9 +7,7 @@ function Profile({ user: { username, name, lname, email, phone_number, current_p
     return (
         <div className="outerFrame">
             <div className="outerCircle"></div>
-            <div className="outerPlate">
-                <div className="innerPlate"></div>
-            </div>
+            
 
             {/* Left-Side */}
 
@@ -66,20 +64,21 @@ function Profile({ user: { username, name, lname, email, phone_number, current_p
             <div className="leftTab2 font-mitr">My Reward</div>
             <div className="leftTab3 font-mitr">Edit My Profile</div>
             <div>
-                <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "747px", top: "400px" }}></img>
+                <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "747px", top: "380px" }}></img>
             </div>
             <div className="nameLeftDownTab1 font-mitr">Name:</div>
             <div className="leftDownTab1 font-mitr">{name}</div>
             <div>
-                <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "696px", top: "465px" }}></img>
+                <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "696px", top: "445px" }}></img>
             </div>
             <div className="nameLeftDownTab2 font-mitr">Email Address:</div>
             <div className="leftDownTab2 font-mitr">{email}</div>
             <div>
-                <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "598px", top: "530px" }}></img>
+                <img className="plateLeftTab" src={PlateImg} alt="plate" style={{ left: "628px", top: "510px" }}></img>
             </div>
             <div className="nameLeftDownTab3 font-mitr">Phone Number:</div>
             <div className="leftDownTab3 font-mitr">{phone_number}</div>
+    
         </div>
     )
 }

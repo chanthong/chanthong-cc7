@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../Navbar/Navbar.css';
 import '../../config/roles';
 import localStorage from "../../services/localStorage"
+import ButtonHeader from "../BottomHeader/BottomHeader"
 
 function Navbar({ role, setRole }) {
 	const removeToken = () => {
@@ -11,8 +12,9 @@ function Navbar({ role, setRole }) {
 	}
 	
 	return (
-		<div className="navbar navbar_3">
-			<div className="navbar_left">
+		<div>
+			<ButtonHeader/>
+			{/* <div className="navbar_left">
 				<div className="logo">Chan<span>thong</span></div>
 				<ul className="menu">
 					<li><Link to="/">Home</Link></li>
@@ -24,7 +26,7 @@ function Navbar({ role, setRole }) {
 					{role === "GUEST" && <li><Link to="/Login">Login</Link></li>}
 					{role === "USER" && <li onClick={removeToken}><Link to="/">Logout</Link></li>}
 				</ul>
-			</div>
+			</div> */}
 		</div>
 	)
 }

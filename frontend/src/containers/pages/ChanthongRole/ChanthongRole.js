@@ -1,9 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ResturantCard2 from '../../../components/ResturantCard/ResturantCard2/ResturantCard2';
+import UserContext from '../../../context/UserContext';
 
 function ChanthongRole() {
-    const [card, setCard] = useState([]);
+    const { card, setCard } = useContext(UserContext);
     //     const [user, setUser] = useState([]);
 
     //    const fetchData = () => {
@@ -27,8 +28,9 @@ function ChanthongRole() {
     return (
         <div>
             <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>Recommend by Chanthong</h1>
-            <div style={{ display: "flex" }}>
-                {card.map((item) => <ResturantCard2 card={item}  />)}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                {card.map((item) => <ResturantCard2 item={item} />)}
+                {/* {card.map((item) => <ResturantCard item={item} />)} */}
             </div>
         </div>
     )

@@ -39,7 +39,7 @@ const components = {
     page: PartnerDashboard
   },
   reserve: {
-    path: "/reserve",
+    path: "/reserve/:id",
     page: Reserve
   },
   profile: {
@@ -55,6 +55,7 @@ const roles = {
     components.register,
     components.partner_register,
     components.partner_login,
+    components.reserve,
   ],
   USER: [
     components.home,

@@ -6,7 +6,7 @@
     position: relative;
     object-fit: cover;
     overflow: hidden;
-    background-color: aqua;
+    background-color: #22CACF;
 }
 
 .outerCircle {
@@ -52,8 +52,8 @@
 .numberCircle {
     width: 30px;
     height: 30px;
-    left: 830px;
-    top: 250px;
+    left: 840px;
+    top: 220px;
     position: absolute;
     border-radius: 50%;
     background-color: brown;
@@ -64,8 +64,8 @@
     position: absolute;
     width: 126px;
     height: 126px;
-    left: 830px;
-    top: 250px;
+    left: 840px;
+    top: 220px;
     border-radius: 50%;
     background-color: chartreuse;
 }
@@ -86,10 +86,11 @@
     width: 130px;
     height: 29px;
     left: 1000px;
-    top: 250px;
+    top: 220px;
     background-color: #0BA5AA;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
 }
 
 /* .plateLeftTab2 {
@@ -110,10 +111,11 @@
     width: 130px;
     height: 29px;
     left: 1000px;
-    top: 300px;
+    top: 270px;
     background-color: #0BA5AA;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
 }
 
 .leftTab3 {
@@ -121,18 +123,19 @@
     width: 130px;
     height: 29px;
     left: 1000px;
-    top: 350px;
+    top: 320px;
     background-color: #0BA5AA;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
 }
 
 .nameLeftDownTab1 {
     position: absolute;
     width: 220px;
     height: 29px;
-    left: 680px;
-    top: 375px;
+    left: 760px;
+    top: 355px;
 }
 
 .leftDownTab1 {
@@ -140,18 +143,19 @@
     width: 220px;
     height: 29px;
     left: 750px;
-    top: 400px;
+    top: 380px;
     background-color: #FFF1CC;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
 }
 
 .nameLeftDownTab2 {
     position: absolute;
     width: 220px;
     height: 29px;
-    left: 660px;
-    top: 440px;
+    left: 710px;
+    top: 420px;
 }
 
 .leftDownTab2 {
@@ -159,29 +163,31 @@
     width: 220px;
     height: 29px;
     left: 700px;
-    top: 465px;
+    top: 445px;
     background-color: #FFF1CC;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
 }
 
 .nameLeftDownTab3 {
     position: absolute;
     width: 220px;
     height: 29px;
-    left: 570px;
-    top: 505px;
+    left: 640px;
+    top: 485px;
 }
 
 .leftDownTab3 {
     position: absolute;
     width: 220px;
     height: 29px;
-    left: 600px;
-    top: 530px;
+    left: 630px;
+    top: 510px;
     background-color: #FFF1CC;
     border-radius: 12px;
     padding: 3px;
+    text-align: center;
 }
 
 .font-lobster{
@@ -214,7 +220,7 @@
 
 .to {
     position: absolute;
-    left: 240px;
+    left: 260px;
     top: 48px;
     font-weight: bold;
     color: #DFCA95;
@@ -274,7 +280,7 @@
 .plateset2 {
     position: absolute;
     width: 100px;
-    height: 60px;
+    height: 65px;
     z-index: 10;
     object-fit: cover;
     overflow: hidden;
