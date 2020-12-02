@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect } from 'react';
 import ResturantCard2 from '../../../components/ResturantCard/ResturantCard2/ResturantCard2';
-import ResturantCard from '../../../components/ResturantCard/ResturantCard';
 import UserContext from '../../../context/UserContext';
 
 function ChanthongRole() {
@@ -29,9 +28,9 @@ function ChanthongRole() {
     return (
         <div>
             <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>Recommend by Chanthong</h1>
-            <div style={{ display: "flex" }}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
                 {card.map((item) => <ResturantCard2 item={item} />)}
-                {card.map((item) => <ResturantCard item={item} />)}
+                {/* {card.map((item) => <ResturantCard item={item} />)} */}
             </div>
         </div>
     )

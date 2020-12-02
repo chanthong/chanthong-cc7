@@ -145,9 +145,6 @@ function PartnerRegister(props) {
     return (
         <div className="outerFramePartner">
             <div className="outerRedPartner"></div>
-            <div className="outerPlatePartner">
-                <div className="innerPlatePartner"></div>
-            </div>
 
             <div className="welcome font-lobster" style={{ fontSize: "180%", top: "40px" }}>Welcome to</div>
             <div className="chanthong font-lobster" style={{ fontSize: "280%", top: "80px", left: "200px" }}>Chanthong Community</div>
@@ -231,6 +228,7 @@ function PartnerRegister(props) {
                     <option value="4">Fine Dining</option>
                     <option value="5">Hot Cuisine</option>
                     <option value="6">At Twilight</option>
+                    <option value="7">Buffet</option>
                 </select>
             </div>
 

@@ -48,7 +48,9 @@ const login = async (req, res) => {
           password: targetPartner.password,
           restaurant_name: targetPartner.restaurant_name,
           phone_number: targetPartner.phone_number,
-          location: targetPartner.location,
+          address: targetPartner.address,
+          district: targetPartner.district,
+          province: targetPartner.province,
           email_address: targetPartner.email_address,
           price_range: targetPartner.price_range,
           partners_picture: targetPartner.partners_picture
@@ -103,10 +105,12 @@ const deletePartner = async (req, res) => {
 };
 
 //เรียก partner ตาม location
-const getPartnersByLocation = async (req, res) => {
+const getPartnersByDistrict = async (req, res) => {
   try {
-    const { location } = req.query;
-    const targetPartner = await db.Partner.findAll({ where: { location } });
+    const { findDis } = req.query;
+    console.log(findDis)
+    console.log("come in already");
+    const targetPartner = await db.Partner.findAll({ where: { district: findDis } });
     res.status(200).send({ targetPartner });
   } catch (err) {
     res.status(500).send({ message: err.messages })
@@ -119,5 +123,5 @@ module.exports = {
   getPartnerById,
   getPartners,
   deletePartner,
-  getPartnersByLocation
+  getPartnersByDistrict
 };

@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components';
+import serveWithUs from '../../uploadfile/ServeWithUsElement.png';
 
 const Style = styled.div`
     background-color: salmon;
@@ -24,6 +25,7 @@ function Footer() {
     return (
         <>
             <FContainer>
+                <button style={{ backgroundImage: `url(${serveWithUs})` }}></button>
                 <Style>Chanthong Co.,Ltd. | Tel: 02-222-2222 | Email: Chanthong@gmail.com</Style>
             </FContainer>
         </>

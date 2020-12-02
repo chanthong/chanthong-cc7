@@ -28,21 +28,31 @@ function BottomHeader() {
 
 
    return (
+<<<<<<< HEAD
       <div style={{position: "relative", width: "1920px"}}>
          {/* <ul>
             <li onClick={removeToken}><Link to="/">Logout</Link></li>
          </ul> */}
+=======
+      <div style={{width: "1930px", position: "relative"}}>
+>>>>>>> 6ce50aab151558024900a68ec8b7c51a918c1193
          <div className="bigOuterPlate">
             <div className="bigInnerPlate"></div>
          </div>
 
          <div className="outerFrameHeader" style={{ backgroundColor: "white" }}>
+<<<<<<< HEAD
             <div className="outerRedPartner"></div>
 
             <div className="chanthong font-lobster" style={{ fontSize: "220%", top: "30px", left: "930px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
+=======
+            <div className="outerRed"></div>
+            
+            <div className="chanthong1 font-lobster" style={{ fontSize: "220%", top: "30px", left: "930px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
+>>>>>>> 6ce50aab151558024900a68ec8b7c51a918c1193
 
             <div>
-               <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "40px", zIndex: "1200", width: "50px", height: "50px" }}></img>
+               <img className="plateLeft" src={PlateImg} alt="plate" style={{ left: "57px", top: "40px", zIndex: "1200", width: "50px", height: "50px" }}></img>
             </div>
             <label>Search:</label>
             <input placeholder="search" className="searchTab font-mitr" style={{ left: "60px", top: "50px", zIndex: "1100" }} value={search} onChange={searchHandler} />

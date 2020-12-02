@@ -6,7 +6,6 @@ const app = express();
 
 require('./config/passport');
 
-console.log("oh ok")
 const fileUpload = require("express-fileupload");
 const partnerRoutes = require("./routes/partner");
 const userRoutes = require("./routes/user");
