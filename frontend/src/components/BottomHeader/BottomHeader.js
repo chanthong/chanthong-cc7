@@ -28,17 +28,17 @@ function BottomHeader() {
 
 
    return (
-      <div>
+      <div style={{position: "relative", width: "1920px"}}>
          {/* <ul>
             <li onClick={removeToken}><Link to="/">Logout</Link></li>
          </ul> */}
          <div className="bigOuterPlate">
-               <div className="bigInnerPlate"></div>
+            <div className="bigInnerPlate"></div>
          </div>
 
          <div className="outerFrameHeader" style={{ backgroundColor: "white" }}>
             <div className="outerRedPartner"></div>
-            
+
             <div className="chanthong font-lobster" style={{ fontSize: "220%", top: "30px", left: "930px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
 
             <div>
