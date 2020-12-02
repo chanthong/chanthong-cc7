@@ -228,6 +228,7 @@ function PartnerRegister(props) {
                     <option value="4">Fine Dining</option>
                     <option value="5">Hot Cuisine</option>
                     <option value="6">At Twilight</option>
+                    <option value="7">Buffet</option>
                 </select>
             </div>
 

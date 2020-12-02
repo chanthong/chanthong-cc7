@@ -107,9 +107,10 @@ const deletePartner = async (req, res) => {
 //เรียก partner ตาม location
 const getPartnersByDistrict = async (req, res) => {
   try {
-    const { district } = req.query;
-    console.log(district)
-    const targetPartner = await db.Partner.findAll({ where: { district } });
+    const { findDis } = req.query;
+    console.log(findDis)
+    console.log("come in already");
+    const targetPartner = await db.Partner.findAll({ where: { district: findDis } });
     res.status(200).send({ targetPartner });
   } catch (err) {
     res.status(500).send({ message: err.messages })
