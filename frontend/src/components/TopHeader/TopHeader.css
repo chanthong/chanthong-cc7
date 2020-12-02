@@ -18,14 +18,16 @@
    background-size: cover;
 }
 
-.logochanthong {
-   font-size: 50px;
+.logochanthong-top {
+   font-size: 80px;
    padding: 50px 0 50px 50px;
-   margin-bottom: 0px;
+   margin-bottom: -20px;
+   padding-bottom: 0;
 }
 
 .textrs {
   font-size: 20px;
+  margin-left: 237px;
 }
 
 .textuser {
@@ -50,6 +52,10 @@
 
 .btn-login:hover {
    cursor: pointer;
+}
+
+.row {
+   margin-bottom: 30px;
 }
 
 
