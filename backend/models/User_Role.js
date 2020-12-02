@@ -9,9 +9,6 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false
     });
 
-    User_Role.associate = models => {
-        User_Role.hasMany(models.User)
-    }
 
     return User_Role;
 };
