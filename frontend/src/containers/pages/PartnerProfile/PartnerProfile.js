@@ -1,7 +1,7 @@
 import React from 'react';
 // import axios from 'axios';
 
-function PartnerProfile({ partner: { username, email_address, phone_number, restaurant_name, price_range } }) {
+function PartnerProfile({ partner: {username, email_address, phone_number, restaurant_name, price_range } }) {
 
     return (
         <div className="wrapper">

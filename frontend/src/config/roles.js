@@ -4,6 +4,7 @@ import Home from "../containers/pages/Home/Home";
 import PartnerRegister from "../containers/pages/PartnerRegister/PartnerRegister";
 import PartnerLogin from "../containers/pages/PartnerLogin/PartnerLogin";
 import PartnerProfile from "../containers/pages/PartnerProfile/PartnerProfile";
+import PartnerDashboard from "../containers/pages/PartnerDashboard/PartnerDashboard";
 import Reserve from "../containers/pages/Reserve/Reserve";
 import Profile from "../containers/pages/Profile/Profile";
 
@@ -18,7 +19,7 @@ const components = {
     page: Register
   },
   home: {
-    path: "/home",
+    path: "/",
     page: Home
   },
   partner_register: {
@@ -32,6 +33,10 @@ const components = {
   partner_profile: {
     path: "/partner_profile",
     page: PartnerProfile
+  },
+  partner_dashboard: {
+    path: "/partner_dashboard",
+    page: PartnerDashboard
   },
   reserve: {
     path: "/reserve",
@@ -63,6 +68,7 @@ const roles = {
     components.partner_login,
     components.partner_register,
     components.partner_profile,
+    components.partner_dashboard,
   ],
 };
 

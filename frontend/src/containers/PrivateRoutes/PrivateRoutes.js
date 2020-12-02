@@ -18,8 +18,6 @@ function PrivateRoutes(props) {
     initialUser = jwtDecode(token);
   } 
 
-  
-
   const [partner, setPartner] = useState(initialPartner);
   const [user, setUser] = useState(initialUser);
   
@@ -28,12 +26,14 @@ function PrivateRoutes(props) {
   return (
     <>
       <BrowserRouter>
+
         <Switch>
           {RolesList[role].map(({ path, page: PageComponent }) => <Route exact path={path}>
             <PageComponent setRole={props.setRole} role={role} partner={partner} setPartner={setPartner} setUser={setUser} user={user}/>
           </Route>)}
           <Route path="*" component={NotFound} />
         </Switch>
+        
       </BrowserRouter>
     </>
   );
