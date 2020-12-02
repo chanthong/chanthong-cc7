@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import '../PartnerRegister/PartnerRegister.css';
 import axios from "../../../config/axios";
-// import { BASE_BACKEND_URL } from '../../../config/constants';
 import { withRouter } from "react-router-dom";
-import { notification } from 'antd';
+import { Button, Upload, message, notification } from 'antd';
 import PlateImg from '../../uploadfile/dishelement.png';
 import RegisterImg from '../../uploadfile/register.png';
 import jwtDecode from 'jwt-decode';
 import LocalStorageService from '../../../services/localStorage';
+import { BASE_BACKEND_URL } from '../../../config/constants';
+import { UploadOutlined } from '@ant-design/icons';
 
 function PartnerRegister(props) {
     const [username, setUsername] = useState("");
@@ -19,11 +20,10 @@ function PartnerRegister(props) {
     const [address, setAddress] = useState("");
     const [district, setDistrict] = useState("");
     const [province, setProvince] = useState("");
-    const [partners_picture, setPartners_picture] = useState("");
     const [category, setCategory] = useState("");
     const [theme, setTheme] = useState("");
-    const [location, setLocation] = useState("") // state test ยังไม่ใช่ของจริง
-    const [description, setDescription] = useState("")
+    const [description, setDescription] = useState("");
+    const [partners_picture, setFileName] = useState("")
 
     const usernameHandler = (e) => {
         setUsername(e.target.value);
@@ -52,17 +52,11 @@ function PartnerRegister(props) {
     const provinceHandler = (e) => {
         setProvince(e.target.value);
     };
-    const partners_pictureHandler = (e) => {
-        setPartners_picture(e.target.value);
-    };
     const categoryHandler = (e) => {
         setCategory(e.target.value);
     };
     const themeHandler = (e) => {
         setTheme(e.target.value);
-    };
-    const locationHandler = (e) => {
-        setLocation(e.target.value);
     };
     const descriptionHandler = (e) => {
         setDescription(e.target.value);
@@ -130,6 +124,24 @@ function PartnerRegister(props) {
         props.history.push("/partner_profile");
     };
 
+    const propsUpload = {
+        name: 'img',
+        multiple: false,
+        action: `${BASE_BACKEND_URL}/uploads/`,
+        onChange(info) {
+            const { status } = info.file;
+            if (status !== 'uploading') {
+                console.log(info.file, info.fileList);
+            }
+            if (status === 'done') {
+                setFileName(info.file.response.url);
+                message.success(`${info.file.name} file upload successfully.`);
+            } else if (status === "error") {
+                message.error(`${info.file.name} file upload failed.`)
+            }
+        },
+    };
+
     return (
         <div className="outerFramePartner">
             <div className="outerRedPartner"></div>
@@ -182,19 +194,19 @@ function PartnerRegister(props) {
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "270px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "340px", top: "250px" }}>Address:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "270px" }} />
+            <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "270px" }} value={address} onChange={addressHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "340px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "340px", top: "320px" }}>District:</div>
-            <input className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "340px" }} value={location} onChange={locationHandler} />
+            <input className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "340px" }} value={district} onChange={districtHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "340px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "570px", top: "320px" }}>Province:</div>
-            <input className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "340px" }} />
+            <input className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "340px" }} value={province} onChange={provinceHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "410px" }}></img>
@@ -203,9 +215,9 @@ function PartnerRegister(props) {
             <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "410px" }}>
                 <select onChange={categoryHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
-                    <option value="4">Chinese</option>
+                    <option value="1">thai</option>
+                    <option value="2">Chinese</option>
                     <option value="3">Japanese</option>
-                    <option value="2">Thai</option>
                 </select>
             </div>
 
@@ -216,9 +228,9 @@ function PartnerRegister(props) {
             <div className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "410px" }}>
                 <select onChange={themeHandler} style={{ background: "none", outline: "none", border: "none" }}>
                     <option value="">Select</option>
-                    <option value="6">Fine Dining</option>
+                    <option value="4">Fine Dining</option>
                     <option value="5">Hot Cuisine</option>
-                    <option value="1">At Twilight</option>
+                    <option value="6">At Twilight</option>
                 </select>
             </div>
 
@@ -238,16 +250,20 @@ function PartnerRegister(props) {
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "480px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "570px", top: "460px" }}>Upload your best photos:</div>
-            <div className="usernameTabPartner2 font-mitr" style={{ left: "555px", top: "480px" }}>{partners_picture}</div>
-            <div className="usernameTabPartner4 font-mitr" style={{ left: "780px", top: "480px", color: "#D85B55", fontWeight: "bold" }}>Browse</div>
+            <Upload {...propsUpload} >
+                <div className="usernamePartner font-mitr" style={{ left: "570px", top: "460px" }}>Upload your best photos:</div>
+                <div className="usernameTabPartner2 font-mitr" style={{ left: "555px", top: "480px" }}>
+                    <Button style={{ backgroundColor: "green", position: "absolute", top: "400px" }} icon={<UploadOutlined />}>Click to Upload</Button>
+                </div>
+                <div className="usernameTabPartner4 font-mitr" style={{ left: "780px", top: "480px", color: "#D85B55", fontWeight: "bold" }}>Browse</div>
+            </Upload>
 
             {/* Column 3 */}
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "790px", top: "270px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "810px", top: "250px" }}>Description:</div>
-            <input className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }} />
+            <input className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }} value={description} onChange={descriptionHandler} />
 
             <div>
                 <img className="registerImage" src={RegisterImg} alt="plate" style={{ left: "960px", top: "470px" }} onClick={onFinish}></img>

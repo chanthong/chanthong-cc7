@@ -24,7 +24,13 @@ module.exports = (sequelize, DataTypes) => {
         price_range: {
             type: DataTypes.STRING
         },
-        location: {
+        address: {
+            type: DataTypes.STRING
+        },
+        district: {
+            type: DataTypes.STRING
+        },
+        province: {
             type: DataTypes.STRING
         },
         partners_picture: {

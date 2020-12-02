@@ -12,7 +12,7 @@ const getAllPartnerCategory = async (req, res) => {
 const createPartner_Category = async (req, res) => {
     try {
         const categoryId = req.params.categoryId;
-        // const {} = req.query;
+        // const partnerId = req.params.partnerId;
         const categoryRelation = await db.Partner_Category.create({
             partner_id: req.user.id,
             category_id: categoryId
@@ -20,7 +20,7 @@ const createPartner_Category = async (req, res) => {
 
         res.status(201).send(categoryRelation);
     } catch (err) {
-        res.status(500).send({ messages: err.messages });
+        res.status(500).send({ message: err.message });
     };
 }
 
