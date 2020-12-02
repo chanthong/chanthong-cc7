@@ -2,10 +2,11 @@ import React from 'react';
 import './Login.css';
 import styled from 'styled-components';
 import logimg from "./loginimg.png";
+import Regisimg from "./Registerimg.png";
 
 import { notification } from 'antd';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from '../../../config/axios';
 import LocalStorageService from "../../../services/localStorage";
 import jwtDecode from 'jwt-decode';
@@ -146,7 +147,15 @@ const LoginElement = styled.img`
    height: 120px;
    object-fit: cover;
    margin: 20px;
-   margin-left:300px;
+   margin-left:100px;
+   `;
+
+const RegisElement = styled.img`
+   width: auto;
+   height: 120px;
+   object-fit: cover;
+   margin: 20px;
+   margin-left:30px;
    `;
 
 function Login(props) {
@@ -210,8 +219,11 @@ function Login(props) {
          </div>
          <p className="Mitr textforget">Forget password</p>
          <LoginElement className="btn-login" onClick={onFinish} src={logimg} />
+         <Link to="/register">
+               <RegisElement className="btn-login" src={Regisimg} />
+         </Link>
       </div>
    )
 }
 
-export default Login
+export default Login;

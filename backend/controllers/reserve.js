@@ -1,4 +1,3 @@
-const e = require("express");
 const db = require("../models");
 
 const createReserve = async (req, res) => {
@@ -23,7 +22,12 @@ const createReserve = async (req, res) => {
     res.status(500).send({ messages: err.message })
   }
 };
+// const getReserveByID = (req,res)=>{
+//   const targetReserve = await db.Reserve.findOne({where:{id:id.params.id}, attributes:["date","time", "number_guest", "reserve_code","note_comment","user_id","partner_id"]});
+//   if(targetReserve && targetReserve.partner_id === req.partner.id){
 
+//   }
+// }
 const deleteReserve = async (req, res) => {
   const reserveId = req.params.id;
   await db.Reserve.destroy({ where: { id: reserveId, user_id: req.user.id } });

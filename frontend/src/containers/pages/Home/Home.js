@@ -20,7 +20,7 @@ function Home({ role, setRole }) {
       <>
          {role === "GUEST" && <TopHeader />}
          {role === "USER" && <BottomHeader role={role} setRole={setRole} />}         
-         {user.map(u => <ResturantCard picUrl={`${BASE_BACKEND_URL}/${u.profile_url}`}/>)}
+        
       </>
    )
 }
