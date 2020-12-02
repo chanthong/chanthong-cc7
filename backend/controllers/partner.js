@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
   try {
     const { username, password, restaurant_name, phone_number, email_address,
-      price_range, location, partners_picture } = req.body;
+      price_range, partners_picture, address, district, province } = req.body;
     console.log(req.body);
     const targetPartner = await db.Partner.findOne({ where: { username } });
 
@@ -23,7 +23,9 @@ const register = async (req, res) => {
         phone_number,
         email_address,
         price_range,
-        location,
+        address,
+        district,
+        province,
         partners_picture
       });
       res.status(201).send({ message: "Partner created." });
@@ -81,7 +83,8 @@ const getPartnerById = async (req, res) => {
 // เอาไป show หน้าเว็ป ใส่ การ์ด
 const getPartners = async (req, res) => {
   try {
-    const partners = await db.Partner.findAll({ include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
+    const partners = await db.Partner.findAll();
+    // const partners = await db.Partner.findAll({ include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
     res.status(200).send({ partners });
   } catch (err) {
     res.status(500).send({ messages: err.message });

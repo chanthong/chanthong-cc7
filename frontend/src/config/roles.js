@@ -4,9 +4,9 @@ import Home from "../containers/pages/Home/Home";
 import PartnerRegister from "../containers/pages/PartnerRegister/PartnerRegister";
 import PartnerLogin from "../containers/pages/PartnerLogin/PartnerLogin";
 import PartnerProfile from "../containers/pages/PartnerProfile/PartnerProfile";
+import PartnerDashboard from "../containers/pages/PartnerDashboard/PartnerDashboard";
 import Reserve from "../containers/pages/Reserve/Reserve";
 import Profile from "../containers/pages/Profile/Profile";
-import PartnerDashboard from "../containers/pages/PartnerDashboard/PartnerDashboard";
 
 
 const components = {

@@ -34,7 +34,28 @@ const deleteReserve = async (req, res) => {
   res.status(204).send();
 };
 
+const getReserveByID =async (req, res) => {
+  const targetReserve = await db.Reserve.findAll({ where: { partner_id: req.user.id}, attributes: ["id","date", "time", "number_guest","reserve_status", "reserve_code", "note_comment", "user_id", "partner_id"]});
+  if (targetReserve) {
+    res.status(200).send(targetReserve);
+  }else{
+    res.status(404).send({ message: "Target not found!!!" });
+  }
+};
+
+const changeReserveStatus =async (req, res) => {
+  const targetReserve = await db.Reserve.findOne({ where: { id: req.params.id } });
+  if (targetReserve && targetReserve.id === req.user.id) {
+    await targetReserve.update({ task: req.body.reserve_status});
+    res.status(200).send({ message: "Already updated" });
+  } else {
+    res.status(404).send({ message: "Not found" });
+  }
+};
+
 module.exports = {
   createReserve,
-  deleteReserve
+  deleteReserve,
+  getReserveByID,
+  changeReserveStatus
 };

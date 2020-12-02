@@ -5,6 +5,7 @@ const passport = require("passport");
 const auth = passport.authenticate("jwt-auth", { session: false });
 
 router.get("/", getAllPartnerCategory);
+// router.post("/:categoryId/:partnerId", createPartner_Category);
 router.post("/:categoryId", auth, createPartner_Category);
 
 module.exports = router;

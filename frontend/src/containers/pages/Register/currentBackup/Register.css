@@ -11,7 +11,7 @@
 
 
 .background-image {
-   background-image: url('./bgchan.jpg');
+   background-image: url('bgchan.jpg');
    height: 100vh;
    background-position: center;
    background-repeat: no-repeat;
@@ -28,7 +28,7 @@
 .textuser-re {
    font-size: 25px;
    padding-left: 80px;
-   margin: 0px;
+   margin: 20px;
 }
 
 .textpw {
@@ -40,9 +40,4 @@
 
 .btn-register:hover {
   cursor: pointer;
-}
-
-.row-text {
-   display: flex;
-   justify-content: flex-start;
 }

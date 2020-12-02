@@ -1,24 +1,19 @@
 import React from 'react';
 import "./ResturantCard.css";
+import { BASE_BACKEND_URL } from '../../../config/constants'
 
 function ResturantCard2({ card }) {
-   console.log(card.Categories.map((p) => {
-      if (p[0]) {
-         return `${p.type_food},`
-      }
-      return `, ${p.type_food}`
-   }));
 
    return (
       <div className="item">
          <h3>{card.restaurant_name}</h3>
          <div className="row">
-            <img src="https://images.unsplash.com/photo-1542803417-f2be3270347d?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8NTB8fGRpc2h8ZW58MHx8MHw%3D&auto=format&fit=crop&w=200&q=60" alt="Bangpoo_resturant" />
+            <img src={`${BASE_BACKEND_URL}/${card.partners_picture}`} />
          </div>
          <div className="info">
-            <p>Location: {card.location}</p>
+            <p>Location: {card.phone_number}</p>
             <p>email: {card.email_address}</p>
-            <p>{card.Categories.map(
+            {/* <p>{card.Categories.map(
                (p, i) => {
                   if (i === 0) {
                      return `${p.type_food}`;
@@ -27,7 +22,7 @@ function ResturantCard2({ card }) {
                   return `, ${p.type_food}`;
                })
             }
-            </p>
+            </p> */}
          </div>
          <div className="info">
             <p>จองแล้ว {card.id} ครี้ง</p>
