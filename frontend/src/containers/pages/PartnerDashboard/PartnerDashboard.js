@@ -1,4 +1,4 @@
-import { Table} from 'antd';
+import { Table } from 'antd';
 import { Button } from 'antd/lib/radio';
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom';
@@ -6,59 +6,11 @@ import axios from '../../../config/axios';
 import { Select } from 'antd';
 import LocalStorageService from '../../../services/localStorage';
 function PartnerDashboard(props) {
-    
+
     const { Option } = Select;
     const [data, setData] = useState([]);
-    const columns = [
-        {
-            title: 'Reserve_ID',
-            dataIndex: 'id',
-            key: 'id',
-        },
-        {
-            title: 'Date',
-            dataIndex: 'date',
-            key: 'date',
-        },
-        {
-            title: 'Time',
-            dataIndex: 'time',
-            key: 'time',
-        },
-        {
-            title: 'Persons',
-            dataIndex: 'number_guest',
-            key: 'number_guest',
-        },
-        {
-            title: 'User_ID',
-            dataIndex: 'user_id',
-            key: 'user_id',
-        },
-        {
-            title: 'Code',
-            dataIndex: 'reserve_code',
-            key: 'reserve_code',
-        },
-        {
-            title: 'Comment',
-            dataIndex: 'note_comment',
-            key: 'note_comment',
-        },
-        {
-            title: 'Action',
-            dataIndex: 'reserve_status',
-            key: 'reserve_status',
-            render: text => {return(
-                <Select defaultValue={text} style={{ width: 120 }} onChange={handleChange}>
-                <Option value="confirm">confirm</Option>
-                <Option value="pending">pending</Option>
-              </Select>)
-            }
-        }
-    ];
-    const fetchTodos = () => {
-        axios.get("/reserves")
+    const fetchReserves = () => {
+        axios.get("/reserves/partner")
             .then(res => {
                 setData(res.data);
             })
@@ -68,7 +20,7 @@ function PartnerDashboard(props) {
     };
 
     useEffect(() => {
-        fetchTodos();
+        fetchReserves();
     }, []);
 
     const onLogout = () => {
@@ -76,9 +28,70 @@ function PartnerDashboard(props) {
         props.setRole("GUEST");
         props.history.push("/");
     };
-    function handleChange(value) {
-        console.log(`selected ${value}`);
-      }
+
+    const handleChange = (id,value) => {
+        console.log(`id = ${id}`);
+        const path ="/reserves/" + id;
+        console.log(path); 
+        axios.put(path,{ reserve_status: value })
+            .then(res => {
+                fetchReserves();
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+    const columns = [
+        {
+            title: 'Reserve_ID',
+            dataIndex: 'id',
+            key: 'id',
+        },
+        {
+            title: 'Date',
+            dataIndex: 'date',
+            key: 'id',
+        },
+        {
+            title: 'Time',
+            dataIndex: 'time',
+            key: 'id',
+        },
+        {
+            title: 'Persons',
+            dataIndex: 'number_guest',
+            key: 'id',
+        },
+        {
+            title: 'User_ID',
+            dataIndex: 'user_id',
+            key: 'id',
+        },
+        {
+            title: 'Code',
+            dataIndex: 'reserve_code',
+            key: 'id',
+        },
+        {
+            title: 'Comment',
+            dataIndex: 'note_comment',
+            key: 'id',
+        },
+        {
+            title: 'Action',
+            dataIndex: 'reserve_status',
+            render: (text, record) => {
+                return (
+                    <Select defaultValue={text} style={{ width: 120 }} onChange={value => handleChange(record.id, value)}>
+                        <Option key="1" value="confirmed" >confirmed</Option>
+                        <Option key="2" value="pending" >pending</Option>
+                        <Option key="3" value="cancel" >cancel</Option>
+                    </Select>
+                )
+            }
+        }
+    ];
+    
     return (
         <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -91,3 +104,4 @@ function PartnerDashboard(props) {
 }
 
 export default withRouter(PartnerDashboard)
+

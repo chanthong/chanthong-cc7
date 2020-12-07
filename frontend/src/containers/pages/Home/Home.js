@@ -10,10 +10,7 @@ function Home({ role, setRole }) {
 
    return (
       <>
-         {role === "GUEST" && <TopHeader />}
-         {role === "USER" && <BottomHeader role={role} setRole={setRole} />}         
-        
-         <ChanthongRole />
+       <ChanthongRole />
       </>
    )
 }
