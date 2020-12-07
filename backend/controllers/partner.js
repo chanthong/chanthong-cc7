@@ -118,11 +118,24 @@ const getPartnersByDistrict = async (req, res) => {
   }
 };
 
+const getPartnerByPrice = async (req, res) => {
+  try {
+    const { findPrice } = req.query;
+    console.log(findDis)
+    console.log("come in already");
+    const targetPartner = await db.Partner.findAll({ where: { price_range: findPrice } });
+    res.status(200).send({ targetPartner });
+  } catch {
+    res.status(500).send({ message: err.message })
+  }
+}
+
 module.exports = {
   register,
   login,
   getPartnerById,
   getPartners,
   deletePartner,
-  getPartnersByDistrict
+  getPartnersByDistrict,
+  getPartnerByPrice
 };

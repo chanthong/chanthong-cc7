@@ -29,11 +29,11 @@ function PartnerDashboard(props) {
         props.history.push("/");
     };
 
-    const handleChange = (id,value) => {
+    const handleChange = (id, value) => {
         console.log(`id = ${id}`);
-        const path ="/reserves/" + id;
-        console.log(path); 
-        axios.put(path,{ reserve_status: value })
+        const path = "/reserves/" + id;
+        console.log(path);
+        axios.put(path, { reserve_status: value })
             .then(res => {
                 fetchReserves();
             })
@@ -63,8 +63,8 @@ function PartnerDashboard(props) {
             key: 'id',
         },
         {
-            title: 'User_ID',
-            dataIndex: 'user_id',
+            title: 'username',
+            dataIndex: ["User", "username"],
             key: 'id',
         },
         {
@@ -91,7 +91,7 @@ function PartnerDashboard(props) {
             }
         }
     ];
-    
+
     return (
         <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>

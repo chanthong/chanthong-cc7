@@ -11,6 +11,7 @@ import '../BottomHeader/BottomHeader.css';
 
 function BottomHeader() {
    const { change, setRole, setChange } = useContext(UserContext);
+   console.log(localStorage.getARole());
 
    const removeToken = () => {
       localStorage.clearToken();
@@ -53,7 +54,12 @@ function BottomHeader() {
                   <div className="login" ><Link to="/login" style={{ color: "#DFCA95", fontFamily: 'Lobster' }}>Login</Link></div>
             }
             <div>
-               <Link to="/"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
+               {
+                  localStorage.getARole() ?
+                     <Link to="/partner_profile"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
+                     :
+                     <Link to="/profile"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
+               }
             </div>
          </div>
       </div>
