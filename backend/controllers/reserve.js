@@ -45,21 +45,15 @@ const createReserve = async (req, res) => {
     res.status(500).send({ messages: err.message });
   };
 };
-<<<<<<< HEAD
  
-=======
 
->>>>>>> backend-reserve
 const deleteReserve = async (req, res) => {
   const reserveId = req.params.id;
   await db.Reserve.destroy({ where: { id: reserveId, user_id: req.user.id } });
   res.status(204).send();
 };
-<<<<<<< HEAD
  
-=======
 
->>>>>>> backend-reserve
 const changeReserveStatus = async (req, res) => {
   const targetReserve = await db.Reserve.findOne({ where: { id: req.params.id } });
   if (targetReserve && targetReserve.partner_id === req.user.id) {
@@ -79,11 +73,8 @@ const getReserveByPartner = async (req, res) => {
     res.status(404).send({ message: "Target not found!!!" });
   }
 };
-<<<<<<< HEAD
  
-=======
 
->>>>>>> backend-reserve
 const getReserveByUser = async (req, res) => {
   const targetReserve = await db.Reserve.findAll({
     where: { user_id: req.user.id },
@@ -99,22 +90,14 @@ const getReserveByUser = async (req, res) => {
     res.status(404).send({ message: "Target not found!!!" });
   }
 };
-<<<<<<< HEAD
  
  
-=======
 
 
->>>>>>> backend-reserve
 module.exports = {
   createReserve,
   deleteReserve,
   getReserveByPartner,
   changeReserveStatus,
   getReserveByUser
-<<<<<<< HEAD
 };
-
-=======
-};
->>>>>>> backend-reserve
