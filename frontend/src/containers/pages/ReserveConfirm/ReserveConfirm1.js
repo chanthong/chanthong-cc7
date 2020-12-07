@@ -31,6 +31,7 @@ function ReserveConfirm() {
     const ReserveConfirmHeader = styled.h1`
     font-family: 'Mitr', sans-serif;
     font-size: 1.3rem;
+    padding-left: 10px;
     `
 
     const ReservationKey = styled.td`
@@ -78,7 +79,6 @@ function ReserveConfirm() {
 
     return (
         <div>
-            <ReserveMock />
             <ConfirmContainer>
                 <DetailContainer>
                     <ReserveConfirmHeader>Reservation Summary</ReserveConfirmHeader>
@@ -120,6 +120,8 @@ function ReserveConfirm() {
                             <ReservationValue>50% Discount</ReservationValue>
                         </tr>
                     </table>
+
+                    
                 </DetailContainer>
             </ConfirmContainer>
         </div>
