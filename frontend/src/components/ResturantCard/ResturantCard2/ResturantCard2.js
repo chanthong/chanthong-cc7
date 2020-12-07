@@ -5,29 +5,35 @@ import axios from '../../../config/axios';
 import { notification } from 'antd';
 import { useHistory } from 'react-router-dom';
 import UserContext from '../../../context/UserContext';
-import cardElement from '../../../containers/uploadfile/cardElement.png'
+import cardElement from '../../../containers/uploadfile/cardElement.png';
+import LocalStorageService from "../../../services/localStorage";
 
 function ResturantCard2({ item }) {
    const history = useHistory();
    const { setReservePartner } = useContext(UserContext);
 
    const onReservePartner = () => {
-      axios.get(`/partners/${item.id}`)
-         .then(res => {
+      console.log(LocalStorageService.getRole())
+      if (LocalStorageService.getRole() !== "USER") {
+         history.push("/login")
+      } else {
+         axios.get(`/partners/${item.id}`)
+            .then(res => {
 
-            notification.success({
-               description: "go to reserve page"
+               notification.success({
+                  description: "go to reserve page"
+               })
+               console.log(res.data.targetPartner);
+               setReservePartner(res.data.targetPartner);
+               history.push(`/reserve/${res.data.targetPartner.id}`);
             })
-            console.log(res.data.targetPartner);
-            setReservePartner(res.data.targetPartner);
-            history.push(`/reserve/${res.data.targetPartner.id}`);
-         })
-         .catch(err => {
-            console.log(err);
-            notification.error({
-               description: "cannot goto reserve page"
-            })
-         });
+            .catch(err => {
+               console.log(err);
+               notification.error({
+                  description: "cannot goto reserve page"
+               })
+            });
+      }
    }
 
    return (
@@ -48,8 +54,6 @@ function ResturantCard2({ item }) {
    )
 }
 
-export default ResturantCard2;
-
 {/* <p>{card.Categories.map(
    (p, i) => {
       if (i === 0) {
@@ -60,3 +64,4 @@ export default ResturantCard2;
    })
 }
 </p> */}
+export default ResturantCard2;
