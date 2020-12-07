@@ -7,7 +7,7 @@ function District() {
     const [district, setDistrict] = useState([]);
 
     const fetchPartnersByDistrict = async () => {
-        const res = await axios.get(`http://localhost:5555/partners/district?district=${"Ratchada"}`);
+        const res = await axios.get(`http://localhost:5555/partners/district?findDis=Ratchada`);
         setDistrict(res.data.targetPartner);
     }
 
@@ -16,10 +16,13 @@ function District() {
     }, []);
 
     return (
-        <div>
-            <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>District:</h1>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-                {district.map((item) => <ResturantCard2 item={item} />)}
+        <div style={{ display: 'flex', flexDirection: "column" }}>
+            <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>Recommend by Chanthong</h1>
+            <div style={{ display: "flex" }}>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                    {district.map((item) => <ResturantCard2 item={item} />)}
+                    {/* {card.map((item) => <ResturantCard item={item} />)} */}
+                </div>
             </div>
         </div>
     )

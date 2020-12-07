@@ -30,5 +30,11 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: true,
     });
 
+  Reserve.associate = models => {
+    Reserve.belongsTo(models.Promotion, { foreignKey: "promotion_id" });
+    Reserve.belongsTo(models.User, { foreignKey: "user_id" });
+    Reserve.belongsTo(models.Partner, { foreignKey: "partner_id" });
+  };
+
   return Reserve;
 }

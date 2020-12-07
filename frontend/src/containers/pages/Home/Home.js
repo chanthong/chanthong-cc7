@@ -12,8 +12,9 @@ function Home({ role, setRole }) {
 
    return (
       <>
+         <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>Recommend by Chanthong</h1>
          <ChanthongRole />
-         <District/>
+         <District />
       </>
    )
 }
