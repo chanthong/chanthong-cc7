@@ -56,10 +56,29 @@ function ReserveConfirm() {
     word-wrap: normal;
     margin-bottom: 5px;
     `
+    // const onFinish = () => {
+    //     axios.post(`/reserves/${id}`, {
+    //         date,
+    //         time,
+    //         number_guest,
+    //     })
+    //         .then(res => {
+    //             notification.success({
+    //                 description: "Reserve successfully"
+    //             });
+    //             history.push("/");
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //             notification.error({
+    //                 description: "Something went wrong."
+    //             });
+    //         });
+    // };
 
     return (
         <div>
-            <ReserveMock/>
+            <ReserveMock />
             <ConfirmContainer>
                 <DetailContainer>
                     <ReserveConfirmHeader>Reservation Summary</ReserveConfirmHeader>
@@ -94,7 +113,7 @@ function ReserveConfirm() {
                         </tr>
                         <tr>
                             <ReservationKey>Note:</ReservationKey>
-                            <ReservationValue>Window Side Table <br/> Bring own wine <br/> Allergic to soy sauce</ReservationValue>
+                            <ReservationValue>Window Side Table <br /> Bring own wine <br /> Allergic to soy sauce</ReservationValue>
                         </tr>
                         <tr>
                             <ReservationKey>Promotion:</ReservationKey>

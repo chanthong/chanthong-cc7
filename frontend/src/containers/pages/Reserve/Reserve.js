@@ -54,6 +54,10 @@ function Reserve({ user: { username, name, lname, email, phone_number, current_p
 			});
 	};
 
+	const handleConfirm = () => {
+		history.push("/reserve_confirm")
+	}
+
 	const RestNameContainer = styled.div`
 	width: 100vw;
 	height: 50px;
@@ -283,6 +287,7 @@ function Reserve({ user: { username, name, lname, email, phone_number, current_p
 	align-items: flex-start;
 	`
 
+
 	return (
 
 		<div className="outerFramePartner" style={{ backgroundColor: "white" }}>
@@ -354,9 +359,9 @@ function Reserve({ user: { username, name, lname, email, phone_number, current_p
 							</PromotionDiv>
 						</PromotionDivContainer>
 					</ReserveDetailContainer>
-						<ReserveButtonContainer>
-							<ReserveButton src={reserveButton}/>
-						</ReserveButtonContainer>
+					<ReserveButtonContainer>
+						<ReserveButton src={reserveButton} onClick={handleConfirm} />
+					</ReserveButtonContainer>
 				</DetailContainer>
 			</RestDetailContainer>
 		</div>
