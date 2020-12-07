@@ -77,7 +77,6 @@ const roles = {
     components.reserve_confirm,
   ],
   PARTNER: [
-    components.home,
     components.partner_login,
     components.partner_register,
     components.partner_profile,

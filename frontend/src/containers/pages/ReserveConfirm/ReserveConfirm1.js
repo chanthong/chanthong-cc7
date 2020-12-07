@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-
+import React from 'react';
+import styled from 'styled-components';
+import axios from "../../../config/axios";
 
 function ReserveConfirm() {
     const ReserveMock = styled.div`

@@ -1,11 +1,13 @@
 import { notification } from 'antd';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import axios from '../../../config/axios';
 import LocalStorageService from '../../../services/localStorage';
 import jwtDecode from 'jwt-decode';
+import UserContext from '../../../context/UserContext';
 
 function PartnerLogin(props) {
+    const { change, setChange } = useContext(UserContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -28,6 +30,7 @@ function PartnerLogin(props) {
                 });
                 LocalStorageService.setToken(res.data.token);
                 LocalStorageService.setARole(res.data.role);
+                setChange(!change);
                 props.setRole("PARTNER");
                 props.setPartner(jwtDecode(res.data.token));
                 props.history.push("/partner_dashboard");

@@ -32,7 +32,8 @@ const allLocal = {
   setToken,
   clearToken,
   getRole,
-  setARole
+  setARole,
+  getARole
 }
 
 export default allLocal;

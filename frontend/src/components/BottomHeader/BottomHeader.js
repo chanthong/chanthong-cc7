@@ -10,16 +10,19 @@ import '../BottomHeader/BottomHeader.css';
 
 
 function BottomHeader() {
-   const { change, setRole } = useContext(UserContext);
+   const { change, setRole, setChange } = useContext(UserContext);
+   console.log(localStorage.getARole());
+
    const removeToken = () => {
       localStorage.clearToken();
       setRole("GUEST");
       notification.success({
          description: "Logout success."
       });
+      setChange(!change);
    }
-   const [search, setSearch] = useState("");
 
+   const [search, setSearch] = useState("");
 
    const searchHandler = (e) => {
       setSearch(e.target.value);
@@ -28,14 +31,14 @@ function BottomHeader() {
 
 
    return (
-      <div style={{width: "1930px", position: "relative"}}>
+      <div style={{ width: "1930px", position: "relative" }}>
          <div className="bigOuterPlate">
             <div className="bigInnerPlate"></div>
          </div>
 
-         <div className="outerFrameHeader" style={{ backgroundColor: "white" }}>
+         <div className="outerFrameHeader" >
             <div className="outerRed"></div>
-            
+
             <div className="chanthong1 font-lobster" style={{ fontSize: "270%", top: "17px", left: "940px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
 
             <div>
@@ -51,7 +54,12 @@ function BottomHeader() {
                   <div className="login" ><Link to="/login" style={{ color: "#DFCA95", fontFamily: 'Lobster' }}>Login</Link></div>
             }
             <div>
-               <Link to="/"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
+               {
+                  localStorage.getARole() ?
+                     <Link to="/partner_profile"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
+                     :
+                     <Link to="/profile"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
+               }
             </div>
          </div>
       </div>

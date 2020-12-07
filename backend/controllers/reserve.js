@@ -18,7 +18,7 @@ const createReserve = async (req, res) => {
           note_comment,
           review_star,
           review,
-          reserve_status,
+          reserve_status: "CONFIRM",
           user_id: req.user.id,
           partner_id: id,
         });
@@ -66,7 +66,14 @@ const changeReserveStatus = async (req, res) => {
   }
 };
 const getReserveByPartner = async (req, res) => {
-  const targetReserve = await db.Reserve.findAll({ where: { partner_id: req.user.id }, attributes: ["id", "date", "time", "number_guest", "reserve_status", "reserve_code", "note_comment", "user_id", "partner_id"] });
+  const targetReserve = await db.Reserve.findAll({
+    where: { partner_id: req.user.id },
+    attributes: ["id", "date", "time", "number_guest", "reserve_status", "reserve_code", "note_comment", "partner_id"],
+    include: {
+      model: db.User,
+      attributes: ["username"]
+    }
+  });
   if (targetReserve) {
     res.status(200).send(targetReserve);
   } else {
