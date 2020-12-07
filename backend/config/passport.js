@@ -8,10 +8,11 @@ const option = {
 };
 
 const jwtStrategy = new Strategy(option, async (payload, done) => {
+    console.log('first li')
     const targetPartner = await db.Partner.findOne({ where: { id: payload.id } });
     const targetUser = await db.User.findOne({ where: { id: payload.id } });
     // const targetReserve = await db.Reserve.findOne({ where: { id: payload.id } });
-
+    console.log('pssport')
     if (targetPartner) {
         done(null, targetPartner);
     } else if (targetUser) {
