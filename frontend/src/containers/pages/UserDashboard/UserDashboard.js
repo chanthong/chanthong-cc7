@@ -1,4 +1,4 @@
-import { Table} from 'antd';
+import { Table } from 'antd';
 import { Button } from 'antd/lib/radio';
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom';
@@ -7,11 +7,11 @@ import { Select } from 'antd';
 import LocalStorageService from '../../../services/localStorage';
 
 function UserDashboard(props) {
-    
+
     const { Option } = Select;
     const [data, setData] = useState([]);
     const columns = [
-        
+
         {
             title: 'Date',
             dataIndex: 'date',
@@ -38,31 +38,32 @@ function UserDashboard(props) {
             key: 'note_comment',
         },
         {
-         title: 'Reserve status',
-         dataIndex: 'reserve_status',
-         key: 'reserve_status',
+            title: 'Reserve status',
+            dataIndex: 'reserve_status',
+            key: 'reserve_status',
         },
         {
-         title: 'Restaurant name',
-         dataIndex: ["Partner","restaurant_name"],
-         key: 'restaurant_name',
+            title: 'Restaurant name',
+            dataIndex: ["Partner", "restaurant_name"],
+            key: 'restaurant_name',
         },
         {
             title: 'Action',
             dataIndex: 'reserve_status',
             key: 'reserve_status',
-            render: (text,record) => {return(
-                <Select defaultValue={text} style={{ width: 120 }} onChange={handleChange}>
-                <Option value="confirm">confirm</Option>
-                <Option value="pending">pending</Option>
-              </Select>)
+            render: (text, record) => {
+                return (
+                    <Select defaultValue={text} style={{ width: 120 }} onChange={handleChange}>
+                        <Option value="CONFIRM">CONFIRM</Option>
+                        <Option value="PENDING">PENDING</Option>
+                    </Select>)
             }
         }
     ];
     const fetchReserves = () => {
         axios.get("/reserves/getReserveByUser")
             .then(res => {
-               console.log(res.data);
+                console.log(res.data);
                 setData(res.data);
             })
             .catch(err => {
@@ -79,13 +80,13 @@ function UserDashboard(props) {
         props.setRole("GUEST");
         props.history.push("/");
     };
-    function handleChange(value,status) {
+    function handleChange(value, status) {
         // console.dir(`selected ${value}`);
         console.log(status)
         const st = status
         console.log(`status = ${st}`);
         console.log(value);
-      }
+    }
     return (
         <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>

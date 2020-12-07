@@ -18,7 +18,7 @@ const createReserve = async (req, res) => {
           note_comment,
           review_star,
           review,
-          reserve_status,
+          reserve_status: "CONFIRM",
           user_id: req.user.id,
           partner_id: id,
         });
