@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Partner.associate = (models) => {
         Partner.hasMany(models.Partner_Category, { foreignKey: "partner_id" });
+        Partner.hasMany(models.Reserve, { foreignKey: "partner_id" });
     };
 
     return Partner;

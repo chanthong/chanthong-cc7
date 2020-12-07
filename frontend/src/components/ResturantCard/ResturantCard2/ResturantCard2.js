@@ -31,7 +31,8 @@ function ResturantCard2({ item }) {
    }
 
    return (
-      <div style={{ position: "relative", background: `url(${cardElement})`, backgroundSize: "contain", width: "219px", height: "308px", margin: "5px" }}>
+
+      <div style={{ position: "relative", background: `url(${cardElement})`, backgroundSize: "contain", width: "219px", height: "308px" }}>
          <div style={{ position: "absolute", top: "50px", left: "47px" }}>
             <img style={{ marginTop: "8px", borderRadius: "50%", width: "125px", height: "125px", position: "relative" }} alt="รูปภาพร้านอาหาร" src={`${BASE_BACKEND_URL}/${item.partners_picture}`} />
          </div>
@@ -43,6 +44,7 @@ function ResturantCard2({ item }) {
             <button onClick={onReservePartner} className="btn">View More</button>
          </div>
       </div>
+
    )
 }
 
