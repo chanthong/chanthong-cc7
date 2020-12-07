@@ -7,6 +7,7 @@ import PartnerProfile from "../containers/pages/PartnerProfile/PartnerProfile";
 import PartnerDashboard from "../containers/pages/PartnerDashboard/PartnerDashboard";
 import Reserve from "../containers/pages/Reserve/Reserve";
 import Profile from "../containers/pages/Profile/Profile";
+import UserDashboard from "../containers/pages/UserDashboard/UserDashboard";
 
 
 const components = {
@@ -38,6 +39,10 @@ const components = {
     path: "/partner_dashboard",
     page: PartnerDashboard
   },
+  user_dashboard: {
+    path: "/user_dashboard",
+    page: UserDashboard
+  },
   reserve: {
     path: "/reserve/:id",
     page: Reserve
@@ -62,7 +67,8 @@ const roles = {
     components.login,
     components.register,
     components.reserve,
-    components.profile
+    components.profile,
+    components.user_dashboard
   ],
   PARTNER: [
     components.home,

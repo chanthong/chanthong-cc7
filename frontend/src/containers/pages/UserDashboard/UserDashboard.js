@@ -5,16 +5,13 @@ import { withRouter } from 'react-router-dom';
 import axios from '../../../config/axios';
 import { Select } from 'antd';
 import LocalStorageService from '../../../services/localStorage';
-function PartnerDashboard(props) {
+
+function UserDashboard(props) {
     
     const { Option } = Select;
     const [data, setData] = useState([]);
     const columns = [
-        {
-            title: 'Reserve_ID',
-            dataIndex: 'id',
-            key: 'id',
-        },
+        
         {
             title: 'Date',
             dataIndex: 'date',
@@ -31,11 +28,6 @@ function PartnerDashboard(props) {
             key: 'number_guest',
         },
         {
-            title: 'User_ID',
-            dataIndex: 'user_id',
-            key: 'user_id',
-        },
-        {
             title: 'Code',
             dataIndex: 'reserve_code',
             key: 'reserve_code',
@@ -44,6 +36,16 @@ function PartnerDashboard(props) {
             title: 'Comment',
             dataIndex: 'note_comment',
             key: 'note_comment',
+        },
+        {
+         title: 'Reserve status',
+         dataIndex: 'reserve_status',
+         key: 'reserve_status',
+        },
+        {
+         title: 'Restaurant name',
+         dataIndex: ["Partner","restaurant_name"],
+         key: 'restaurant_name',
         },
         {
             title: 'Action',
@@ -57,9 +59,10 @@ function PartnerDashboard(props) {
             }
         }
     ];
-    const fetchTodos = () => {
-        axios.get("/reserves")
+    const fetchReserves = () => {
+        axios.get("/reserves/getReserveByUser")
             .then(res => {
+               console.log(res.data);
                 setData(res.data);
             })
             .catch(err => {
@@ -68,7 +71,7 @@ function PartnerDashboard(props) {
     };
 
     useEffect(() => {
-        fetchTodos();
+        fetchReserves();
     }, []);
 
     const onLogout = () => {
@@ -86,7 +89,7 @@ function PartnerDashboard(props) {
     return (
         <div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <h1>Partner Dashboard</h1>
+                <h1>User Dashboard</h1>
                 <Button onClick={onLogout}>Logout</Button>
             </div>
             <Table columns={columns} dataSource={data} />
@@ -94,4 +97,4 @@ function PartnerDashboard(props) {
     )
 }
 
-export default withRouter(PartnerDashboard)
+export default withRouter(UserDashboard)
