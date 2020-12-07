@@ -14,7 +14,7 @@ function App() {
   const [change, setChange] = useState(false);
 
   return (
-    <>
+    <div style={{ backgroundColor: "#D85B55" }}>
       <BrowserRouter>
         <UserContext.Provider value={{ role, setRole, card, setCard, reservePartner, setReservePartner, change, setChange }}>
           <NavBar />
@@ -22,7 +22,7 @@ function App() {
           <Footer />
         </UserContext.Provider>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
