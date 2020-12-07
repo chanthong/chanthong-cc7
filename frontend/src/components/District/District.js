@@ -17,7 +17,7 @@ function District() {
 
     return (
         <div style={{ display: 'flex', flexDirection: "column" }}>
-            <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>Recommend by Chanthong</h1>
+            <h1 style={{ textAlign: "start", fontSize: "24px", fontStyle: "italic" }}>Recommend by ratchatewi</h1>
             <div style={{ display: "flex" }}>
                 <div style={{ display: "flex", justifyContent: "center" }}>
                     {district.map((item) => <ResturantCard2 item={item} />)}

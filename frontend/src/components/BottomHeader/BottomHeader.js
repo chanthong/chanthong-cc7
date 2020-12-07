@@ -36,13 +36,13 @@ function BottomHeader() {
          <div className="outerFrameHeader" style={{ backgroundColor: "white" }}>
             <div className="outerRed"></div>
             
-            <div className="chanthong1 font-lobster" style={{ fontSize: "220%", top: "30px", left: "930px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
+            <div className="chanthong1 font-lobster" style={{ fontSize: "270%", top: "17px", left: "940px", color: "#D85B55", textShadow: "none" }}>Chanthong</div>
 
             <div>
-               <img className="plateLeft" src={PlateImg} alt="plate" style={{ left: "57px", top: "40px", zIndex: "1200", width: "50px", height: "50px" }}></img>
+               <img className="plateLeft" src={PlateImg} alt="plate" style={{ left: "57px", top: "20px", zIndex: "1200", width: "50px", height: "50px" }}></img>
             </div>
             <label>Search:</label>
-            <input placeholder="search" className="searchTab font-mitr" style={{ left: "60px", top: "50px", zIndex: "1100" }} value={search} onChange={searchHandler} />
+            <input placeholder="search" className="searchTab font-mitr" style={{ left: "60px", top: "30px", zIndex: "1100" }} value={search} onChange={searchHandler} />
             <div className="about"><Link to="/" style={{ color: "#DFCA95", fontFamily: 'Lobster' }}>About us</Link></div>
             <div className="special"><Link to="/" style={{ color: "#DFCA95", fontFamily: 'Lobster' }}>Special Deal</Link></div>
             {
