@@ -63,11 +63,11 @@
 
   .outerFrameHeader {
     width: 100vw;
-    /* height: 21vh; */
+    height: 21vh;
     position: relative;
     object-fit: cover;
     /* overflow: hidden; */
-    background-color: aqua;
+    background-color: #D85B55;
   }
 
   
