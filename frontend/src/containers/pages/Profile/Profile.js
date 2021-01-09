@@ -1,13 +1,14 @@
 import React from 'react'
 import './Profile.css'
 import PlateImg from '../../uploadfile/dishelement.png'
-import DiningImg from '../../uploadfile/diningset.png'
+import DiningImg from '../../uploadfile/diningset.png';
 
-function Profile({ user: { username, name, lname, email, phone_number, current_point } }) {
+function Profile({ user: { username, name, lname, email, phone_number, current_point, profile_url } }) {
+    console.log(profile_url);
     return (
         <div className="outerFrame">
             <div className="outerCircle"></div>
-            
+
 
             {/* Left-Side */}
 
@@ -58,7 +59,9 @@ function Profile({ user: { username, name, lname, email, phone_number, current_p
             {/* Right-Side  */}
 
             <div className="numberCircle">{current_point}</div>
-            <div className="profileCircle"></div>
+            <div className="profileCircle">
+                <img src={profile_url} alt="รูปโปรไฟล์" />
+            </div>
 
             <div className="leftTab1 font-mitr">Reserve History</div>
             <div className="leftTab2 font-mitr">My Reward</div>
@@ -78,7 +81,7 @@ function Profile({ user: { username, name, lname, email, phone_number, current_p
             </div>
             <div className="nameLeftDownTab3 font-mitr">Phone Number:</div>
             <div className="leftDownTab3 font-mitr">{phone_number}</div>
-    
+
         </div>
     )
 }
