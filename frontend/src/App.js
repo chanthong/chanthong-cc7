@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import UserContext from './context/UserContext';
 import Footer from './containers/pages/Footer/Footer';
 import NavBar from '../src/components/Navbar/Navbar';
+import { CssBaseline } from '@material-ui/core';
 
 function App() {
   const [role, setRole] = useState(LocalStorageService.getRole());
@@ -17,6 +18,7 @@ function App() {
     <>
       <BrowserRouter>
         <UserContext.Provider value={{ role, setRole, card, setCard, reservePartner, setReservePartner, change, setChange }}>
+        <CssBaseline />
           <NavBar />
           <PrivateRoutes />
           <Footer />

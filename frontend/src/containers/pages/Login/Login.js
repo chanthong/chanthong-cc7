@@ -12,156 +12,46 @@ import LocalStorageService from "../../../services/localStorage";
 import jwtDecode from 'jwt-decode';
 import UserContext from '../../../context/UserContext';
 
-const SpoonContainer = styled.div`
-   width: 400px;
-   display: flex;
-   align-items: center;
-   position: relative;
-   margin-left:80px;
+//MUI
 
-   `;
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
-const SpoonHead = styled.div`
-   width: 150px;
-   height: 96px;
-   border-radius: 42% 58% 58% 42% / 50% 50% 50% 50%;
-   background-color: rgba(200, 200,200, 1);
-   box-shadow: inset 10px 10px 10px rgba(30, 30, 30, 0.4),
-               inset -10px -10px 8px rgba(245, 245, 245, 0.6),
-               5px 5px 5px rgba(30, 30, 30, 0.4);
-   position: absolute;
-   right: 0px;
-   `;
-
-const SpoonHandleInput = styled.input`
-   width: 250px;
-   height: 24px;
-   background-color: rgba(200, 200,200, 1);
-   border: none;
-   border-radius: 15px;
-   position: absolute;
-   left: 0px;
-   clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
-   box-shadow: inset 5px 5px 3px rgba(30, 30, 30, 0.4),
-               inset -5px -5px 3px rgba(245, 245, 245, 0.5),
-               5px 5px 5px rgba(30, 30, 30, 0.4);
-   padding: 15px;
-   outline: none;
-   font-size: 16px;
-   font-weight: 700;
-   `;
-
-
-const ForkContainer = styled.div`
-   width: 400px;
-   height: 100px;
-   display: flex;
-   align-items: center;
-   position: relative;
-   margin-left:80px;
-   `;
-
-const ForkHandleInput = styled.input`
-   width: 250px;
-   height: 24px;
-   background-color: rgba(200, 200,200, 1);
-   border: none;
-   border-radius: 15px;
-   position: absolute;
-   left: 0px;
-   clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
-   box-shadow: inset 5px 5px 3px rgba(30, 30, 30, 0.4),
-               inset -5px -5px 3px rgba(245, 245, 245, 0.5),
-               5px 5px 5px rgba(30, 30, 30, 0.4);
-   padding: 15px;
-   outline: none;
-   font-size: 16px;
-   font-weight: 700;
-   `;
-
-const ForkBody = styled.div`
-   width: 60px;
-   height: 86px;
-   border-radius: 30% 0 0 30%;
-   clip-path: polygon(0 0, 100% 7%, 100% 93%, 0 100%);
-   background-color: rgba(200, 200,200, 1);
-   position: absolute;
-   left: 250px;
-   box-shadow: inset 10px 10px 10px rgba(30, 30, 30, 0.4),
-               
-               5px 5px 5px rgba(30, 30, 30, 0.4);
-   `;
-
-const Fork1 = styled.div`
-   width: 93px;
-   height: 12px;
-   display: flex;
-   flex-direction: column;
-   position: absolute;
-   background-color: rgba(200, 200,200, 1);
-   right: 0;
-   top: 17px;
-   border-radius: 0 5px 5px 0;
-   transform: rotate(5deg);
-   `;
-
-const Fork2 = styled.div`
-   width: 93px;
-   height: 12px;
-   display: flex;
-   flex-direction: column;
-   position: absolute;
-   background-color: rgba(200, 200,200, 1);
-   right: 0;
-   top: 35px;
-   border-radius: 0 5px 5px 0;
-   `;
-
-const Fork3 = styled.div`
-   width: 93px;
-   height: 12px;
-   display: flex;
-   flex-direction: column;
-   position: absolute;
-   background-color: rgba(200, 200,200, 1);
-   right: 0;
-   top: 52px;
-   border-radius: 0 5px 5px 0;
-   `;
-
-
-const Fork4 = styled.div`
-   width: 93px;
-   height: 12px;
-   display: flex;
-   flex-direction: column;
-   position: absolute;
-   background-color: rgba(200, 200,200, 1);
-   right: 0;
-   bottom: 17px;
-   border-radius: 0 5px 5px 0;
-   transform: rotate(-5deg);
-   `;
-
-const LoginElement = styled.img`
-   width: auto;
-   height: 120px;
-   object-fit: cover;
-   margin: 20px;
-   margin-left:100px;
-   `;
-
-const RegisElement = styled.img`
-   width: auto;
-   height: 120px;
-   object-fit: cover;
-   margin: 20px;
-   margin-left:30px;
-   `;
+const useStyles = makeStyles((theme) => ({
+   paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+   },
+   avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+   },
+   form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+   },
+   submit: {
+      margin: theme.spacing(3, 0, 2),
+   },
+}));
 
 function Login(props) {
 
-   const{setChange} = useContext(UserContext)
+   const classes = useStyles();
+
+   const { setChange } = useContext(UserContext)
 
    const history = useHistory();
 
@@ -174,9 +64,7 @@ function Login(props) {
          password
       })
          .then(res => {
-            notification.success({
-               description: "Login success."
-            });
+            alert("Login success.");
             LocalStorageService.setToken(res.data.token);
             props.setRole("USER");
             props.setUser(jwtDecode(res.data.token));
@@ -184,10 +72,7 @@ function Login(props) {
             history.push('/profile');
          })
          .catch(err => {
-            console.log(err);
-            notification.error({
-               description: "Login failed."
-            });
+            alert("Login failed.");
          });
    };
 
@@ -203,30 +88,66 @@ function Login(props) {
 
 
    return (
-      <div className="background-image">
-         <h1 className="Lobster logochanthong ">Chanthong</h1>
-         <p className="Lobster textuser">Username</p>
-         <SpoonContainer >
-            <SpoonHandleInput onChange={userNameHandler} maxLength="25"></SpoonHandleInput>
-            <SpoonHead></SpoonHead>
-         </SpoonContainer>
-         <p className="Lobster textpw">Password</p>
-         <div>
-            <ForkContainer>
-               <ForkHandleInput type="password" onChange={passwordHandler} />
-               <ForkBody />
-               <Fork1 />
-               <Fork2 />
-               <Fork3 />
-               <Fork4 />
-            </ForkContainer>
+      <Container component="main" maxWidth="xs">
+         <CssBaseline />
+         <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+               <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+               Sign in
+        </Typography>
+            <form className={classes.form} noValidate>
+               <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  autoFocus
+               />
+               <TextField
+                  variant="outlined"
+                  margin="normal"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+               />
+               {/* <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          /> */}
+               <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+               >
+                  Sign In
+          </Button>
+               <Grid container>
+                  <Grid item xs>
+                     {/* <Link href="#" variant="body2">
+                        Forgot password?
+                     </Link> */}
+                  </Grid>
+                  <Grid item>
+                     <Link to="/register" variant="body2">
+                        {"Don't have an account? Sign Up"}
+                     </Link>
+                  </Grid>
+               </Grid>
+            </form>
          </div>
-         <p className="Mitr textforget">Forget password</p>
-         <LoginElement className="btn-login" onClick={onFinish} src={logimg} />
-         <Link to="/register">
-               <RegisElement className="btn-login" src={Regisimg} />
-         </Link>
-      </div>
+      </Container>
    )
 }
 

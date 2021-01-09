@@ -2,13 +2,48 @@ import React, { useState } from 'react';
 import '../PartnerRegister/PartnerRegister.css';
 import axios from "../../../config/axios";
 import { withRouter } from "react-router-dom";
-import { Button, Upload, message, notification } from 'antd';
+
 import PlateImg from '../../uploadfile/dishelement.png';
 import RegisterImg from '../../uploadfile/register.png';
 import jwtDecode from 'jwt-decode';
 import LocalStorageService from '../../../services/localStorage';
 import { BASE_BACKEND_URL } from '../../../config/constants';
 import { UploadOutlined } from '@ant-design/icons';
+
+//MUI
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+
+const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
 
 function PartnerRegister(props) {
     const [username, setUsername] = useState("");
@@ -66,15 +101,11 @@ function PartnerRegister(props) {
         console.log("Comein");
         await axios.post("/partners/register", { username, password, restaurant_name, email_address, phone_number, price_range, address, district, province, partners_picture })
             .then(res => {
-                notification.success({
-                    description: "Signup successfully!!"
-                });
+                alert("Signup successfully!!");
             })
             .catch(err => {
                 console.log(err);
-                notification.error({
-                    description: "Something went wrong."
-                });
+                alert("Something went wrong.");
             });
 
         await axios.post("/partners/login", {
@@ -82,9 +113,7 @@ function PartnerRegister(props) {
             password
         })
             .then(res => {
-                notification.success({
-                    description: "Login success."
-                });
+                alert("Login success.");
                 LocalStorageService.setToken(res.data.token);
                 LocalStorageService.setARole(res.data.role);
                 // console.log(res.data);
@@ -94,180 +123,131 @@ function PartnerRegister(props) {
             })
             .catch(err => {
                 console.log(err);
-                notification.error({
-                    description: "Login failed."
-                });
+                alert("Login failed.");
             });
 
         await axios.post(`/partner_category/${category}`)
             .then(res => {
-                notification.success({
-                    description: "Category successfully!!"
-                });
+                alert("Category successfully!!");
             })
             .catch(err => {
-                notification.error({
-                    description: "Failed Partner_category."
-                });
+                alert("Failed Partner_category.");
             })
         await axios.post(`/partner_category/${theme}`)
             .then(res => {
-                notification.success({
-                    description: "Category successfully!!"
-                });
+                alert("Category successfully!!");
             })
             .catch(err => {
-                notification.error({
-                    description: "Failed Partner_category."
-                });
+                    alert("Failed Partner_category.")
             })
         props.history.push("/partner_profile");
     };
 
-    const propsUpload = {
-        name: 'img',
-        multiple: false,
-        action: `${BASE_BACKEND_URL}/uploads/`,
-        onChange(info) {
-            const { status } = info.file;
-            if (status !== 'uploading') {
-                console.log(info.file, info.fileList);
-            }
-            if (status === 'done') {
-                setFileName(info.file.response.url);
-                message.success(`${info.file.name} file upload successfully.`);
-            } else if (status === "error") {
-                message.error(`${info.file.name} file upload failed.`)
-            }
-        },
-    };
+    // const propsUpload = {
+    //     name: 'img',
+    //     multiple: false,
+    //     action: `${BASE_BACKEND_URL}/uploads/`,
+    //     onChange(info) {
+    //         const { status } = info.file;
+    //         if (status !== 'uploading') {
+    //             console.log(info.file, info.fileList);
+    //         }
+    //         if (status === 'done') {
+    //             setFileName(info.file.response.url);
+    //             message.success(`${info.file.name} file upload successfully.`);
+    //         } else if (status === "error") {
+    //             message.error(`${info.file.name} file upload failed.`)
+    //         }
+    //     },
+    // };
+    const classes = useStyles();
 
     return (
-        <div className="outerFramePartner">
-            <div className="outerRedPartner"></div>
-
-            <div className="welcome font-lobster" style={{ fontSize: "180%", top: "40px" }}>Welcome to</div>
-            <div className="chanthong font-lobster" style={{ fontSize: "280%", top: "80px", left: "200px" }}>Chanthong Community</div>
-
-            {/* 1st column */}
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "200px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "180px" }}>Username:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "200px" }} value={username} onChange={usernameHandler} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "270px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "250px" }}>Password:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "270px" }} value={password} onChange={passwordHandler} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "340px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "320px" }}>Re-enter Password:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "340px" }} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "410px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "390px" }}>Email Address:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "410px" }} value={email_address} onChange={email_addressHandler} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "480px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "460px" }}>Name of Restaurant:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "480px" }} value={restaurant_name} onChange={restaurant_nameHandler} />
-
-            {/* 2nd column */}
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "200px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "180px" }}>Phone Number:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "200px" }} value={phone_number} onChange={phone_numberHandler} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "270px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "250px" }}>Address:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "330px", top: "270px" }} value={address} onChange={addressHandler} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "340px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "320px" }}>District:</div>
-            <input className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "340px" }} value={district} onChange={districtHandler} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "340px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "570px", top: "320px" }}>Province:</div>
-            <input className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "340px" }} value={province} onChange={provinceHandler} />
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "410px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "390px" }}>Category:</div>
-            <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "410px" }}>
-                <select onChange={categoryHandler} style={{ background: "none", outline: "none", border: "none" }}>
-                    <option value="">Select</option>
-                    <option value="1">thai</option>
-                    <option value="2">Chinese</option>
-                    <option value="3">Japanese</option>
-                </select>
-            </div>
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "410px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "570px", top: "390px" }}>Theme:</div>
-            <div className="usernameTabPartner3 font-mitr" style={{ left: "555px", top: "410px" }}>
-                <select onChange={themeHandler} style={{ background: "none", outline: "none", border: "none" }}>
-                    <option value="">Select</option>
-                    <option value="4">Fine Dining</option>
-                    <option value="5">Hot Cuisine</option>
-                    <option value="6">At Twilight</option>
-                    <option value="7">Buffet</option>
-                </select>
-            </div>
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "327px", top: "480px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "340px", top: "460px" }}>Price per Person:</div>
-            <div className="usernameTabPartner3 font-mitr" style={{ left: "330px", top: "480px" }}>
-                <select onChange={price_rangeHandler} style={{ background: "none", outline: "none", border: "none" }}>
-                    <option value="">Select</option>
-                    <option value="300 - 500">300 - 500</option>
-                    <option value="600 - 1500">600 - 1500</option>
-                    <option value="3000++">3000++</option>
-                </select>
-            </div>
-
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "552px", top: "480px" }}></img>
-            </div>
-            <Upload {...propsUpload} >
-                <div className="usernamePartner font-mitr" style={{ left: "570px", top: "460px" }}>Upload your best photos:</div>
-                <div className="usernameTabPartner2 font-mitr" style={{ left: "555px", top: "480px" }}>
-                    <Button style={{ backgroundColor: "green", position: "absolute", top: "400px" }} icon={<UploadOutlined />}>Click to Upload</Button>
-                </div>
-                <div className="usernameTabPartner4 font-mitr" style={{ left: "780px", top: "480px", color: "#D85B55", fontWeight: "bold" }}>Browse</div>
-            </Upload>
-
-            {/* Column 3 */}
-            <div>
-                <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "790px", top: "270px" }}></img>
-            </div>
-            <div className="usernamePartner font-mitr" style={{ left: "810px", top: "250px" }}>Description:</div>
-            <input className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }} value={description} onChange={descriptionHandler} />
-
-            <div>
-                <img className="registerImage" src={RegisterImg} alt="plate" style={{ left: "960px", top: "470px" }} onClick={onFinish}></img>
-            </div>
-
+        
+        <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="lname"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <FormControlLabel
+                  control={<Checkbox value="allowExtraEmails" color="primary" />}
+                  label="I want to receive inspiration, marketing promotions and updates via email."
+                />
+              </Grid>
+            </Grid>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign Up
+            </Button>
+            <Grid container justify="flex-end">
+              <Grid item>
+                <Link href="#" variant="body2">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
+            </Grid>
+          </form>
         </div>
+
+      </Container>
     )
 }
 

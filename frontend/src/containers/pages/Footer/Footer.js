@@ -1,30 +1,30 @@
 import React from 'react'
-import styled from 'styled-components';
-import serveWithUs from '../../uploadfile/ServeWithUsElement.png';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import Link from '@material-ui/core/Link';
+
 import { useHistory } from 'react-router-dom';
 
-const Style = styled.div`
-    background-color: salmon;
-    border-top: 1px solid #E7E7E7;
-    text-align: center;
-    padding: 20px;
-    height: 100px;
-    width: 100%;
-    z-index: 1200;
-    
-`
-
-var FContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 20px;
-  width: 100vw;
-  color: aqua;
-  font-weight: bold;
-`
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+    },
+    footer: {
+        padding: theme.spacing(3, 2),
+        marginTop: 'auto',
+        backgroundColor:
+            theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
+    },
+}));
 
 
 function Footer() {
+    const classes = useStyles();
+
     const history = useHistory();
 
     const handlePartner = () => {
@@ -37,17 +37,13 @@ function Footer() {
 
     return (
         <>
-            <FContainer>
-                <Style>
-                    <button onClick={handlePartner} style={{ color: "black" }}>
-                        Partner Register
-                    </button>
-                    <button onClick={handlePartnerLogin} style={{ color: "black" }}>
-                        Partner Login
-                    </button>
-                    Chanthong Co.,Ltd. | Tel: 02-222-2222 | Email: Chanthong@gmail.com
-                </Style>
-            </FContainer>
+            <div className={classes.root}>
+                <footer className={classes.footer}>
+                    <Container maxWidth="sm">
+                        <Typography variant="body1">My sticky footer can be found here.</Typography>
+                    </Container>
+                </footer>
+            </div>
         </>
     )
 }

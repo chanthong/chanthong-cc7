@@ -53,7 +53,7 @@ function BottomHeader() {
                   <div className="login" ><Link to="/login" style={{ color: "#DFCA95", fontFamily: 'Lobster' }}>Login</Link></div>
             }
             <div>
-               <Link to="/"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
+               <Link to="/profile"><img className="myprofile" src={MyProfile} alt="profile"></img></Link>
             </div>
          </div>
       </div>

@@ -1,111 +1,61 @@
 import React, { useState } from 'react';
-import './Register.css';
-import styled from 'styled-components';
-import regisimg from "./Registerimg.png";
-
 import axios from "../../../config/axios";
-import { DatePicker } from 'antd';
 import { withRouter } from "react-router-dom";
-import { notification } from 'antd';
-import 'react-datepicker/dist/react-datepicker.css';
 import LocalStorageService from '../../../services/localStorage';
 
+// MUI
 
-// const SpoonContainer = styled.div`
-//    width: 400px;
-//    display: flex;
-//    align-items: center;
-//    position: relative;
-//    margin-left:80px;
-
-//    `;
-
-//    const SpoonHead = styled.div`
-//    width: 150px;
-//    height: 96px;
-//    border-radius: 42% 58% 58% 42% / 50% 50% 50% 50%;
-//    background-color: rgba(200, 200,200, 1);
-//    box-shadow: inset 10px 10px 10px rgba(30, 30, 30, 0.4),
-//                inset -10px -10px 8px rgba(245, 245, 245, 0.6),
-//                5px 5px 5px rgba(30, 30, 30, 0.4);
-//    position: absolute;
-//    right: 0px;
-//    `;
-
-const SpoonHandleInput = styled.input`
-   width: 250px;
-   height: 24px;
-   background-color: rgba(200, 200,200, 1);
-   border: none;
-   border-radius: 15px;
-   position: absolute;
-   left: 0px;
-   clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
-   box-shadow: inset 5px 5px 3px rgba(30, 30, 30, 0.4),
-               inset -5px -5px 3px rgba(245, 245, 245, 0.5),
-               5px 5px 5px rgba(30, 30, 30, 0.4);
-   padding: 15px;
-   outline: none;
-   font-size: 16px;
-   font-weight: 700;
-   margin-left:280px;
-   `;
-
-const SpoonHandleDate = styled(DatePicker)`
-   width: 250px;
-   height: 24px;
-   background-color: rgba(200, 200,200, 1);
-   border: none;
-   border-radius: 15px;
-   position: absolute;
-   left: 0px;
-   clip-path: polygon(0 0, 100% 15%, 100% 85%, 0 100%);
-   box-shadow: inset 5px 5px 3px rgba(30, 30, 30, 0.4),
-               inset -5px -5px 3px rgba(245, 245, 245, 0.5),
-               5px 5px 5px rgba(30, 30, 30, 0.4);
-   padding: 15px;
-   outline: none;
-   font-size: 16px;
-   font-weight: 700;
-   margin-left:280px;
-   `;
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
 
-const RegisterElement = styled.img`
-	width: auto;
-	height: 120px;
-	object-fit: cover;
-	margin: 20px;
-	margin-left:200px;
-	`;
-
+const useStyles = makeStyles((theme) => ({
+   paper: {
+     marginTop: theme.spacing(8),
+     display: 'flex',
+     flexDirection: 'column',
+     alignItems: 'center',
+   },
+   avatar: {
+     margin: theme.spacing(1),
+     backgroundColor: theme.palette.secondary.main,
+   },
+   form: {
+     width: '100%', // Fix IE 11 issue.
+     marginTop: theme.spacing(3),
+   },
+   submit: {
+     margin: theme.spacing(3, 0, 2),
+   },
+ }));
+ 
 function Register(props) {
+   const classes = useStyles();
 
    const [username, setUsername] = useState("");
-   const [password, setPassword] = useState("");
-   const [confirm_password, setconfirm_Password] = useState("");
-   const [name, setName] = useState("");
-   const [lname, setLname] = useState("");
    const [email, setEmail] = useState("");
-   const [phone_number, setphone_number] = useState("");
-   const [gender, setGender] = useState("");
-   const [birth_date, setBirthDate] = useState("");
-
+   const [password, setPassword] = useState("");
+   const [confirmPassword, setConfirmPassword] = useState("");
+  
 
    const onFinish = async() => {
-      await axios.post("/users/register", { username, password, name, lname, email, birth_date, phone_number, gender })
+      const userData = { username, password, email };
+      await axios.post("/users/register", userData)
 
          .then(res => {
-            notification.success({
-               description: "Signup successfully"
-            });
+            alert("Signup successfully");
             props.history.push("/");
          })
          .catch(err => {
-            console.log(err);
-            notification.error({
-               description: "Something went wrong."
-            });
+            alert("Something went wrong.");
          });
 
          await axios.post("/users/login", {
@@ -113,101 +63,122 @@ function Register(props) {
             password
         })
             .then(res => {
-                notification.success({
-                    description: "Login success."
-                });
+                alert("Login success.");
                 LocalStorageService.setToken(res.data.token);
                 props.setRole("USER");
             })
             .catch(err => {
-                notification.error({
-                    description: "Login failed."
-                });
+                alert("Login failed.");
             });
          
    };
 
-   const firstNameHandler = (event) => {
-      setName(event.target.value);
-   }
-
-   const lastNameHandler = (even) => {
-      setLname(even.target.value);
-   }
-
    const userNameHandler = (even) => {
       setUsername(even.target.value);
-   }
-
-   const passwordHandler = (even) => {
-      setPassword(even.target.value);
-   }
-
-   const confirm_passwordHandler = (even) => {
-      setconfirm_Password(even.target.value);
    }
 
    const emailHandler = (even) => {
       setEmail(even.target.value);
    }
 
-   const phone_numberHandler = (even) => {
-      setphone_number(even.target.value);
+   const passwordHandler = (even) => {
+      setPassword(even.target.value);
    }
 
-   const genderHandler = (even) => {
-      setGender(even.target.value);
+   const confirmPasswordHandler = (even) => {
+      setConfirmPassword(even.target.value);
    }
-
-   const birthDateHandler = (date, dateString) => {
-      setBirthDate(dateString);
-   }
-
 
 
    return (
-      <div className="background-image">
-         <h1 className="Lobster logochanthong-re ">Chanthong</h1>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Firstname</p>
-            <SpoonHandleInput onChange={firstNameHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Lastname</p>
-            <SpoonHandleInput onChange={lastNameHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Email address</p>
-            <SpoonHandleInput onChange={emailHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Username</p>
-            <SpoonHandleInput onChange={userNameHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Password</p>
-            <SpoonHandleInput onChange={passwordHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Confirm password</p>
-            <SpoonHandleInput onChange={confirm_passwordHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Phone number</p>
-            <SpoonHandleInput onChange={phone_numberHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Gender</p>
-            <SpoonHandleInput onChange={genderHandler} maxLength="25"></SpoonHandleInput>
-         </div>
-         <div className="row-text">
-            <p className="Lobster textuser-re">Birth date</p>
-            <SpoonHandleDate onChange={birthDateHandler} maxLength="25"></SpoonHandleDate>
-         </div>
-
-         {/* <p className="Mitr ">โปรดอ่านก่อนไปอิ่ม</p> */}
-         <RegisterElement className="btn-register" onClick={onFinish} src={regisimg} />
+      <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="userName"
+                label="UserName"
+                name="userName"
+                autoComplete="userName"
+                value={username}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="confirm-password"
+                label="confirm-Password"
+                type="confirm-password"
+                id="confirm-password"
+                autoComplete="current-password"
+                value={confirmPassword}
+              />
+            </Grid>
+            {/* <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid> */}
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="#" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
       </div>
+    </Container>
    )
 }
 
