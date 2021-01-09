@@ -18,80 +18,66 @@ import Container from '@material-ui/core/Container';
 
 
 const useStyles = makeStyles((theme) => ({
-   paper: {
-     marginTop: theme.spacing(8),
-     display: 'flex',
-     flexDirection: 'column',
-     alignItems: 'center',
-   },
-   avatar: {
-     margin: theme.spacing(1),
-     backgroundColor: theme.palette.secondary.main,
-   },
-   form: {
-     width: '100%', // Fix IE 11 issue.
-     marginTop: theme.spacing(3),
-   },
-   submit: {
-     margin: theme.spacing(3, 0, 2),
-   },
- }));
- 
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
 function Register(props) {
-   const classes = useStyles();
+  const classes = useStyles();
 
-   const [username, setUsername] = useState("");
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
-   const [confirmPassword, setConfirmPassword] = useState("");
-  
-
-   const onFinish = async() => {
-      const userData = { username, password, email };
-      await axios.post("/users/register", userData)
-
-         .then(res => {
-            alert("Signup successfully");
-            props.history.push("/");
-         })
-         .catch(err => {
-            alert("Something went wrong.");
-         });
-
-         await axios.post("/users/login", {
-            username,
-            password
-        })
-            .then(res => {
-                alert("Login success.");
-                LocalStorageService.setToken(res.data.token);
-                props.setRole("USER");
-            })
-            .catch(err => {
-                alert("Login failed.");
-            });
-         
-   };
-
-   const userNameHandler = (even) => {
-      setUsername(even.target.value);
-   }
-
-   const emailHandler = (even) => {
-      setEmail(even.target.value);
-   }
-
-   const passwordHandler = (even) => {
-      setPassword(even.target.value);
-   }
-
-   const confirmPasswordHandler = (even) => {
-      setConfirmPassword(even.target.value);
-   }
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
 
-   return (
-      <Container component="main" maxWidth="xs">
+  const onFinish = async () => {
+    const userData = { username, password, email };
+    await axios.post("/users/register", userData)
+
+      .then(res => {
+        alert("Signup successfully");
+        props.history.push("/login");
+      })
+      .catch(err => {
+        alert("Something went wrong.");
+      });
+  };
+
+  const userNameHandler = (even) => {
+    setUsername(even.target.value);
+  }
+
+  const emailHandler = (even) => {
+    setEmail(even.target.value);
+  }
+
+  const passwordHandler = (even) => {
+    setPassword(even.target.value);
+  }
+
+  const confirmPasswordHandler = (even) => {
+    setConfirmPassword(even.target.value);
+  }
+
+
+  return (
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -100,9 +86,9 @@ function Register(props) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={onFinish} noValidate>
           <Grid container spacing={2}>
-            
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -113,6 +99,7 @@ function Register(props) {
                 name="userName"
                 autoComplete="userName"
                 value={username}
+                onChange={userNameHandler}
               />
             </Grid>
             <Grid item xs={12}>
@@ -125,6 +112,7 @@ function Register(props) {
                 name="email"
                 autoComplete="email"
                 value={email}
+                onChange={emailHandler}
               />
             </Grid>
             <Grid item xs={12}>
@@ -138,6 +126,7 @@ function Register(props) {
                 id="password"
                 autoComplete="current-password"
                 value={password}
+                onChange={passwordHandler}
               />
             </Grid>
             <Grid item xs={12}>
@@ -179,7 +168,7 @@ function Register(props) {
         </form>
       </div>
     </Container>
-   )
+  )
 }
 
 export default withRouter(Register);
