@@ -44,10 +44,19 @@ function Register(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [name, setName] = useState("");
+  const [lname, setLname] = useState("");
+  const [birth_date, setBirthDATE] = useState("");
+  const [phone_number, setPhoneNumber] = useState("");
+  const [gender, setGender] = useState("");
+  const [profile_url, setProfile] = useState("");
 
 
-  const onFinish = async () => {
-    const userData = { username, password, email };
+
+  const onFinish = async (event) => {
+    event.preventDefault();
+
+    const userData = { username, password, email, name, lname, birth_date, phone_number, gender };
     await axios.post("/users/register", userData)
 
       .then(res => {
@@ -59,20 +68,44 @@ function Register(props) {
       });
   };
 
-  const userNameHandler = (even) => {
-    setUsername(even.target.value);
-  }
+  const userNameHandler = (event) => {
+    setUsername(event.target.value);
+  };
 
-  const emailHandler = (even) => {
-    setEmail(even.target.value);
-  }
+  const emailHandler = (event) => {
+    setEmail(event.target.value);
+  };
 
-  const passwordHandler = (even) => {
-    setPassword(even.target.value);
-  }
+  const passwordHandler = (event) => {
+    setPassword(event.target.value);
+  };
 
-  const confirmPasswordHandler = (even) => {
-    setConfirmPassword(even.target.value);
+  const confirmPasswordHandler = (event) => {
+    setConfirmPassword(event.target.value);
+  };
+
+  const firstNameHandler = (event) => {
+    setName(event.target.value);
+  };
+
+  const lastNameHandler = (event) => {
+    setLname(event.target.value);
+  };
+
+  const birthDateHandler = (event) => {
+    setBirthDATE(event.target.value);
+  };
+
+  const phoneNumberHandler = (event) => {
+    setPhoneNumber(event.target.value);
+  };
+
+  const genderHandler = (event) => {
+    setGender(event.target.value);
+  };
+
+  const profileHandler = (event) => {
+    setProfile(event.target.value);
   }
 
 
@@ -89,32 +122,22 @@ function Register(props) {
         <form className={classes.form} onSubmit={onFinish} noValidate>
           <Grid container spacing={2}>
 
+            {/* USERNAME INPUT */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="userName"
-                label="UserName"
-                name="userName"
-                autoComplete="userName"
+                id="username"
+                label="Username"
+                name="username"
+                autoComplete="username"
                 value={username}
                 onChange={userNameHandler}
               />
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                value={email}
-                onChange={emailHandler}
-              />
-            </Grid>
+
+            {/* PASSWORD INPUT */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -129,6 +152,8 @@ function Register(props) {
                 onChange={passwordHandler}
               />
             </Grid>
+
+            {/* CONFIRM PASSEORD INPUT */}
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -142,13 +167,108 @@ function Register(props) {
                 value={confirmPassword}
               />
             </Grid>
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+
+            {/* EMAIL INPUT */}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email}
+                onChange={emailHandler}
               />
-            </Grid> */}
+            </Grid>
+
+            {/* NAME INPUT */}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="firstName"
+                label="First Name"
+                id="firstName"
+                value={name}
+                onChange={firstNameHandler}
+              />
+            </Grid>
+
+            {/* LAST_NAME INPUT */}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="lastName"
+                label="Last Name"
+                id="lastName"
+                value={lname}
+                onChange={lastNameHandler}
+              />
+            </Grid>
+
+            {/* BIRTH_DATE INPUT */}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="birthDate"
+                label="Birth Date"
+                id="birthDate"
+                value={birth_date}
+                onChange={birthDateHandler}
+              />
+            </Grid>
+
+            {/* PHONE_NUMBER INPUT */}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="phoneNumber"
+                label="Phone Number"
+                id="phoneNumber"
+                value={phone_number}
+                onChange={phoneNumberHandler}
+              />
+            </Grid>
+
+            {/* GENDER INPUT */}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="gender"
+                label="Gender"
+                id="gender"
+                value={gender}
+                onChange={genderHandler}
+              />
+            </Grid>
+
+            {/* PROFILE_URL INPUT */}
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="profile"
+                label="Your profile"
+                id="profile_url"
+                value={profile_url}
+                onChange={profileHandler}
+              />
+            </Grid>
+
           </Grid>
+
           <Button
             type="submit"
             fullWidth
@@ -158,6 +278,7 @@ function Register(props) {
           >
             Sign Up
           </Button>
+
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="#" variant="body2">
