@@ -5,6 +5,7 @@ import UserContext from '../../../context/UserContext';
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import ResturantCard from '../../../components/ResturantCard/ResturantCard';
 
 function ChanthongRole(props) {
     const { card, setCard } = useContext(UserContext);
@@ -70,7 +71,8 @@ function ChanthongRole(props) {
     return (
         < >
             <Slider {...settings}>
-                {card.map((item) => <div> <ResturantCard2 item={item} /> </div>)}
+                {/* {card.map((item) => <div> <ResturantCard2 item={item} /> </div>)} */}
+                {card.map((item) => <div> <ResturantCard item={item} /> </div>)}
             </Slider>
         </ >
     )
