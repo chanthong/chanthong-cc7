@@ -58,12 +58,15 @@ function Login(props) {
    const [username, setUsername] = useState("");
    const [password, setPassword] = useState("");
 
-   const onFinish = (values) => {
-      axios.post("/users/login", {
+   const onFinish = (event) => {
+      event.preventDefault();
+
+      axios.post("http://localhost:5555/users/login", {
          username,
          password
       })
          .then(res => {
+            console.log("success");
             alert("Login success.");
             LocalStorageService.setToken(res.data.token);
             props.setRole("USER");
@@ -72,6 +75,7 @@ function Login(props) {
             history.push('/profile');
          })
          .catch(err => {
+            console.log(err);
             alert("Login failed.");
          });
    };
@@ -97,17 +101,18 @@ function Login(props) {
             <Typography component="h1" variant="h5">
                Sign in
         </Typography>
-            <form className={classes.form} noValidate>
+            <form className={classes.form} onSubmit={onFinish} noValidate>
                <TextField
                   variant="outlined"
                   margin="normal"
                   required
                   fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
+                  id="username"
+                  label="Username"
+                  name="username"
                   autoComplete="email"
                   autoFocus
+                  onChange={userNameHandler}
                />
                <TextField
                   variant="outlined"
@@ -119,6 +124,7 @@ function Login(props) {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  onChange={passwordHandler}
                />
                {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
