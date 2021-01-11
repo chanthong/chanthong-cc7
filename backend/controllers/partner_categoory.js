@@ -22,9 +22,28 @@ const createPartner_Category = async (req, res) => {
     } catch (err) {
         res.status(500).send({ message: err.message });
     };
-}
+};
+
+// เรียก category ไปใส่ card เรียกที่เพราะ จะได้ดูจำนวนร้านค้าได้
+const getThemeCategory = async (req, res) => {
+    try {
+        const allTheme = await db.Partner_Category.findAll({
+            include: {
+                model: db.Category
+            },
+            group: ['category_id'],
+            attributes: ['category_id', [db.sequelize.fn('COUNT', 'partner_id'), 'cnt']]
+        });
+
+        res.status(200).send({ allTheme })
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: err.message });
+    }
+};
 
 module.exports = {
     getAllPartnerCategory,
-    createPartner_Category
+    createPartner_Category,
+    getThemeCategory
 };

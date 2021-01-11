@@ -27,7 +27,7 @@ module.exports = {
       email_address: 'ter@hotmail.com',
       price_range: '3000++',
       address: 'pantip',
-      district: 'ratchathewi',
+      district: 'ratchatewi',
       province: 'fule',
       partners_picture: '1606717925883.jpg',
       max_reserve: '30',

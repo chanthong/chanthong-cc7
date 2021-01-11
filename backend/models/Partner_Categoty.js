@@ -1,5 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
-    const Partner_Category = sequelize.define("Partner_Category", {}, {
+    const Partner_Category = sequelize.define("Partner_Category", {
+        priority: {
+            type: DataTypes.STRING,
+        }
+    }, {
         tableName: "partner_category",
         timestamps: false
     });
