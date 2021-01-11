@@ -2,8 +2,8 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Box, Typography } from '@material-ui/core';
-import SmallCard from '../SmallCard/SmallCard';
 import LargeCard from '../LargeCard/LargeCard';
+import { BASE_BACKEND_URL } from '../../config/constants'
 
 const useStyles = makeStyles((theme) => ({
   cardGrid: {
@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
 
 function LargeItem({ textColor, placeLabel, cardData }) {
   const classes = useStyles();
-  
+
+
   return (
     <Container className={classes.cardGrid} maxWidth="lg">
       <Typography variant="h5">{placeLabel}</Typography>
@@ -28,13 +29,13 @@ function LargeItem({ textColor, placeLabel, cardData }) {
       <Grid container spacing={2}>
         {cardData.map((data) => (
           <Grid item key={data.id} xs={12} sm={3} md={3} lg={3}>
-           <LargeCard
-            title={data.title}
-            place={data.place}
-            restTheme={data.restTheme}
-            qty={data.qty}
-            imgUrl={data.imgUrl}
-           />
+            <LargeCard
+              title={data.restaurant_name}
+              place={data.district}
+              restTheme={data.Partner_Categories[0].Category.type_Restaurant}
+              qty={data.Reserves.length}
+              imgUrl={`${BASE_BACKEND_URL}/${data.partners_picture}`}
+            />
           </Grid>
         ))}
       </Grid>

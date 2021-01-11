@@ -102,6 +102,8 @@ function Login(props) {
                Sign in
         </Typography>
             <form className={classes.form} onSubmit={onFinish} noValidate>
+
+               {/* USERNAME INPUT */}
                <TextField
                   variant="outlined"
                   margin="normal"
@@ -114,6 +116,8 @@ function Login(props) {
                   autoFocus
                   onChange={userNameHandler}
                />
+
+               {/* PASSWORD INPUT */}
                <TextField
                   variant="outlined"
                   margin="normal"
@@ -126,10 +130,8 @@ function Login(props) {
                   autoComplete="current-password"
                   onChange={passwordHandler}
                />
-               {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
+
+               {/* SIGN IN BUTTON  */}
                <Button
                   type="submit"
                   fullWidth
@@ -138,7 +140,8 @@ function Login(props) {
                   className={classes.submit}
                >
                   Sign In
-          </Button>
+               </Button>
+
                <Grid container>
                   <Grid item xs>
                      {/* <Link href="#" variant="body2">
@@ -151,6 +154,7 @@ function Login(props) {
                      </Link>
                   </Grid>
                </Grid>
+               
             </form>
          </div>
       </Container>

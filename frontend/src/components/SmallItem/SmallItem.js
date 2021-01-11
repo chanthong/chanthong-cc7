@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 
 function SmallItem({ textColor, placeLabel, cardData }) {
   const classes = useStyles();
-  
+
   return (
     <Container className={classes.cardGrid} maxWidth="lg">
       <Typography variant="h5">{placeLabel}</Typography>
@@ -28,8 +28,8 @@ function SmallItem({ textColor, placeLabel, cardData }) {
         {cardData.map((data) => (
           <Grid item key={data.id} xs={12} sm={3} md={3} lg={2}>
             <SmallCard
-              place={data.name}
-              qty={data.qty}
+              place={data.Category.type_Restaurant}
+              qty={data.cnt}
               imgUrl={data.imgUrl}
             />
           </Grid>
