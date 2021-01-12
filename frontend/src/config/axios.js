@@ -30,7 +30,7 @@ axios.interceptors.response.use(
   },
   (err) => {
     if (err.response?.status === 401) {
-      LocalStorageService.removeToken();
+      LocalStorageService.clearToken();
       notification.error({
         message: "กรุณาเข้าสู่ระบบใหม่",
         placement: "topRight"

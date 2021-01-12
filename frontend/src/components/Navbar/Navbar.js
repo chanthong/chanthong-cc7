@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import localStorage from "../../services/localStorage"
 import { Link, useHistory } from 'react-router-dom';
 import '../../config/roles';
+import UserContext from '../../context/UserContext';
 
 //MUI
 import { fade, makeStyles } from '@material-ui/core/styles';
@@ -103,10 +104,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Navbar({ role, setRole }) {
+function Navbar() {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+	//useContext
+	const { role, setRole } = useContext(UserContext);
 
 
 	const isMenuOpen = Boolean(anchorEl);
@@ -139,6 +143,9 @@ function Navbar({ role, setRole }) {
 	};
 	const handleMenuLogout = () => {
 		alert('log out!!!');
+		setRole("GUEST");
+		history.push("/");
+		localStorage.clearToken();
 		// setAnchorEl(null);
 		// handleMobileMenuClose();
 		// history.push('/login');
@@ -161,7 +168,7 @@ function Navbar({ role, setRole }) {
 		>
 			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
 			{
-				role === 'USER'?
+				role === 'USER' ?
 					<MenuItem onClick={handleMenuLogout}>Logout</MenuItem>
 					:
 					<MenuItem onClick={handleMenuLogin}>Login</MenuItem>

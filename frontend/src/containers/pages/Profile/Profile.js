@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from '../../../config/axios';
+
 //MUI
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
@@ -19,6 +21,7 @@ import {
     TextField
 } from '@material-ui/core';
 import DataTable from '../../../components/DataTable/DataTable';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
@@ -59,7 +62,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-
 function Profile({ user: { name, lname, gender, birth_date, username, email, phone_number } }) {
     const classes = useStyles();
     const [page, setPage] = useState(0);
@@ -72,15 +74,27 @@ function Profile({ user: { name, lname, gender, birth_date, username, email, pho
     const [phone, setPhone] = useState(phone_number);
     const [pwd, setPwd] = useState("12345678");
     // const [birthday, setBirthday] = useState(birth_date);
+    const [dataReserve, setDataReserve] = useState([]);
 
     const handleChange = (event) => {
-
         setSex(event.target.value);
-
     };
+
     const handlePage = (idx) => {
         setPage(idx);
-    }
+    };
+
+    const fetchReserveData = async () => {
+        const res = await axios.get("/reserves/getReserveByUser");
+        setDataReserve(res.data);
+    };
+
+    useEffect(() => {
+        fetchReserveData();
+    }, []);
+
+    console.log('dataReserve: ', dataReserve);
+
     return (
         <Container maxWidth="lg" style={{ marginTop: '80px' }}>
             {/* <Typography component="div" style={{ backgroundColor: '#cfe8fc', height: '100vh' }} /> */}
@@ -152,7 +166,7 @@ function Profile({ user: { name, lname, gender, birth_date, username, email, pho
                     <Typography variant="h5">
                         My History
                     </Typography>
-                    <DataTable/>
+                    <DataTable dataReserve={dataReserve} />
                 </Grid>
             </Grid>
         </Container>
