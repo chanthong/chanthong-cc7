@@ -1,10 +1,4 @@
 import React, { useContext } from 'react';
-import './Login.css';
-import styled from 'styled-components';
-import logimg from "./loginimg.png";
-import Regisimg from "./Registerimg.png";
-
-import { notification } from 'antd';
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import axios from '../../../config/axios';
@@ -26,6 +20,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Alert from '@material-ui/lab/Alert';
 
 const useStyles = makeStyles((theme) => ({
    paper: {
@@ -66,16 +61,15 @@ function Login(props) {
          password
       })
          .then(res => {
-            console.log("success");
-            alert("Login success.");
+            // alert("Login success.");
+            <Alert severity="success">This is a success alert — check it out!</Alert>
             LocalStorageService.setToken(res.data.token);
             props.setRole("USER");
             props.setUser(jwtDecode(res.data.token));
             setChange(true);
-            history.push('/profile');
+            history.push('/');
          })
          .catch(err => {
-            console.log(err);
             alert("Login failed.");
          });
    };
@@ -110,7 +104,7 @@ function Login(props) {
                   id="username"
                   label="Username"
                   name="username"
-                  autoComplete="email"
+                  autoComplete="username"
                   autoFocus
                   onChange={userNameHandler}
                />

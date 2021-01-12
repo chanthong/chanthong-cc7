@@ -31,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
 	title: {
 		display: 'none',
 		color: '#fff',
+		padding: '2px',
+		borderRadius: '5px',
 		'&:hover': {
 			cursor: 'pointer',
 			padding: '2px',
@@ -135,6 +137,12 @@ function Navbar({ role, setRole }) {
 		handleMobileMenuClose();
 		history.push('/login');
 	};
+	const handleMenuLogout = () => {
+		alert('log out!!!');
+		// setAnchorEl(null);
+		// handleMobileMenuClose();
+		// history.push('/login');
+	};
 
 	const handleMobileMenuOpen = (event) => {
 		setMobileMoreAnchorEl(event.currentTarget);
@@ -152,13 +160,11 @@ function Navbar({ role, setRole }) {
 			onClose={handleMenuClose}
 		>
 			<MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-			<MenuItem onClick={handleMenuClose}>My account</MenuItem>
-
 			{
 				role === 'USER'?
-				<MenuItem onClick={handleMenuLogin}>Logout</MenuItem>
-			:
-				<MenuItem onClick={handleMenuLogin}>Login</MenuItem>
+					<MenuItem onClick={handleMenuLogout}>Logout</MenuItem>
+					:
+					<MenuItem onClick={handleMenuLogin}>Login</MenuItem>
 			}
 		</Menu>
 	);
@@ -204,14 +210,9 @@ function Navbar({ role, setRole }) {
 		</Menu>
 	);
 
-	// const restData = [
-	// 	{
-	// 		place: "Ra"
-	// 	}
-	// ]
 	return (
 		<div className={classes.grow}>
-			<AppBar position="static">
+			<AppBar position="fixed">
 				<Toolbar>
 					<IconButton
 						edge="start"
@@ -223,7 +224,7 @@ function Navbar({ role, setRole }) {
 					</IconButton>
 					<Typography onClick={() => history.push('/')} className={classes.title} variant="h6" noWrap>
 						ChanThong
-          </Typography>
+          			</Typography>
 					<div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />

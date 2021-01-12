@@ -46,7 +46,9 @@ function Register(props) {
   const [confirmPassword, setConfirmPassword] = useState("");
 
 
-  const onFinish = async () => {
+  const onFinish = async (event) => {
+    event.preventDefault();
+    
     const userData = { username, password, email };
     await axios.post("/users/register", userData)
 

@@ -25,8 +25,9 @@ function PrivateRoutes() {
   // กำหนด role
   const [partner, setPartner] = useState(initialPartner);
   const [user, setUser] = useState(initialUser);
-
+  
   console.log(role);
+  console.log(user);
   return (
     <>
       <Switch>
