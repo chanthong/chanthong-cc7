@@ -21,7 +21,7 @@ const getAllCategories = async (req, res) => {
     } catch (err) {
         res.status(500).send({ messages: err.message });
     }
-}
+};
 
 module.exports = {
     createCategory,

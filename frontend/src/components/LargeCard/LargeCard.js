@@ -37,19 +37,19 @@ function LargeCard({ title, place, restTheme, qty, imgUrl }) {
                     <div style={{ display: 'flex' }}>
                         <Typography variant="body2" color="textSecondary">
                             {place}
-                    </Typography>
+                        </Typography>
                         <Typography variant="body2" color="textSecondary" style={{ margin: '0 5px' }}>
                             ●
                     </Typography>
                         <Typography variant="body2" color="textSecondary">
                             {restTheme}
-                    </Typography>
+                        </Typography>
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Typography variant="body2" color="textSecondary">
-                            <span>จำนวน</span>
+                            <span>จอง</span>
                             <span style={{ marginLeft: '5px' }}>{qty}</span>
-                            <span style={{ marginLeft: '5px' }}>ร้าน</span>
+                            <span style={{ marginLeft: '5px' }}>ครั้ง</span>
                         </Typography>
                         {/* <Typography variant="body2" color="textSecondary">
                         *****

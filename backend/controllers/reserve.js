@@ -36,7 +36,7 @@ const createReserve = async (req, res) => {
           reserve_status: "PENDING",
           user_id: req.user.id,
           partner_id: id,
-        })
+        });
         res.status(200).send({ message: "Create reserve status: PENDING" })
       }
     };

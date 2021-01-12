@@ -38,153 +38,228 @@ module.exports = {
     const MM = await db.Partner.findOne({ where: { username: 'MM' } });
     const QA = await db.Partner.findOne({ where: { username: 'QA' } });
     const QC = await db.Partner.findOne({ where: { username: 'QC' } });
+    
     await queryInterface.bulkInsert('Partner_Category', [{
+
       category_id: thai.id,
-      partner_id: hungry55.id
+      partner_id: hungry55.id,
+      priority: 1
     }, {
       category_id: fineDining.id,
       partner_id: hungry55.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: thai.id,
       partner_id: FF.id
     }, {
       category_id: hotCuisine.id,
-      partner_id: FF.id
-    }, {
+      partner_id: FF.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: thai.id,
-      partner_id: DD.id
+      partner_id: DD.id,
+      priority: 1
     }, {
       category_id: atTwilight.id,
       partner_id: DD.id
-    }, {
+    },
+    ////////
+    {
       category_id: thai.id,
       partner_id: SS.id
     }, {
       category_id: buffet.id,
-      partner_id: SS.id
-    }, {
+      partner_id: SS.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: chinese.id,
-      partner_id: AA.id
+      partner_id: AA.id,
+      priority: 1
     }, {
       category_id: fineDining.id,
       partner_id: AA.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: chinese.id,
       partner_id: GG.id
     }, {
       category_id: hotCuisine.id,
-      partner_id: GG.id
-    }, {
+      partner_id: GG.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: chinese.id,
-      partner_id: QQ.id
+      partner_id: QQ.id,
+      priority: 1
     }, {
       category_id: atTwilight.id,
       partner_id: QQ.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: chinese.id,
       partner_id: WW.id
     }, {
       category_id: buffet.id,
-      partner_id: WW.id
-    }, {
+      partner_id: WW.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: japanese.id,
-      partner_id: EE.id
+      partner_id: EE.id,
+      priority: 1
     }, {
       category_id: fineDining.id,
       partner_id: EE.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: japanese.id,
       partner_id: RR.id
     }, {
       category_id: hotCuisine.id,
-      partner_id: RR.id
-    }, {
+      partner_id: RR.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: japanese.id,
-      partner_id: TT.id
+      partner_id: TT.id,
+      priority: 1
     }, {
       category_id: atTwilight.id,
       partner_id: TT.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: japanese.id,
       partner_id: YY.id
     }, {
       category_id: buffet.id,
-      partner_id: YY.id
-    }, {
+      partner_id: YY.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: thai.id,
       partner_id: UU.id
     }, {
       category_id: fineDining.id,
-      partner_id: UU.id
-    }, {
+      partner_id: UU.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: thai.id,
       partner_id: II.id
     }, {
       category_id: hotCuisine.id,
-      partner_id: II.id
-    }, {
+      partner_id: II.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: thai.id,
       partner_id: OO.id
     }, {
       category_id: atTwilight.id,
-      partner_id: OO.id
-    }, {
+      partner_id: OO.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: thai.id,
-      partner_id: PP.id
+      partner_id: PP.id,
+      priority: 1
     }, {
       category_id: buffet.id,
       partner_id: PP.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: chinese.id,
-      partner_id: ZZ.id
+      partner_id: ZZ.id,
+      priority: 1
     }, {
       category_id: fineDining.id,
       partner_id: ZZ.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: chinese.id,
       partner_id: XX.id
     }, {
       category_id: hotCuisine.id,
-      partner_id: XX.id
-    }, {
+      partner_id: XX.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: chinese.id,
-      partner_id: CC.id
+      partner_id: CC.id,
+      priority: 1
     }, {
       category_id: atTwilight.id,
       partner_id: CC.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: chinese.id,
       partner_id: VV.id
     }, {
       category_id: buffet.id,
-      partner_id: VV.id
-    }, {
+      partner_id: VV.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: japanese.id,
-      partner_id: BB.id
+      partner_id: BB.id,
+      priority: 1
     }, {
       category_id: fineDining.id,
       partner_id: BB.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: japanese.id,
       partner_id: NN.id
     }, {
       category_id: hotCuisine.id,
-      partner_id: NN.id
-    }, {
+      partner_id: NN.id,
+      priority: 1
+    }, 
+    ////////
+    {
       category_id: japanese.id,
-      partner_id: MM.id
+      partner_id: MM.id,
+      priority: 1
     }, {
       category_id: atTwilight.id,
       partner_id: MM.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: japanese.id,
-      partner_id: QA.id
+      partner_id: QA.id,
+      priority: 1
     }, {
       category_id: buffet.id,
       partner_id: QA.id
-    }, {
+    }, 
+    ////////
+    {
       category_id: thai.id,
-      partner_id: QC.id
+      partner_id: QC.id,
+      priority: 1
     }, {
       category_id: fineDining.id,
       partner_id: QC.id

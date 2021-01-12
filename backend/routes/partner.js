@@ -1,10 +1,11 @@
 
 const passport = require("passport");
-const { register, login, getPartnerById, getPartners, deletePartner, getPartnersByDistrict } = require("../controllers/partner");
+const { register, login, getPartnerById, getPartners, deletePartner, getPartnersByDistrict, getPlaceCategory } = require("../controllers/partner");
 const router = require("express").Router();
 
 const auth = passport.authenticate("jwt-auth", { session: false });
 
+router.get("/allPlace", getPlaceCategory);
 router.get("/district", getPartnersByDistrict);
 router.get("/:id", getPartnerById);
 router.get("/", getPartners);

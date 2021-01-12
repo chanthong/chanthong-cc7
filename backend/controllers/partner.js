@@ -1,6 +1,7 @@
 const db = require("../models");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const { sequelize } = require("../models");
 
 // Register
 const register = async (req, res) => {
@@ -85,10 +86,23 @@ const getPartnerById = async (req, res) => {
 // เอาไป show หน้าเว็ป ใส่ การ์ด
 const getPartners = async (req, res) => {
   try {
-    const partners = await db.Partner.findAll();
-    // const partners = await db.Partner.findAll({ include: [{ model: db.Category, attributes: ["id", "type_food"] }] });
+    const partners = await db.Partner.findAll({
+      include: [{
+        model: db.Partner_Category,
+        where: { priority: 1 },
+        include: {
+          model: db.Category,
+          attributes: ['type_Restaurant']
+        }
+      }, {
+        model: db.Reserve,
+        attributes: ['id']
+      }],
+    });
+
     res.status(200).send({ partners });
   } catch (err) {
+    console.log(err);
     res.status(500).send({ messages: err.message });
   }
 };
@@ -118,11 +132,26 @@ const getPartnersByDistrict = async (req, res) => {
   }
 };
 
+const getPlaceCategory = async (req, res) => {
+  try {
+    const allPlace = await db.Partner.findAll({
+      group: ['district'],
+      attributes: ['district', [db.sequelize.fn('COUNT', 'id'), 'qty']]
+    });
+
+    res.status(200).send({ allPlace });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: err.message });
+  };
+};
+
 module.exports = {
   register,
   login,
   getPartnerById,
   getPartners,
   deletePartner,
-  getPartnersByDistrict
+  getPartnersByDistrict,
+  getPlaceCategory
 };
