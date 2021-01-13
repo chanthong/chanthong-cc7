@@ -44,7 +44,7 @@ function ResturantCard2({ item }) {
          </div>
          <div style={{ alignItems: "center", position: "absolute", display: "flex", flexDirection: "column", top: "185px", left: "32px", height: "40%", justifyContent: "center" }}>
             <h3>{item.restaurant_name}</h3>
-            <div>Location: {item.phone_number}</div>
+            <div>Location: {item.district}</div>
             <div>email: {item.email_address}</div>
             <div>จองแล้ว {item.id} ครี้ง</div>
             <button onClick={onReservePartner} className="btn">View More</button>
