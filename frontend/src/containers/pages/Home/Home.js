@@ -1,6 +1,7 @@
 import axios from '../../../config/axios';
 import React, { useEffect, useState } from 'react';
 import LargeItem from '../../../components/LargeItem/LargeItem';
+import LargeThemeItem from '../../../components/LargeThemeItem/LargeThemeItem';
 import SmallItem from '../../../components/SmallItem/SmallItem';
 import SmallLocationItem from '../../../components/SmallLocationItem/SmallLocationItem';
 
@@ -8,8 +9,18 @@ import SmallLocationItem from '../../../components/SmallLocationItem/SmallLocati
 function Home({ role, setRole }) {
 
    const [favorite, setFavorite] = useState([]);
-   const [place, setPlace] = useState([]);
+   const [ratchatewi, setRatchatewi] = useState([]);
+   const [phayathai, setPhayathai] = useState([]);
+   const [bangrak, setBangrak] = useState([]);
+   const [wattana, setWattana] = useState([]);
    const [theme, setTheme] = useState([]);
+   const [thai, setThai] = useState([]);
+   const [chinese, setChinese] = useState([]);
+   const [japanese, setJapanese] = useState([]);
+   const [fineDining, setFineDining] = useState([]);
+   const [hotCuisine, setHotCuisine] = useState([]);
+   const [atTwilight, setAtTwilight] = useState([]);
+   const [buffet, setBuffet] = useState([]);
 
    const placeData = [
       { id: 1, name: 'สยาม', qty: 56, imgUrl: 'https://source.unsplash.com/random' },
@@ -72,29 +83,142 @@ function Home({ role, setRole }) {
       setTheme(res.data.allTheme);
    };
 
-   const fetchPlaceRestaurant = async () => {
-      const res = await axios.get("/partners/allPlace");
-      setPlace(res.data.allPlace);
+   const fetchRatchatewiRestaurant = async () => {
+      const res = await axios.get(`/partners/district/ratchatewi`);
+      setRatchatewi(res.data.targetPartner);
    };
+
+   const fetchPhayathaiRestaurant = async () => {
+      const res = await axios.get(`/partners/district/phayathai`);
+      setPhayathai(res.data.targetPartner);
+   };
+
+   const fetchBangrakRestaurant = async () => {
+      const res = await axios.get(`/partners/district/bangrak`);
+      setBangrak(res.data.targetPartner);
+   };
+
+   const fetchWattanaRestaurant = async () => {
+      const res = await axios.get(`/partners/district/watthana`);
+      setWattana(res.data.targetPartner);
+   };
+
+   const fetchThaiRestaurant = async () => {
+      const res = await axios.get("/partner_category/myTheme/thai");
+      setThai(res.data.targetTheme);
+   };
+
+   const fetchChineseRestaurant = async () => {
+      const res = await axios.get("/partner_category/myTheme/chinese");
+      setChinese(res.data.targetTheme);
+   };
+
+   const fetchJapaneseRestaurant = async () => {
+      const res = await axios.get("/partner_category/myTheme/japanese");
+      setJapanese(res.data.targetTheme);
+   };
+   const fetchFineDiningRestaurant = async () => {
+      const res = await axios.get("/partner_category/myTheme/fine dining");
+      setFineDining(res.data.targetTheme);
+   };
+   const fetchHotCuisineRestaurant = async () => {
+      const res = await axios.get("/partner_category/myTheme/hot cuisine");
+      setHotCuisine(res.data.targetTheme);
+   };
+   const fetchAtTwilightRestaurant = async () => {
+      const res = await axios.get("/partner_category/myTheme/at twilight");
+      setAtTwilight(res.data.targetTheme);
+   };
+   const fetchBuffetRestaurant = async () => {
+      const res = await axios.get("/partner_category/myTheme/buffet");
+      setBuffet(res.data.targetTheme);
+   };
+
 
    useEffect(() => {
       fetchFavoriteRestaurant();
       fetchThemeRestaurant();
-      fetchPlaceRestaurant();
+      fetchRatchatewiRestaurant();
+      fetchPhayathaiRestaurant();
+      fetchBangrakRestaurant();
+      fetchWattanaRestaurant();
+      fetchThaiRestaurant();
+      fetchChineseRestaurant();
+      fetchJapaneseRestaurant();
+      fetchFineDiningRestaurant();
+      fetchHotCuisineRestaurant();
+      fetchAtTwilightRestaurant();
+      fetchBuffetRestaurant();
    }, []);
 
-   console.log('favorite: ', favorite)
+   console.log('favorite: ', favorite);
+   console.log('thai: ', thai);
    return (
       <>
-         <SmallLocationItem
+         {/* <SmallLocationItem
             textColor={'red'}
             placeLabel={'ที่ตั้ง'}
             cardData={place}
+         /> */}
+         <LargeItem
+            textColor={'red'}
+            placeLabel={'ราชเทวี'}
+            cardData={ratchatewi}
          />
-         <SmallItem
+         <LargeItem
+            textColor={'red'}
+            placeLabel={'พญาไท'}
+            cardData={phayathai}
+         />
+         <LargeItem
+            textColor={'red'}
+            placeLabel={'บางรัก'}
+            cardData={bangrak}
+         />
+         <LargeItem
+            textColor={'red'}
+            placeLabel={'วัฒนา'}
+            cardData={wattana}
+         />
+         {/* <SmallItem
             textColor={'red'}
             placeLabel={'ประเภทอาหาร'}
             cardData={theme}
+         /> */}
+         <LargeThemeItem
+            textColor={'red'}
+            placeLabel={'ร้านอาหารไทย'}
+            cardData={thai}
+         />
+         <LargeThemeItem
+            textColor={'red'}
+            placeLabel={'ร้านอาหารจีน'}
+            cardData={chinese}
+         />
+         <LargeThemeItem
+            textColor={'red'}
+            placeLabel={'ร้านอาหารญี่ปุ่น'}
+            cardData={japanese}
+         />
+         <LargeThemeItem
+            textColor={'red'}
+            placeLabel={'fine dining'}
+            cardData={fineDining}
+         />
+         <LargeThemeItem
+            textColor={'red'}
+            placeLabel={'hot cuisine'}
+            cardData={hotCuisine}
+         />
+         <LargeThemeItem
+            textColor={'red'}
+            placeLabel={'at twilight'}
+            cardData={atTwilight}
+         />
+         <LargeThemeItem
+            textColor={'red'}
+            placeLabel={'buffet'}
+            cardData={buffet}
          />
          <LargeItem
             textColor={'red'}
