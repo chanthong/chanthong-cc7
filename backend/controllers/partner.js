@@ -121,10 +121,25 @@ const deletePartner = async (req, res) => {
 //เรียก partner ตาม location
 const getPartnersByDistrict = async (req, res) => {
   try {
-    const { findDis } = req.query;
+    const { findDis } = req.params;
     console.log(findDis)
     console.log("come in already");
-    const targetPartner = await db.Partner.findAll({ where: { district: findDis } });
+    const targetPartner = await db.Partner.findAll({
+      where: {
+        district: findDis
+      },
+      include: [{
+        model: db.Partner_Category,
+        where: { priority: 1 },
+        include: {
+          model: db.Category,
+          attributes: ['type_Restaurant']
+        }
+      }, {
+        model: db.Reserve,
+        attributes: ['id']
+      }]
+    });
     res.status(200).send({ targetPartner });
   } catch (err) {
     console.log(err)

@@ -1,3 +1,4 @@
+const { response } = require("express");
 const db = require("../models");
 
 const getAllPartnerCategory = async (req, res) => {
@@ -42,8 +43,36 @@ const getThemeCategory = async (req, res) => {
     }
 };
 
+const getThemeBySection = async (req, res) => {
+    try {
+        const { myTheme } = req.params;
+        const targetTheme = await db.Partner_Category.findAll({
+            include: [{
+                model: db.Category,
+                where: { type_Restaurant: myTheme }
+            },
+            {
+                model: db.Partner,
+                attributes: ['district', 'restaurant_name', 'partners_picture'],
+                include: [
+                    {
+                        model: db.Reserve,
+                        attributes: ['id']
+                    }
+                ]
+            }]
+        });
+
+        res.status(200).send({ targetTheme })
+    } catch (err) {
+        console.log(err);
+        res.status(500).send({ message: err.message })
+    };
+};
+
 module.exports = {
     getAllPartnerCategory,
     createPartner_Category,
-    getThemeCategory
+    getThemeCategory,
+    getThemeBySection
 };
