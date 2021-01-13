@@ -61,8 +61,8 @@ function Login(props) {
          password
       })
          .then(res => {
-            // alert("Login success.");
-            <Alert severity="success">This is a success alert — check it out!</Alert>
+            alert("Login success.");
+            // <Alert severity="success">This is a success alert — check it out!</Alert>
             LocalStorageService.setToken(res.data.token);
             props.setRole("USER");
             props.setUser(jwtDecode(res.data.token));
