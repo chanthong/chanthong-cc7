@@ -6,7 +6,7 @@ import SmallCard from '../SmallCard/SmallCard';
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
-        paddingTop: theme.spacing(2),
+        paddingTop: theme.spacing(15),
         paddingBottom: theme.spacing(2),
     },
     box: {
