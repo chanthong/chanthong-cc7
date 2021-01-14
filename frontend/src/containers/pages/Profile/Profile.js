@@ -2,9 +2,16 @@ import React from 'react'
 import './Profile.css'
 import PlateImg from '../../uploadfile/dishelement.png'
 import DiningImg from '../../uploadfile/diningset.png';
+import { useHistory } from 'react-router-dom';
 
 function Profile({ user: { username, name, lname, email, phone_number, current_point, profile_url } }) {
     console.log(profile_url);
+    const history = useHistory()
+
+    const goToUserDashboard = () => {
+        history.push("/user_dashboard");
+    };
+
     return (
         <div className="outerFrame">
             <div className="outerCircle"></div>
@@ -63,7 +70,7 @@ function Profile({ user: { username, name, lname, email, phone_number, current_p
                 <img src={profile_url} alt="รูปโปรไฟล์" />
             </div>
 
-            <div className="leftTab1 font-mitr">Reserve History</div>
+            <div onClick={goToUserDashboard} className="leftTab1 font-mitr">Reserve History</div>
             <div className="leftTab2 font-mitr">My Reward</div>
             <div className="leftTab3 font-mitr">Edit My Profile</div>
             <div>
