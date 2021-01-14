@@ -293,7 +293,7 @@ function Reserve({ user: { username, name, lname, email, phone_number, current_p
 					description: "Reserve successfully"
 				});
 				// history.push("/");
-				history.push("/user_dashboard")
+				history.push("/user_dashboard");
 			})
 			.catch(err => {
 				console.log(err);

@@ -4,7 +4,7 @@ import React from 'react';
 function PartnerProfile({ partner: { username, email_address, phone_number, restaurant_name, price_range } }) {
 
     return (
-        <div className="wrapper">
+        <div className="wrapper" style={{ backgroundColor: `rgb(216, 91, 85)` }}>
             <div className="title">
                 Confirm Partner Register
             </div>
