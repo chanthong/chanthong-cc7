@@ -146,7 +146,11 @@ function PartnerRegister(props) {
         <div className="outerFramePartner">
             <div className="outerRedPartner"></div>
 
-            <div className="welcome font-lobster" style={{ fontSize: "180%", top: "40px" }}>Welcome to</div>
+            <div className="welcome font-lobster" style={{ fontSize: "180%", top: "40px" }}>
+                Welcome to
+                <h6 style={{cursor:'pointer'}} onClick={()=>{props.history.push('/')}}>Back to home</h6>
+                </div>
+            
             <div className="chanthong font-lobster" style={{ fontSize: "280%", top: "80px", left: "200px" }}>Chanthong Community</div>
 
             {/* 1st column */}
@@ -160,13 +164,13 @@ function PartnerRegister(props) {
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "270px" }}></img>
             </div>
             <div className="usernamePartner font-mitr" style={{ left: "75px", top: "250px" }}>Password:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "270px" }} value={password} onChange={passwordHandler} />
+            <input type="password" className="usernameTabPartner font-mitr" style={{ left: "60px", top: "270px" }} value={password} onChange={passwordHandler} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "340px" }}></img>
             </div>
-            <div className="usernamePartner font-mitr" style={{ left: "75px", top: "320px" }}>Re-enter Password:</div>
-            <input className="usernameTabPartner font-mitr" style={{ left: "60px", top: "340px" }} />
+            <div  className="usernamePartner font-mitr" style={{ left: "75px", top: "320px" }}>Re-enter Password:</div>
+            <input type="password" className="usernameTabPartner font-mitr" style={{ left: "60px", top: "340px" }} />
 
             <div>
                 <img className="plateLeftPartner" src={PlateImg} alt="plate" style={{ left: "57px", top: "410px" }}></img>
@@ -264,7 +268,7 @@ function PartnerRegister(props) {
             <input className="usernameTabPartner5 font-mitr" style={{ left: "795px", top: "270px" }} value={description} onChange={descriptionHandler} />
 
             <div>
-                <img className="registerImage" src={RegisterImg} alt="plate" style={{ left: "960px", top: "470px" }} onClick={onFinish}></img>
+                <img className="registerImage" src={RegisterImg} alt="plate" style={{cursor:'pointer', left: "960px", top: "470px" }} onClick={onFinish}></img>
             </div>
 
         </div>

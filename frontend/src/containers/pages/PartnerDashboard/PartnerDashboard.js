@@ -1,4 +1,4 @@
-import { Table } from 'antd';
+import { Table, Row, Col } from 'antd';
 import { Button } from 'antd/lib/radio';
 import React, { useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom';
@@ -93,13 +93,14 @@ function PartnerDashboard(props) {
     ];
 
     return (
-        <div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <h1>Partner Dashboard</h1>
-                <Button onClick={onLogout}>Logout</Button>
-            </div>
-            <Table columns={columns} dataSource={data} />
-        </div>
+        <Row style={{marginBottom:'10px'}}>
+            <Col span={12} offset={6}>
+                <div style={{ display: "flex", justifyContent: "space-between" }}>
+                    <h1>Partner Dashboard</h1>
+                </div>
+                <Table columns={columns} dataSource={data} />
+            </Col>
+        </Row>
     )
 }
 
